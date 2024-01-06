@@ -60,75 +60,43 @@ eval("module.exports = [\n" +
     "    {\n" +
     "    \"id\": \"1\",\n" +
     "    \"attributes\": {\n" +
-    "        \"state\": \"completed\",\n" +
-    "        \"title\": \"Trading - tg bot\",\n" +
-    "        \"description\": \"Ai infused TG trading bot\"\n" +
+    "        \"state\": \"development\",\n" +
+    "        \"title\": \"Trading tg bot\",\n" +
+    "        \"description\": \"Buy, sell, multiwallet, basic analitics.\"\n" +
     "    }\n" +
     "},\n" +
     "{\n" +
     "    \"id\": \"2\",\n" +
     "    \"attributes\": {\n" +
-    "        \"state\": \"completed\",\n" +
-    "        \"title\": \"mixer\",\n" +
-    "        \"description\": \"Transfer of funds to and from multiwallet anonymously.\"\n" +
+    "        \"state\": \"planned\",\n" +
+    "        \"title\": \"Sniper\",\n" +
+    "        \"description\": \"Auto-buy mode on lp added on TON blockchain.\"\n" +
     "    }\n" +
     "},\n" +
     "{\n" +
     "    \"id\": \"3\",\n" +
     "    \"attributes\": {\n" +
-    "        \"state\": \"completed\",\n" +
-    "        \"title\": \"Ai audit\",\n" +
-    "        \"description\": \"Ai analyzes the token's source code and presents how it works to the tg chat along with any bugs and vulnerabilities.\"\n" +
+    "        \"state\": \"planned\",\n" +
+    "        \"title\": \"Advanced ca scanner\",\n" +
+    "        \"description\": \"More data for bot users.\"\n" +
     "    }\n" +
     "},\n" +
     "{\n" +
     "    \"id\": \"4\",\n" +
     "    \"attributes\": {\n" +
-    "        \"state\": \"development\",\n" +
-    "        \"title\": \"Sniper mode - tg\",\n" +
-    "        \"description\": \"Ultrafast buy new launches\"\n" +
+    "        \"state\": \"planned\",\n" +
+    "        \"title\": \"Rev share\",\n" +
+    "        \"description\": \"Revenue share for token holders.\"\n" +
     "    }\n" +
     "},\n" +
     "{\n" +
     "    \"id\": \"5\",\n" +
     "    \"attributes\": {\n" +
-    "        \"state\": \"development\",\n" +
-    "        \"title\": \"Token launch on ETH\",\n" +
-    "        \"description\": \"Stonks token on Ethereum network\"\n" +
+    "        \"state\": \"planned\",\n" +
+    "        \"title\": \"ETH\",\n" +
+    "        \"description\": \"Stonksbot on eth with advanced MEV\"\n" +
     "    }\n" +
     "},\n" +
-    "{\n" +
-    "    \"id\": \"6\",\n" +
-    "    \"attributes\": {\n" +
-    "        \"state\": \"planned\",\n" +
-    "        \"title\": \"Limit orders\",\n" +
-    "        \"description\": \"Limit orders on tg.\"\n" +
-    "    }\n" +
-    "},\n" +
-    "{\n" +
-    "    \"id\": \"7\",\n" +
-    "    \"attributes\": {\n" +
-    "        \"state\": \"planned\",\n" +
-    "        \"title\": \"Dividends for stonks token holders\",\n" +
-    "        \"description\": \"Token holders get a share of the bot's profits\"\n" +
-    "    }\n" +
-    "},\n" +
-    "{\n" +
-    "    \"id\": \"8\",\n" +
-    "    \"attributes\": {\n" +
-    "        \"state\": \"planned\",\n" +
-    "        \"title\": \"Web app\",\n" +
-    "        \"description\": \"responsive web application including all tg bot functionality\"\n" +
-    "    }\n" +
-    "},\n" +
-    "{\n" +
-    "    \"id\": \"9\",\n" +
-    "    \"attributes\": {\n" +
-    "        \"state\": \"planned\",\n" +
-    "        \"title\": \"Multichain\",\n" +
-    "        \"description\": \"Adding the largest EVM-compatible chains to the bot.\"\n" +
-    "    }\n" +
-    "}\n" +
     "]\n\n//# sourceURL=webpack://learnwithjason-demo-base/./src/docs/roadmap.json?");
 
 /***/ })
