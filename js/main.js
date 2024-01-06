@@ -62,7 +62,7 @@ eval("module.exports = [\n" +
     "    \"attributes\": {\n" +
     "        \"state\": \"development\",\n" +
     "        \"title\": \"Trading tg bot\",\n" +
-    "        \"description\": \"Buy, sell, multiwallet, basic analitics.\"\n" +
+    "        \"description\": \"Buy, sell, multiwallet, basic analytics.\"\n" +
     "    }\n" +
     "},\n" +
     "{\n" +
