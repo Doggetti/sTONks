@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Sun Aug 04 2024 20:51:55 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Sat Aug 17 2024 17:10:46 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="66a218e2f88f7900c37729c9" data-wf-site="66a218e2f88f7900c37729bc">
 <head>
   <meta charset="utf-8">
@@ -67,9 +67,31 @@ a {
 a:active {
   color: transparent;
 }
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 3px solid #FFF;
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
 </style>
 </head>
 <body class="body">
+  <div data-w-id="e73f9796-4c73-c46a-e5e6-b91f08a7d12e" class="loading">
+    <div class="loader"></div>
+    <div class="logo-load"></div>
+  </div>
   <div class="bgc-show-all">
     <div class="bgc-show color-blue"></div>
     <div class="bgc-show color-violet"></div>
@@ -114,7 +136,7 @@ a:active {
       </div>
     </div>
   </div>
-  <section class="section-start">
+  <section data-w-id="0c249fb1-d0d1-2501-583a-099ffef2a331" class="section-start">
     <div class="logo-ton-m">
       <div class="logo-ton-mobile"></div>
     </div>
@@ -159,7 +181,7 @@ a:active {
         <div class="s-ring3"></div>
       </div>
     </div>
-    <div data-w-id="fc219a1b-aa71-02df-3d9b-ffc5b9d897d7" class="spline-rings" data-animation-type="spline" data-spline-url="https://prod.spline.design/jEdD9Y9-8mcATPwm/scene.splinecode"><canvas></canvas></div>
+    <div data-w-id="fc219a1b-aa71-02df-3d9b-ffc5b9d897d7" class="spline-rings" data-animation-type="spline" data-spline-url="https://prod.spline.design/nqELMmbWVZSLn-L8/scene.splinecode"><canvas></canvas></div>
     <div class="frame-1">
       <div class="frame-txt">
         <h1 class="titile-logo1 title-absolute title-frame-1">Dominate Trading</h1>
@@ -412,6 +434,7 @@ setTrackHeights();
 window.addEventListener("resize", function () {
   setTrackHeights();
 });
+///////////////////////////////////////////////////////// LENIS OVERFLOW HIDDEN
 /////////////////////////////////////// lenis
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.defaults({
@@ -422,7 +445,7 @@ let lenis;
 if (Webflow.env("editor") === undefined) {
   lenis = new Lenis({
     lerp: 0.1,
-    wheelMultiplier: 0.8,
+    wheelMultiplier: 0.7,
     gestureOrientation: "vertical",
     normalizeWheel: false,
     smoothTouch: false
@@ -437,11 +460,14 @@ if (Webflow.env("editor") === undefined) {
 //lenis.stop();
 //GSAP 
 const txtLogoStart = document.querySelectorAll('.txt-logo-start'); 
-///////////////////////////////////////////////////////// SCAMMERS START
+lenis.stop()
+window.onload = function () {
+setTimeout(function() { lenis.start(); }, 9000)
+///////////////////////////////////////////////////////// START
 txtLogoStart.forEach((char, i) => {
   const text = new SplitType(char, { types: 'chars' });
   gsap.from(text.chars, 1, {
-    delay: 1,
+    delay: 7,
     opacity: '0',
     y: '50',
     stagger: {
@@ -462,11 +488,11 @@ y: '-20px',
 });
 gsap.to('.btn-show-start', {
  immediateRender: false,
-delay: 2,
+delay: 7,
   stagger: {
     amount: 0.8,
   },
-duration:1,
+duration:0.5,
 ease: 'none',
 opacity: '1',
 y: '0',
@@ -476,18 +502,18 @@ gsap.from('.logo-greyscale', {
   stagger: {
     amount: 0.8,
   },
-duration:1,
+duration:0,
 ease: 'none',
 opacity: '0',
 y: '-20px',
 });
 gsap.to('.logo-greyscale', {
  immediateRender: false,
-delay:3,
+delay:7,
   stagger: {
     amount: 0.8,
   },
-duration:1,
+duration:0.5,
 ease: 'none',
 opacity: '1',
 y: '0',
@@ -495,20 +521,21 @@ y: '0',
 ///////////////////////////////////////////// bgc-show-all
 gsap.to('.bgc-show-all', {
  immediateRender: false,
-delay:3,
-duration:6,
+delay: 7,
+duration: 4,
 ease: 'none',
 opacity: '0.7',
 });
 /////////////////////////////////////////////////////// MOBILE
 gsap.to('.logo-ton-mobile', {
  immediateRender: false,
-delay:0.5,
+delay: 6,
 duration:2,
 ease: 'none',
 opacity: '1',
 y: '0',
 });
+};
 //////////////////////////////////////////////////// FRAMES
 const frame1 = document.querySelectorAll('.frame-1');
 const frame2 = document.querySelectorAll('.frame-2');
