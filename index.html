@@ -1,8 +1,8 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Sat Sep 07 2024 22:35:32 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Fri Sep 27 2024 00:44:36 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="66d43c17c2286b9bdd81ccf0" data-wf-site="66d43c16c2286b9bdd81ccdc">
 <head>
   <meta charset="utf-8">
-  <title>stonks</title>
+  <title>STONKS</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
@@ -16,6 +16,16 @@
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
   <style>
+/* HTML: <div class="loader"></div> */
+.spinner-animaion {
+  width: 200px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid;
+  border-color: #0000 #07acff;
+  animation: l1 1s infinite;
+}
+@keyframes l1 {to{transform: rotate(.5turn)}}
 .cursor.active {
     opacity: 1;
     transform: scale(12);
@@ -26,7 +36,7 @@ opacity:1;
 .txt-card-color:hover{
 transform: scale(1.1);
 }
-.stonks-stroke1 {
+.eth-path{
   fill: none;
   stroke-dasharray: 100;
   stroke: white;
@@ -35,13 +45,14 @@ transform: scale(1.1);
   stroke-width: 2;
   -webkit-animation: stonksStroke1 15s linear infinite alternate;
 }
-@keyframes stonksStroke1 {
-  0% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: 900;
-  }
+.stonks-stroke1 {
+  fill: none;
+  stroke-dasharray: 100;
+  stroke: white;
+  animation: stonksStroke1 15s linear infinite alternate;
+  stroke-miterlimit: 2;
+  stroke-width: 2;
+  -webkit-animation: stonksStroke1 15s linear infinite alternate;
 }
 .d {
   fill: none;
@@ -57,7 +68,7 @@ transform: scale(1.1);
     stroke-dashoffset: 0;
   }
   100% {
-    stroke-dashoffset: 200;
+    stroke-dashoffset: 500;
   }
 }
 html.lenis {
@@ -114,17 +125,25 @@ a:active {
 </style>
 </head>
 <body class="body">
-  <div class="cursor">
-    <div class="txt-cursor">see more</div>
+  <div data-w-id="c16bba97-479d-673b-c756-f5166d71666f" class="loading-stonks">
+    <div data-w-id="809aa838-a5e5-f575-62d0-36d5a6ffc65c" class="spinner-animaion"></div>
+    <div data-w-id="4c401517-7919-6180-5d3e-0378c1f003b3" class="logo-loading"></div>
+    <div data-w-id="9906b12d-5719-9ec6-5eaf-e25393b124bf" class="txt-loading">stonks trading bot</div>
+  </div>
+  <div class="popup-web-app-bot">
+    <div class="txt-popup">Trading Web APP</div>
+    <div class="txt-web-app-bot">
+      <p class="txt-web-app">coming soon...</p>
+    </div>
   </div>
   <div class="navigation">
-    <div data-w-id="616672f5-4c4f-5555-7cea-3ac94bf4ac44" class="menu-bar"></div>
-    <a href="#" class="logo-link w-inline-block">
+    <div data-w-id="5b266146-a1e8-85f0-cd77-01725932efb4" class="menu-bar"></div>
+    <a href="index.html" aria-current="page" class="logo-link w-inline-block w--current">
       <div class="icon-stonks"></div>
       <div class="icon-stonks-txt">stonks</div>
     </a>
     <div class="menu-center menu-phone">
-      <a href="#" class="menu-link phone-menu-link w-inline-block">
+      <a href="https://stonks-bot.gitbook.io/stonks-bot-manual/buybot" class="menu-link phone-menu-link w-inline-block">
         <div class="txt-link txt-phone">buybot</div>
       </a>
       <a href="https://t.me/stonks_gem_bot" class="menu-link phone-menu-link w-inline-block">
@@ -134,406 +153,490 @@ a:active {
         <div class="txt-link txt-phone">trading bot</div>
       </a>
       <a href="https://stonks-bot.gitbook.io/stonks-bot-manual/stonks-app/stonks.pump" class="menu-link phone-menu-link w-inline-block">
-        <div class="txt-link txt-phone">stonks.pump</div>
+        <div data-w-id="5b266146-a1e8-85f0-cd77-01725932efc4" class="txt-link txt-phone stonks-pump-ton">stonks.pump</div>
+        <div class="icon-pump-menu icon-pump-ton"></div>
+      </a>
+      <a href="stonks-pump-eth.html" class="menu-link phone-menu-link w-inline-block">
+        <div data-w-id="5b266146-a1e8-85f0-cd77-01725932efc8" class="txt-link txt-phone hover-eth">stonks.pump</div>
+        <div class="icon-pump-menu icon-pump-eth"></div>
+      </a>
+      <a href="news.html" class="menu-link phone-menu-link w-inline-block">
+        <div class="txt-link txt-phone news-btn">news</div>
       </a>
       <a href="https://stonks-bot.gitbook.io/stonks-bot-manual" class="menu-link phone-menu-link w-inline-block">
         <div class="txt-link txt-phone">docs</div>
       </a>
-      <a data-w-id="9eb8e44c-68ef-a973-5ec3-8ae0678c0f37" href="https://t.me/stonks_sniper_bot" class="link-start link-mobile w-inline-block">
+      <a href="https://t.me/stonks_sniper_bot" class="link-start link-mobile w-inline-block">
         <div class="arrow-btn"></div>
         <div class="start-button txt-phone">Connect</div>
       </a>
     </div>
-    <a data-w-id="d818bec3-54bc-711d-a712-0ebcb7240f05" href="https://t.me/stonks_sniper_bot" class="link-start link-none-mobile w-inline-block">
+    <a data-w-id="5b266146-a1e8-85f0-cd77-01725932efd5" href="#" class="link-start link-none-mobile w-inline-block">
       <div class="arrow-btn"></div>
-      <div class="start-button">Connect Bot</div>
+      <div class="start-button">web app bot</div>
     </a>
   </div>
-  <section class="section-start">
-    <div class="code-embed w-embed"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 722.09 854.07">
-        <defs>
-          <style>.a{fill:none;}.b{clip-path:url(#a);}.c{fill:black;}.d{fill:none;}</style>
-          <clippath id="a" transform="translate(-12.18 -35.68)">
-            <rect class="a" width="752" height="866"></rect>
-          </clippath>
-        </defs>
-        <g class="b">
-          <path class="c" d="M733.87,793.38q-17.24-34.25-34.52-68.49c-3.19-6.3-6.74-12.34-12.74-16.5a3.44,3.44,0,0,1-1-1.61,34.36,34.36,0,0,0-19.93-20.35c-17.82-7.12-35.63-14.31-53.75-20.62-39-13.58-78.17-26.62-117.26-39.92a8.08,8.08,0,0,1-3.16-2,147.63,147.63,0,0,0-26-22.11c-2.72-1.81-5.53-3.5-8.31-5.26,4-7,7.93-13.89,11.75-20.82a3.13,3.13,0,0,1,1.4-1.52,3.1,3.1,0,0,1,2-.31,141.6,141.6,0,0,0,31-.91c12.72-1.91,24.62-5.91,34.94-13.83,11.77-9,18.86-21.2,23.33-35.12,7.19-22.38,16.87-43.77,26.33-65.23,10.64-24.15,21-48.38,28.23-73.85,5.59-19.82,7.13-39.67,2.23-59.82-.29-1.21-.41-2.46-.64-3.91h.25a10.44,10.44,0,0,1-.66-1.06c-.07-.13-.15-.26-.23-.39s-.15-.37-.23-.55c-4.72,0-9.44.11-14.11.39a2.13,2.13,0,0,1-.08.27,13.29,13.29,0,0,1,.43,2h.21c4.34,15.68,5.69,31.56,2.17,47.75-4.06,18.7-10.31,36.68-17.67,54.26-8.76,20.91-18.15,41.56-26.87,62.49-4.89,11.76-9.17,23.83-13.36,35.83-7.31,21-22,33-43.74,36.73-11.81,2-23.66,1.73-35.53.81l-.71-.16-.12.07-.13-.07c-4.58-.77-9.24-1.24-13.74-2.37a228,228,0,0,1-110.63-64.3,15.14,15.14,0,0,0-1.8-1.39c5,7.49,9.51,15.4,15.15,22.4,18.71,23.18,43.05,38.18,71.11,47.49,4.51,1.49,9.1,2.76,13.68,4.06,6.16,1.76,9.1,6.4,8.56,12.82a22.72,22.72,0,0,1-3.72,10.07c-3,4.91-5.68,10-6.4,15.79-.34,2.72-.36,5.47-.52,8.21.52,3.67.8,7.39,1.62,11,1.67,7.39-1.08,13.51-5.18,19.23-6.31,8.78-14.68,15.4-23.31,21.71-7,5.13-14.35,9.83-23,12-12.8,3.2-25.35,1.85-37.67-2.24-26.67-8.85-51.06-22.21-73.75-38.61-14.52-10.5-28.81-21.53-42.62-32.79s-21.61-26.32-23.36-44c-1.83-18.4-4.83-36.49-10.53-54.07-5-15.43-10.27-30.77-15.55-46.1C178.07,436,171,413.41,166.07,390.14A410.54,410.54,0,0,1,157.83,330a347.72,347.72,0,0,1,.27-47A304.77,304.77,0,0,1,173,208.64c6.85-20.35,15.4-39.92,26.93-58.07,18.33-28.86,42.69-51.46,72.15-68.65a235.31,235.31,0,0,1,88.07-30.14c5.19-.7,10.43-1.05,15.64-1.56,11-.1,22-.67,32.91-.1a228.33,228.33,0,0,1,65.73,13.35c49.21,17.77,85.5,49.91,108.5,97a226.2,226.2,0,0,1,18.41,52.89l1.88,9.28c.64,8.51,1.34,17,1.85,25.56a45.88,45.88,0,0,1-.38,5.86h-.06a12.88,12.88,0,0,1,.88,1.69c4.15.2,8.31.19,12.48.07a13.39,13.39,0,0,1,.73-1.21c.09-.41.2-.82.32-1.22l-.11-.1a6.91,6.91,0,0,1-.07-1.2c.86-15.31-1.28-30.31-4.71-45.16a241.5,241.5,0,0,0-28.26-70,194.37,194.37,0,0,0-72.44-70.8C486,50.67,456.49,41.6,425.3,37.72A256.76,256.76,0,0,0,349,39.47,249.92,249.92,0,0,0,269.27,67.6c-43.91,24.59-76.42,59.59-97.2,105.59a322.45,322.45,0,0,0-28.58,124.49c-1.12,37.15,3.5,73.66,12.34,109.71,5.91,24.1,14.12,47.46,22.25,70.85,6.33,18.22,12.72,36.4,16.47,55.4.92,4.64,1.57,9.33,2.36,14.09-1.18.2-2,.36-2.75.48a144.31,144.31,0,0,0-34.52,9.26c-16.1,6.56-28.39,16.8-33.74,34a3.05,3.05,0,0,1-.69,1,3.19,3.19,0,0,1-1,.69c-5.23,1.89-10.4,4.09-15.78,5.39-25,6-50.13,11.74-75.2,17.58l-21,4.92,6.87,12.68c20.42-5.15,40.91-10.3,61.36-15.31,10.61-2.62,21.27-5,31.91-7.53l15-4.91c.31,2.87.64,5.62,1,8.37,1.18,9.09,2.2,18.2,3.59,27.26,1.73,11.44,3.73,22.85,5.73,34.26,1.67,9.46,3.46,19,5.26,28.46q2.78,14.83,5.78,29.6c2.86,14.19,11.19,24,24.53,29.26,22.49,8.91,45.09,17.55,67.64,26.31.66.26,1.28.61,2.33,1.12-1.59,2.12-3,4.12-4.48,6.12l-24,31.86a17.24,17.24,0,0,0-1,1.65l10.16,5.25c2-2.82,3.83-5.72,5.91-8.46q14.79-19.51,29.6-39c.34-.44.6-.94,1.09-1.71-3.51-1.48-6.89-2.92-10.27-4.33q-37.89-15.87-75.79-31.58c-8.06-3.33-11.7-9.86-13.51-17.7-2.91-12.57-5.7-25.17-8.25-37.82-3.8-19-7.55-38-11-57-2-11-3.32-22.17-5-33.24-.74-4.84,1.24-9,2.9-13.31,4.18-10.7,12.74-16.73,22.74-21.22a128.58,128.58,0,0,1,33.91-9.54c1.37-.2,1.77.13,2.1,1.47.66,2.5.65,4.3-2,6a7,7,0,0,0-2.41,9.29,49.91,49.91,0,0,0,7.25,10.72c14.9,17.2,30.1,34.15,45,51.37Q265.65,662,284.64,685c11.61,14,23.25,27.94,34.31,42.34,16.82,21.9,33.19,44.13,49.64,66.3,4.33,5.83,7.6,12.29,7.33,19.83S372,827,366.86,831.87c-7.4,7-15.33,13.32-23.16,19.83s-15.84,12.8-22.47,20.6a3.94,3.94,0,0,1-1,.61l13.24,3.56a243,243,0,0,1,32.41-27.77,59.67,59.67,0,0,0,13.64-13.32c8.19-11.45,8.38-23.8,3.69-36.45-2.77-7.47-6.24-14.67-9.53-22.32,3.8-1.12,7.9-2.55,12.09-3.55a131.84,131.84,0,0,1,31.13-4.18c1.27,0,2.27,0,2.87,1.51,5.44,13.3,10.92,26.58,13.92,40.73,5.8,27-2.72,49.15-22.44,67.56-3.46,3.23-7.46,5.89-11.22,8.81,4.81.42,9.62.89,14.43,1.19a3.34,3.34,0,0,0,2.18-1.1c4.43-4.7,8.89-9.39,13.16-14.23,5.42-6.14,10.24-12.71,13.09-20.5,4.73-13,4-26.23,2-39.5-2.54-16.78-7.82-32.77-14.16-48.46a10.21,10.21,0,0,1-.47-4.62c.7-7.22,1.56-14.43,2.36-21.65.13-1.15.23-2.41.39-4.15a222.11,222.11,0,0,1,19.18,29.72,5,5,0,0,1,.39,2.12q.19,4.52.2,9,.38,29.9.67,59.9.24,27.27.46,54.54h1.94l6.64-.83c.19-3.37.49-6.86.55-10.37.15-6.39.06-12.78.15-19.17.12-9.69.31-19.38.46-29.07.17-10.9.38-21.81.48-32.71.17-16.81.36-33.62.36-50.43,0-9.94-.23-19.87-.48-29.81-.24-8.22-.43-16.46-1-24.66-1-13.74-1.89-27.5-3.46-41.18-1.28-11.14-2-22.31-5.18-33.14a45.76,45.76,0,0,1-1.48-9.3,100.07,100.07,0,0,1,23.28,17.24c15.26,16.47,30.71,32.75,45.71,49.47,10,11.12,19.27,22.82,28.73,34.38a29.19,29.19,0,0,1,4,7.15c1.79,4.22,1.62,8.11-1.8,11.84-6.43,7-12.54,14.33-18.8,21.52-.68.78-1.4,1.52-2.3,2.52,2.62,1.9,5.13,3.62,7.52,5.48,5.6,4.37,11.28,8.65,16.68,13.25,7.85,6.7,9.92,16.74,5.12,27.17q-10,21.55-20.74,42.71c-6.93,13.6-14.33,27-21.51,40.43-.33.72-.63,1.45-.89,2.2l12.61-2c2.84-5.61,5.7-11.21,8.53-16.83,5.85-11.61,11.8-23.18,17.51-34.86q6.19-12.62,11.79-25.46c2.91-6.68,4.91-13.63,4.91-21,0-8.61-3.84-15.1-10.64-20.1-5.13-3.78-10.14-7.73-15.2-11.6a15,15,0,0,0-1.31-.78l9-11c2.29-2.82,4.66-5.57,6.84-8.48,5.17-6.9,5-14.85.1-22.15a211.87,211.87,0,0,0-16.18-21.08c-13.5-15.35-27.33-30.37-41-45.53a6,6,0,0,1-.46-1l31,10.75c9,3,18.12,5.95,27.12,9,14.7,4.93,29.44,9.71,44,15,17.82,6.48,35.52,13.29,53.18,20.18,8.08,3.15,13.64,8.73,15.14,17.73a2.84,2.84,0,0,0,.59,1,2.79,2.79,0,0,0,.92.68,23.39,23.39,0,0,1,10.26,10.93c3.79,7.76,7.75,15.44,11.47,23.24,6.87,14.38,13.63,28.91,20.43,43.38,1.41,3,2.8,6,4.2,9,3.52-2.43,7-4.93,10.52-7.28C734.48,795.32,734.48,794.59,733.87,793.38ZM269,646.75l.09-.28c.92.51,1.87,1,2.78,1.62,19.21,13.33,39.33,25,61.07,33.74a175.07,175.07,0,0,0,18.47,6.5c6.27,1.73,12.76,2.64,19.07,3.89a184.94,184.94,0,0,0-39.85,29.53Zm149.09,112c-.3,1.48-1,1.81-2.3,1.81A145.63,145.63,0,0,0,368,769.81c-.06,0-.15,0-.43,0-4.66-6.1-9.4-12.29-14.15-18.44l-14-18c-.68-.87-1.24-1.55-.36-2.72,7.79-10.37,16.88-19.12,29.32-23.74,13.95-5.18,27.17-3.05,39.66,4.43a110.77,110.77,0,0,1,10.89,8,3.7,3.7,0,0,1,1.39,2.36C420.9,734.1,420.5,746.5,418.08,758.79ZM386.3,691.23c25.23-5.12,43.38-21.37,60.59-39.83l4.91,91.67C435.36,718.53,415.83,698.38,386.3,691.23Z" transform="translate(-12.18 -35.68)"></path>
-        </g>
-        <path class="d" d="M602.37,252.21l-44.07.62c-.21,1.1-.37,2.21-.47,3.33-.15,4-.12,4-4,4-6.22,0-6.22,0-6.22-6.07v-1.21c-8.88.21-17.76.47-26.64.63q-30.68.53-61.33,1-29.44.48-58.91,1c-16.08.28-32.17.37-48.23.95-3.58.13-7.13,1.89-10.64,3.06l-56,18.77c-.54.15-1.08.27-1.64.37-7.47,2.56-14.93,5.15-22.41,7.68q-21.54,7.29-43.12,14.56c.63.31,1.24.9,1.87.9a68.1,68.1,0,0,0,7,0c1.75-.1,2.44.42,2.36,2.27-.16,2.87,0,5.76,0,8.64l55-18.33c.53-.18,1.08-.32,1.62-.48,19.11-6.41,38.29-12.58,57.29-19.36,7-2.51,14-2.62,21.64-2.7v21.38h10.69v20.23h10.56v10.17h10.52v10.24l82-1.41V322.27h10.13V311.72h10.1V301.35h10.12V291h10.18V269.19H543v17.15h8.87c.09,4.8.31,9.43.19,14.07-.07,2.38.7,3,3,2.92,5.71-.16,5.71-.05,5.79,5.78,0,.7.1,1.41.16,2.22l2.48.29h6V320h31.47a13.78,13.78,0,0,1,2.72-.27c.22,0,.43,0,.65,0s.58,0,.88,0a13,13,0,0,1,2.48.25,13.73,13.73,0,0,1,2.63-.25c.32,0,.63,0,1,0s.72,0,1.09,0l.44,0,.58,0h.51a14.5,14.5,0,0,1,1.78.12c0-.17,0-.33-.08-.5h22.2v-8.85h8.59v-8.77h8.38V293h8.46v-8.68h8.43V266.62h8V254.74a12.18,12.18,0,0,1,0-1.91c.29-1.65-.57-2.09-2-2l-41,.71c-3,.08-5.9.08-8.9.08l-10.67.19M448.24,312.39H438.16v-10h10.08ZM488,291.19h-4.36l-4.63-.06v10.69h-9.94v10.29H458.41v-10.3l-10.12.51V291.69H458.4V281h10.21V270.93h10.12v10.12l10.2-.05c.12,3,.3,6,.3,9.08C489.23,290.44,488.42,290.82,488,291.19Zm11.18-10.27H489v-10.3h10.18Zm146.89,3.61-8.21.38v8.71h-8.68V302h-8.7v-8.42h-8.3v8.64h-8.59v-8.45h8.3v-8.92h8.6v-8.74h8.44v-8.68h8l.46.47.06,8.28h8.62Zm8.38-8.81h-8.18a2.06,2.06,0,0,1-.15-.46v-7.87h8.33Z" transform="translate(-12.18 -35.68)"></path>
-        <path class="d" d="M217.73,301.25l1-.36c.63.31,1.24.87,1.87.9a68.1,68.1,0,0,0,7,0c1.75-.1,2.44.42,2.36,2.27-.13,2.87,0,5.76,0,8.64v29.66H216.4V303.77a7.58,7.58,0,0,1,.85-2.36Z" transform="translate(-12.18 -35.68)"></path>
-        <path class="c" d="M217.73,301.25l-.44.17A.67.67,0,0,1,217.73,301.25Z" transform="translate(-12.18 -35.68)"></path>
-        <path class="d" d="M629.16,293.62h-8.8v-8.79h8.8C629.21,287.77,629.16,290.7,629.16,293.62Z" transform="translate(-12.18 -35.68)"></path>
-        <path class="d" d="M628.9,276.1h8.55v8.79h-8.29Q629,280.5,628.9,276.1Z" transform="translate(-12.18 -35.68)"></path>
-        <path class="d" d="M458.36,301.85V291.62H468.6c.17,3.42.34,6.83.5,10.25Z" transform="translate(-12.18 -35.68)"></path>
-        <path class="d" d="M478.8,280.94l.24,10.23-10.5.52V280.94Z" transform="translate(-12.18 -35.68)"></path>
-      </svg></div>
-    <div class="logo-stonks-letter">
-      <div class="txt-logo-stonks">stonks</div>
+  <div class="wrapper-stonks">
+    <div data-w-id="5e4fe133-c77a-922b-6d25-23699ac4e121" class="stonks-btn-news stonks-btn-news-computer">
+      <div id="w-node-c3ce28b7-e488-c82c-b45c-026546429ad4-dd81ccf0" data-w-id="c3ce28b7-e488-c82c-b45c-026546429ad4" class="txt-news">hot<br>news!</div>
     </div>
-    <div data-w-id="fa833274-8191-8d0d-4440-6d17e494efbd" class="spline-stonks" data-animation-type="spline" data-spline-url="https://prod.spline.design/fhILqpL8oG7FuIoT/scene.splinecode"><canvas></canvas></div>
-    <div class="txt-start">
-      <div class="stonks-big">Ultimate TON &amp; SOL trading bot, ready for a billion Telegram users</div>
-      <div data-w-id="d7a5461e-84de-90e4-7612-2ec74be901af" class="menu-center menu-socialmedia">
-        <a href="#" class="menu-link display-none w-inline-block">
-          <div class="txt-link txt-socialmedia">social media</div>
+    <div data-w-id="53f27326-f1af-65f4-e2f1-31e58c7266c4" class="stonks-btn-news stonks-btn-news-mobile">
+      <div id="w-node-_53f27326-f1af-65f4-e2f1-31e58c7266c5-dd81ccf0" class="txt-news">hot<br>news!</div>
+    </div>
+    <div class="stonks-news stonks-btn-news-computer"></div>
+    <div class="stonks-news stonks-btn-news-mobile"></div>
+    <div data-w-id="6f513fc6-d5c6-d328-9ac5-6c4c02fe6eb0" class="stonks-btn2-news stonks-btn-news-computer">
+      <div id="w-node-c87a6fdf-ebff-77a8-3282-87fe33c3c57a-dd81ccf0" class="txt-news txt-news-close">close</div>
+    </div>
+    <div data-w-id="37b90b96-3c30-8d6b-3799-b4e88f13ebb4" class="stonks-btn2-news stonks-btn-news-mobile">
+      <div id="w-node-_37b90b96-3c30-8d6b-3799-b4e88f13ebb5-dd81ccf0" class="txt-news txt-news-close">close</div>
+    </div>
+    <div class="div-news">
+      <div id="stonks-api-news" class="stonks-api">
+        <div class="txt-stonks-api">
+          <p class="message-api-news"></p>
+        </div>
+        <div class="img-api-stonks-wrapper"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="img-stonks-api">
+          <a href="https://t.me/stonks_sniper_bot" class="link-block-btn-api w-inline-block">
+            <div id="w-node-_686e6a53-1f8f-c293-9bbc-21b59d2dc903-dd81ccf0" class="link-start btn-news btn-stonks-api">
+              <div class="start-button">see in telegram</div>
+              <div class="btn-logo"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="cursor">
+      <div class="txt-cursor">see more</div>
+    </div>
+    <section class="section-start">
+      <div class="code-embed w-embed"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 722.09 854.07">
+          <defs>
+            <style>.a{fill:none;}.b{clip-path:url(#a);}.c{fill:black;}.d{fill:none;}</style>
+            <clippath id="a" transform="translate(-12.18 -35.68)">
+              <rect class="a" width="752" height="866"></rect>
+            </clippath>
+          </defs>
+          <g class="b">
+            <path class="c" d="M733.87,793.38q-17.24-34.25-34.52-68.49c-3.19-6.3-6.74-12.34-12.74-16.5a3.44,3.44,0,0,1-1-1.61,34.36,34.36,0,0,0-19.93-20.35c-17.82-7.12-35.63-14.31-53.75-20.62-39-13.58-78.17-26.62-117.26-39.92a8.08,8.08,0,0,1-3.16-2,147.63,147.63,0,0,0-26-22.11c-2.72-1.81-5.53-3.5-8.31-5.26,4-7,7.93-13.89,11.75-20.82a3.13,3.13,0,0,1,1.4-1.52,3.1,3.1,0,0,1,2-.31,141.6,141.6,0,0,0,31-.91c12.72-1.91,24.62-5.91,34.94-13.83,11.77-9,18.86-21.2,23.33-35.12,7.19-22.38,16.87-43.77,26.33-65.23,10.64-24.15,21-48.38,28.23-73.85,5.59-19.82,7.13-39.67,2.23-59.82-.29-1.21-.41-2.46-.64-3.91h.25a10.44,10.44,0,0,1-.66-1.06c-.07-.13-.15-.26-.23-.39s-.15-.37-.23-.55c-4.72,0-9.44.11-14.11.39a2.13,2.13,0,0,1-.08.27,13.29,13.29,0,0,1,.43,2h.21c4.34,15.68,5.69,31.56,2.17,47.75-4.06,18.7-10.31,36.68-17.67,54.26-8.76,20.91-18.15,41.56-26.87,62.49-4.89,11.76-9.17,23.83-13.36,35.83-7.31,21-22,33-43.74,36.73-11.81,2-23.66,1.73-35.53.81l-.71-.16-.12.07-.13-.07c-4.58-.77-9.24-1.24-13.74-2.37a228,228,0,0,1-110.63-64.3,15.14,15.14,0,0,0-1.8-1.39c5,7.49,9.51,15.4,15.15,22.4,18.71,23.18,43.05,38.18,71.11,47.49,4.51,1.49,9.1,2.76,13.68,4.06,6.16,1.76,9.1,6.4,8.56,12.82a22.72,22.72,0,0,1-3.72,10.07c-3,4.91-5.68,10-6.4,15.79-.34,2.72-.36,5.47-.52,8.21.52,3.67.8,7.39,1.62,11,1.67,7.39-1.08,13.51-5.18,19.23-6.31,8.78-14.68,15.4-23.31,21.71-7,5.13-14.35,9.83-23,12-12.8,3.2-25.35,1.85-37.67-2.24-26.67-8.85-51.06-22.21-73.75-38.61-14.52-10.5-28.81-21.53-42.62-32.79s-21.61-26.32-23.36-44c-1.83-18.4-4.83-36.49-10.53-54.07-5-15.43-10.27-30.77-15.55-46.1C178.07,436,171,413.41,166.07,390.14A410.54,410.54,0,0,1,157.83,330a347.72,347.72,0,0,1,.27-47A304.77,304.77,0,0,1,173,208.64c6.85-20.35,15.4-39.92,26.93-58.07,18.33-28.86,42.69-51.46,72.15-68.65a235.31,235.31,0,0,1,88.07-30.14c5.19-.7,10.43-1.05,15.64-1.56,11-.1,22-.67,32.91-.1a228.33,228.33,0,0,1,65.73,13.35c49.21,17.77,85.5,49.91,108.5,97a226.2,226.2,0,0,1,18.41,52.89l1.88,9.28c.64,8.51,1.34,17,1.85,25.56a45.88,45.88,0,0,1-.38,5.86h-.06a12.88,12.88,0,0,1,.88,1.69c4.15.2,8.31.19,12.48.07a13.39,13.39,0,0,1,.73-1.21c.09-.41.2-.82.32-1.22l-.11-.1a6.91,6.91,0,0,1-.07-1.2c.86-15.31-1.28-30.31-4.71-45.16a241.5,241.5,0,0,0-28.26-70,194.37,194.37,0,0,0-72.44-70.8C486,50.67,456.49,41.6,425.3,37.72A256.76,256.76,0,0,0,349,39.47,249.92,249.92,0,0,0,269.27,67.6c-43.91,24.59-76.42,59.59-97.2,105.59a322.45,322.45,0,0,0-28.58,124.49c-1.12,37.15,3.5,73.66,12.34,109.71,5.91,24.1,14.12,47.46,22.25,70.85,6.33,18.22,12.72,36.4,16.47,55.4.92,4.64,1.57,9.33,2.36,14.09-1.18.2-2,.36-2.75.48a144.31,144.31,0,0,0-34.52,9.26c-16.1,6.56-28.39,16.8-33.74,34a3.05,3.05,0,0,1-.69,1,3.19,3.19,0,0,1-1,.69c-5.23,1.89-10.4,4.09-15.78,5.39-25,6-50.13,11.74-75.2,17.58l-21,4.92,6.87,12.68c20.42-5.15,40.91-10.3,61.36-15.31,10.61-2.62,21.27-5,31.91-7.53l15-4.91c.31,2.87.64,5.62,1,8.37,1.18,9.09,2.2,18.2,3.59,27.26,1.73,11.44,3.73,22.85,5.73,34.26,1.67,9.46,3.46,19,5.26,28.46q2.78,14.83,5.78,29.6c2.86,14.19,11.19,24,24.53,29.26,22.49,8.91,45.09,17.55,67.64,26.31.66.26,1.28.61,2.33,1.12-1.59,2.12-3,4.12-4.48,6.12l-24,31.86a17.24,17.24,0,0,0-1,1.65l10.16,5.25c2-2.82,3.83-5.72,5.91-8.46q14.79-19.51,29.6-39c.34-.44.6-.94,1.09-1.71-3.51-1.48-6.89-2.92-10.27-4.33q-37.89-15.87-75.79-31.58c-8.06-3.33-11.7-9.86-13.51-17.7-2.91-12.57-5.7-25.17-8.25-37.82-3.8-19-7.55-38-11-57-2-11-3.32-22.17-5-33.24-.74-4.84,1.24-9,2.9-13.31,4.18-10.7,12.74-16.73,22.74-21.22a128.58,128.58,0,0,1,33.91-9.54c1.37-.2,1.77.13,2.1,1.47.66,2.5.65,4.3-2,6a7,7,0,0,0-2.41,9.29,49.91,49.91,0,0,0,7.25,10.72c14.9,17.2,30.1,34.15,45,51.37Q265.65,662,284.64,685c11.61,14,23.25,27.94,34.31,42.34,16.82,21.9,33.19,44.13,49.64,66.3,4.33,5.83,7.6,12.29,7.33,19.83S372,827,366.86,831.87c-7.4,7-15.33,13.32-23.16,19.83s-15.84,12.8-22.47,20.6a3.94,3.94,0,0,1-1,.61l13.24,3.56a243,243,0,0,1,32.41-27.77,59.67,59.67,0,0,0,13.64-13.32c8.19-11.45,8.38-23.8,3.69-36.45-2.77-7.47-6.24-14.67-9.53-22.32,3.8-1.12,7.9-2.55,12.09-3.55a131.84,131.84,0,0,1,31.13-4.18c1.27,0,2.27,0,2.87,1.51,5.44,13.3,10.92,26.58,13.92,40.73,5.8,27-2.72,49.15-22.44,67.56-3.46,3.23-7.46,5.89-11.22,8.81,4.81.42,9.62.89,14.43,1.19a3.34,3.34,0,0,0,2.18-1.1c4.43-4.7,8.89-9.39,13.16-14.23,5.42-6.14,10.24-12.71,13.09-20.5,4.73-13,4-26.23,2-39.5-2.54-16.78-7.82-32.77-14.16-48.46a10.21,10.21,0,0,1-.47-4.62c.7-7.22,1.56-14.43,2.36-21.65.13-1.15.23-2.41.39-4.15a222.11,222.11,0,0,1,19.18,29.72,5,5,0,0,1,.39,2.12q.19,4.52.2,9,.38,29.9.67,59.9.24,27.27.46,54.54h1.94l6.64-.83c.19-3.37.49-6.86.55-10.37.15-6.39.06-12.78.15-19.17.12-9.69.31-19.38.46-29.07.17-10.9.38-21.81.48-32.71.17-16.81.36-33.62.36-50.43,0-9.94-.23-19.87-.48-29.81-.24-8.22-.43-16.46-1-24.66-1-13.74-1.89-27.5-3.46-41.18-1.28-11.14-2-22.31-5.18-33.14a45.76,45.76,0,0,1-1.48-9.3,100.07,100.07,0,0,1,23.28,17.24c15.26,16.47,30.71,32.75,45.71,49.47,10,11.12,19.27,22.82,28.73,34.38a29.19,29.19,0,0,1,4,7.15c1.79,4.22,1.62,8.11-1.8,11.84-6.43,7-12.54,14.33-18.8,21.52-.68.78-1.4,1.52-2.3,2.52,2.62,1.9,5.13,3.62,7.52,5.48,5.6,4.37,11.28,8.65,16.68,13.25,7.85,6.7,9.92,16.74,5.12,27.17q-10,21.55-20.74,42.71c-6.93,13.6-14.33,27-21.51,40.43-.33.72-.63,1.45-.89,2.2l12.61-2c2.84-5.61,5.7-11.21,8.53-16.83,5.85-11.61,11.8-23.18,17.51-34.86q6.19-12.62,11.79-25.46c2.91-6.68,4.91-13.63,4.91-21,0-8.61-3.84-15.1-10.64-20.1-5.13-3.78-10.14-7.73-15.2-11.6a15,15,0,0,0-1.31-.78l9-11c2.29-2.82,4.66-5.57,6.84-8.48,5.17-6.9,5-14.85.1-22.15a211.87,211.87,0,0,0-16.18-21.08c-13.5-15.35-27.33-30.37-41-45.53a6,6,0,0,1-.46-1l31,10.75c9,3,18.12,5.95,27.12,9,14.7,4.93,29.44,9.71,44,15,17.82,6.48,35.52,13.29,53.18,20.18,8.08,3.15,13.64,8.73,15.14,17.73a2.84,2.84,0,0,0,.59,1,2.79,2.79,0,0,0,.92.68,23.39,23.39,0,0,1,10.26,10.93c3.79,7.76,7.75,15.44,11.47,23.24,6.87,14.38,13.63,28.91,20.43,43.38,1.41,3,2.8,6,4.2,9,3.52-2.43,7-4.93,10.52-7.28C734.48,795.32,734.48,794.59,733.87,793.38ZM269,646.75l.09-.28c.92.51,1.87,1,2.78,1.62,19.21,13.33,39.33,25,61.07,33.74a175.07,175.07,0,0,0,18.47,6.5c6.27,1.73,12.76,2.64,19.07,3.89a184.94,184.94,0,0,0-39.85,29.53Zm149.09,112c-.3,1.48-1,1.81-2.3,1.81A145.63,145.63,0,0,0,368,769.81c-.06,0-.15,0-.43,0-4.66-6.1-9.4-12.29-14.15-18.44l-14-18c-.68-.87-1.24-1.55-.36-2.72,7.79-10.37,16.88-19.12,29.32-23.74,13.95-5.18,27.17-3.05,39.66,4.43a110.77,110.77,0,0,1,10.89,8,3.7,3.7,0,0,1,1.39,2.36C420.9,734.1,420.5,746.5,418.08,758.79ZM386.3,691.23c25.23-5.12,43.38-21.37,60.59-39.83l4.91,91.67C435.36,718.53,415.83,698.38,386.3,691.23Z" transform="translate(-12.18 -35.68)"></path>
+          </g>
+          <path class="d" d="M602.37,252.21l-44.07.62c-.21,1.1-.37,2.21-.47,3.33-.15,4-.12,4-4,4-6.22,0-6.22,0-6.22-6.07v-1.21c-8.88.21-17.76.47-26.64.63q-30.68.53-61.33,1-29.44.48-58.91,1c-16.08.28-32.17.37-48.23.95-3.58.13-7.13,1.89-10.64,3.06l-56,18.77c-.54.15-1.08.27-1.64.37-7.47,2.56-14.93,5.15-22.41,7.68q-21.54,7.29-43.12,14.56c.63.31,1.24.9,1.87.9a68.1,68.1,0,0,0,7,0c1.75-.1,2.44.42,2.36,2.27-.16,2.87,0,5.76,0,8.64l55-18.33c.53-.18,1.08-.32,1.62-.48,19.11-6.41,38.29-12.58,57.29-19.36,7-2.51,14-2.62,21.64-2.7v21.38h10.69v20.23h10.56v10.17h10.52v10.24l82-1.41V322.27h10.13V311.72h10.1V301.35h10.12V291h10.18V269.19H543v17.15h8.87c.09,4.8.31,9.43.19,14.07-.07,2.38.7,3,3,2.92,5.71-.16,5.71-.05,5.79,5.78,0,.7.1,1.41.16,2.22l2.48.29h6V320h31.47a13.78,13.78,0,0,1,2.72-.27c.22,0,.43,0,.65,0s.58,0,.88,0a13,13,0,0,1,2.48.25,13.73,13.73,0,0,1,2.63-.25c.32,0,.63,0,1,0s.72,0,1.09,0l.44,0,.58,0h.51a14.5,14.5,0,0,1,1.78.12c0-.17,0-.33-.08-.5h22.2v-8.85h8.59v-8.77h8.38V293h8.46v-8.68h8.43V266.62h8V254.74a12.18,12.18,0,0,1,0-1.91c.29-1.65-.57-2.09-2-2l-41,.71c-3,.08-5.9.08-8.9.08l-10.67.19M448.24,312.39H438.16v-10h10.08ZM488,291.19h-4.36l-4.63-.06v10.69h-9.94v10.29H458.41v-10.3l-10.12.51V291.69H458.4V281h10.21V270.93h10.12v10.12l10.2-.05c.12,3,.3,6,.3,9.08C489.23,290.44,488.42,290.82,488,291.19Zm11.18-10.27H489v-10.3h10.18Zm146.89,3.61-8.21.38v8.71h-8.68V302h-8.7v-8.42h-8.3v8.64h-8.59v-8.45h8.3v-8.92h8.6v-8.74h8.44v-8.68h8l.46.47.06,8.28h8.62Zm8.38-8.81h-8.18a2.06,2.06,0,0,1-.15-.46v-7.87h8.33Z" transform="translate(-12.18 -35.68)"></path>
+          <path class="d" d="M217.73,301.25l1-.36c.63.31,1.24.87,1.87.9a68.1,68.1,0,0,0,7,0c1.75-.1,2.44.42,2.36,2.27-.13,2.87,0,5.76,0,8.64v29.66H216.4V303.77a7.58,7.58,0,0,1,.85-2.36Z" transform="translate(-12.18 -35.68)"></path>
+          <path class="c" d="M217.73,301.25l-.44.17A.67.67,0,0,1,217.73,301.25Z" transform="translate(-12.18 -35.68)"></path>
+          <path class="d" d="M629.16,293.62h-8.8v-8.79h8.8C629.21,287.77,629.16,290.7,629.16,293.62Z" transform="translate(-12.18 -35.68)"></path>
+          <path class="d" d="M628.9,276.1h8.55v8.79h-8.29Q629,280.5,628.9,276.1Z" transform="translate(-12.18 -35.68)"></path>
+          <path class="d" d="M458.36,301.85V291.62H468.6c.17,3.42.34,6.83.5,10.25Z" transform="translate(-12.18 -35.68)"></path>
+          <path class="d" d="M478.8,280.94l.24,10.23-10.5.52V280.94Z" transform="translate(-12.18 -35.68)"></path>
+        </svg></div>
+      <div class="logo-stonks-letter">
+        <div class="txt-logo-stonks">stonks</div>
+      </div>
+      <div data-w-id="fa833274-8191-8d0d-4440-6d17e494efbd" class="spline-stonks" data-animation-type="spline" data-spline-url="https://prod.spline.design/fhILqpL8oG7FuIoT/scene.splinecode"><canvas></canvas></div>
+      <div class="txt-start">
+        <div class="stonks-big">Ultimate trading bot, ready for a billion Telegram users</div>
+        <div data-w-id="d7a5461e-84de-90e4-7612-2ec74be901af" class="menu-center menu-socialmedia">
+          <a href="#" class="menu-link display-none w-inline-block">
+            <div class="txt-link txt-socialmedia">social media</div>
+          </a>
+          <a href="https://discord.com/invite/z4JNrtX2ja" class="menu-link discord-link w-inline-block"></a>
+          <a href="https://x.com/tonstonks" class="menu-link twitter-link w-inline-block"></a>
+          <a href="https://t.me/stonksonton" class="menu-link telegram-link w-inline-block"></a>
+        </div>
+        <div class="logo-frame">
+          <a href="https://ston.fi/" class="logo-greyscale w-inline-block"><img loading="lazy" src="images/stonFi.svg" alt="" class="image-grayscale"></a>
+          <a href="https://dedust.io/" class="logo-greyscale w-inline-block"><img loading="lazy" src="images/deDust.svg" alt="" class="image-grayscale"></a>
+          <a href="https://tonkeeper.com/" class="logo-greyscale w-inline-block"><img loading="lazy" src="images/tonkeeper.svg" alt="" class="image-grayscale"></a>
+          <a href="https://app.uniswap.org/" class="logo-greyscale w-inline-block"><img loading="lazy" src="images/uniswap-grey.svg" alt="" class="image-grayscale"></a>
+          <a href="https://www.coingecko.com/en/coins/stonks-3" class="logo-greyscale w-inline-block"><img loading="lazy" src="images/coin-gecko-svg-grey.svg" alt="" class="image-grayscale"></a>
+        </div>
+      </div>
+    </section>
+    <section class="section-why-stonks">
+      <div class="black-ton"></div>
+      <div class="black-sol"></div>
+      <div class="arrows-stonks"></div>
+      <div class="head-name">
+        <div class="why-stonks-txt-stroke head-stonks-animation">why</div>
+        <div class="why-stonks-txt head-stonks-animation">stonks?</div>
+      </div>
+      <div class="all-why-stonks-card computer-version">
+        <div class="why-stonks-cards">
+          <div class="stonks-card card-3">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[3]</div>
+              <div class="txt-head-card">Referral Program</div>
+              <div class="txt-bottom-card">Refer your friends and earn 20% of their trading fees in the first month and 10% thereafter, indefinitely. Get even more thanks to our tier system.</div>
+            </div>
+          </div>
+          <div class="stonks-card margin-card card-2">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[2]</div>
+              <div class="txt-head-card">Stonks Gembot</div>
+              <div class="txt-bottom-card">A dedicated channel showcasing new launchpad deployments, helping users discover early investment opportunities.</div>
+            </div>
+          </div>
+          <div class="stonks-card">
+            <div class="bgc-card"><img src="images/tonWallet.svg" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[1]</div>
+              <div class="txt-head-card">Stonks <br>Trading Bot</div>
+              <div class="txt-bottom-card"> An advanced trading tool with anti-rug features, sniper capabilities, an advanced CA scanner, and a honeypot detector.</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-stonks-cards why-stonks-cards-up">
+          <div class="stonks-card card-none">
+            <div class="bgc-card video-none"><img src="images/gbc-stonk2.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color txt-card-none"></div>
+          </div>
+          <div class="stonks-card margin-card card-6">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[4]</div>
+              <div class="txt-head-card">Unique Custom CA with Tax</div>
+              <div class="txt-bottom-card">The only launchpad on the market that allows users to create a custom CA with tax benefits.</div>
+            </div>
+          </div>
+          <div class="stonks-card card-5">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[5]</div>
+              <div class="txt-head-card">Collaboration with Stonfi and Dedust</div>
+              <div class="txt-bottom-card">Collaboration with both TON exchanges, ensuring remarkable growth potential and access to the best platforms and innovations for our users.</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-stonks-cards why-stonks-cards-up why-stonks-card-up3">
+          <div class="stonks-card card-5">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[7]</div>
+              <div class="txt-head-card">Ethereum Launchpad</div>
+              <div class="txt-bottom-card">Easily create tokens with virtual LP, ensuring instant visibility on DEX aggregators. Get started on your project today!</div>
+            </div>
+          </div>
+          <div class="stonks-card margin-card card-6">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[6]</div>
+              <div class="txt-head-card">Continuous Development</div>
+              <div class="txt-bottom-card">Our team is constantly enhancing the project,we planning expansion to Ethereum and Solana network within next few weeks.</div>
+            </div>
+          </div>
+          <div class="stonks-card card-none">
+            <div class="bgc-card video-none"><img src="images/gbc-stonk2.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color txt-card-none"></div>
+          </div>
+        </div>
+      </div>
+      <div class="all-why-stonks-card tablet-version">
+        <div class="why-stonks-cards">
+          <div class="stonks-card margin-card card-2">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[2]</div>
+              <div class="txt-head-card">Stonks Gembot</div>
+              <div class="txt-bottom-card">A dedicated channel showcasing new launchpad deployments, helping users discover early investment opportunities.</div>
+            </div>
+          </div>
+          <div class="stonks-card">
+            <div class="bgc-card"><img src="images/tonWallet.svg" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[1]</div>
+              <div class="txt-head-card">Stonks <br>Trading Bot</div>
+              <div class="txt-bottom-card"> An advanced trading tool with anti-rug features, sniper capabilities, an advanced CA scanner, and a honeypot detector.</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-stonks-cards why-stonks-card-2">
+          <div class="stonks-card card-3">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[3]</div>
+              <div class="txt-head-card">Referral Program</div>
+              <div class="txt-bottom-card">Refer your friends and earn 20% of their trading fees in the first month and 10% thereafter, indefinitely. Get even more thanks to our tier system.</div>
+            </div>
+          </div>
+          <div class="stonks-card margin-card card-4">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[4]</div>
+              <div class="txt-head-card">Unique Custom CA with Tax</div>
+              <div class="txt-bottom-card">The only launchpad on the market that allows users to create a custom CA with tax benefits.</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-stonks-cards why-stonks-cards-up">
+          <div class="stonks-card margin-card card-6">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[6]</div>
+              <div class="txt-head-card">Continuous Development</div>
+              <div class="txt-bottom-card">Our team is constantly enhancing the project, with planned integrations like Gaspump, expansion to Solana, the introduction of a buybot, and more.</div>
+            </div>
+          </div>
+          <div class="stonks-card card-5">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[5]</div>
+              <div class="txt-head-card">Collaboration with Stonfi and Dedust</div>
+              <div class="txt-bottom-card">Collaboration with both TON exchanges, ensuring remarkable growth potential and access to the best platforms and innovations for our users.</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-stonks-cards why-stonks-cards-up">
+          <div class="stonks-card card-1">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[7]</div>
+              <div class="txt-head-card">Ethereum Launchpad</div>
+              <div class="txt-bottom-card">Easily create tokens with virtual LP, ensuring instant visibility on DEX aggregators. Get started on your project today!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="all-why-stonks-card phone-version">
+        <div class="why-stonks-cards">
+          <div class="stonks-card card-1">
+            <div class="bgc-card"><img src="images/tonWallet.svg" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[1]</div>
+              <div class="txt-head-card">Stonks <br>Trading Bot</div>
+              <div class="txt-bottom-card"> An advanced trading tool with anti-rug features, sniper capabilities, an advanced CA scanner, and a honeypot detector.</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-stonks-cards">
+          <div class="stonks-card card-1">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[2]</div>
+              <div class="txt-head-card">Stonks Gembot</div>
+              <div class="txt-bottom-card">A dedicated channel showcasing new launchpad deployments, helping users discover early investment opportunities.</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-stonks-cards">
+          <div class="stonks-card card-1">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[3]</div>
+              <div class="txt-head-card">Referral Program</div>
+              <div class="txt-bottom-card">Refer your friends and earn 20% of their trading fees in the first month and 10% thereafter, indefinitely. Get even more thanks to our tier system.</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-stonks-cards">
+          <div class="stonks-card card-1">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[4]</div>
+              <div class="txt-head-card">Unique Custom CA with Tax</div>
+              <div class="txt-bottom-card">The only launchpad on the market that allows users to create a custom CA with tax benefits.</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-stonks-cards">
+          <div class="stonks-card card-1">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[5]</div>
+              <div class="txt-head-card">Collaboration with Stonfi and Dedust</div>
+              <div class="txt-bottom-card">Collaboration with both TON exchanges, ensuring remarkable growth potential and access to the best platforms and innovations for our users.</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-stonks-cards">
+          <div class="stonks-card margin-card card-1">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[6]</div>
+              <div class="txt-head-card">Continuous Development</div>
+              <div class="txt-bottom-card">Our team is constantly enhancing the project, with planned integrations like Gaspump, expansion to Solana, the introduction of a buybot, and more.</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-stonks-cards">
+          <div class="stonks-card card-1">
+            <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
+            <div class="txt-card-color">
+              <div class="txt-card-number">[7]</div>
+              <div class="txt-head-card">Ethereum Launchpad</div>
+              <div class="txt-bottom-card">Easily create tokens with virtual LP, ensuring instant visibility on DEX aggregators. Get started on your project today!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="section-wrapper">
+      <div data-w-id="a067abdb-6c1e-a682-5942-e3f94428007a" class="section-h-phase">
+        <div class="sticky-wrapper-phase">
+          <div class="sticky-element disable-overflow">
+            <div class="track-phase">
+              <div class="track-flex">
+                <div class="roadmap-name">
+                  <div class="why-stonks-txt-stroke head-stonks-animation">our</div>
+                  <div class="why-stonks-txt head-stonks-animation">progress</div>
+                </div>
+                <div class="panel1">
+                  <div class="card-panel">
+                    <div class="date-card-panel">2024<br></div>
+                    <div class="phase-roadmap">since</div>
+                    <div class="txt-phase-point"><span class="dot-green">●</span> Establishing STONKS LABS in Dubai and launching the development of the world&#x27;s best trading bot, STONKS, utilizing blockchain technology.</div>
+                  </div>
+                </div>
+                <div class="panel1">
+                  <div class="card-panel">
+                    <div class="phase-roadmap">phase 1</div>
+                    <div class="txt-phase">
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Buy &amp; Sell</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Dedust integration</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Basic CA analysis</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> PNL monitor</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Wallet Management</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Build-in TON full node</div>
+                    </div>
+                    <div class="date-card-panel">2024<br></div>
+                  </div>
+                </div>
+                <div class="panel1">
+                  <div class="card-panel">
+                    <div class="phase-roadmap">phase 2</div>
+                    <div class="txt-phase">
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Telegram Apps GUI </div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Build-in Telegram wallet integration</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Limit orders</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Anti-scam</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> The Referal program</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Multi-trade monitor</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> STON.fi integration</div>
+                    </div>
+                    <div class="date-card-panel">2024<br></div>
+                  </div>
+                </div>
+                <div class="panel1">
+                  <div class="card-panel">
+                    <div class="phase-roadmap">phase 3</div>
+                    <div class="txt-phase">
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Stonks Launchpad</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Custom CA with Tax powered by launchpad </div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Anti-rug</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Honeypot detection module</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Stonks Buy Bot</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Stonks Gem Bot</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Auto-Buy Mode At LP (Snipe)</div>
+                    </div>
+                    <div class="date-card-panel">2024<br></div>
+                  </div>
+                </div>
+                <div class="panel1">
+                  <div class="card-panel">
+                    <div class="phase-roadmap">phase 4</div>
+                    <div class="txt-phase">
+                      <div class="txt-phase-point"><span class="dot-green">●</span> Advanced custom CA with Tax, Burn, Lp both on DeDust and STON.fi</div>
+                      <div class="txt-phase-point"><span class="dot-green">●</span> GasPump integration</div>
+                      <div class="txt-phase-point"><span class="dot-green-half">●</span> New chain integration</div>
+                      <div class="txt-phase-point"><span class="dot-green-half">●</span> Stonks Bridge</div>
+                      <div class="txt-phase-point"><span class="dot-green-half">●</span> Stonks Leagues</div>
+                    </div>
+                    <div class="date-card-panel">2024<br></div>
+                  </div>
+                </div>
+                <div class="panel1">
+                  <div class="card-panel">
+                    <div class="phase-roadmap">phase 5</div>
+                    <div class="txt-phase">
+                      <div class="txt-phase-point"><span class="dot-red">●</span> Custom CA with virtual LP and optional Tax system on ETH</div>
+                      <div class="txt-phase-point"><span class="dot-red">●</span> ETHEREUM Trading Bot</div>
+                      <div class="txt-phase-point"><span class="dot-red">●</span> WebApp Trading Bot on TON</div>
+                      <div class="txt-phase-point"><span class="dot-red">●</span> BASE Trading Bot</div>
+                      <div class="txt-phase-point"><span class="dot-red">●</span> To be continued</div>
+                    </div>
+                    <div class="date-card-panel">2024<br></div>
+                  </div>
+                </div>
+                <div class="panel1"></div>
+              </div>
+            </div>
+            <div class="progress-show">
+              <div class="progress-line"></div>
+              <div class="title-bottom uppercase-txt sticky-down">preparation status - all acording to plan</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="section-last">
+      <div class="head-name">
+        <div class="why-stonks-txt-stroke head-stonks-animation">Trusted by</div>
+        <div class="why-stonks-txt head-stonks-animation">Thousands</div>
+      </div>
+      <div class="stonks-black-bgc">
+        <div class="svg-stonks-animation computer-version w-embed"><svg width="726" height="857" viewbox="0 0 726 857" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="stonks-stroke1" d="M589.5 173.438L593.03 188.397C593.67 196.907 594.37 205.407 594.88 213.957C594.882 215.916 594.755 217.874 594.5 219.817L550.43 220.437C550.214 221.538 550.057 222.649 549.96 223.767C549.81 227.767 549.84 227.767 545.96 227.767C539.74 227.777 539.74 227.777 539.74 221.697C539.74 221.287 539.74 220.887 539.74 220.487C530.86 220.697 521.98 220.957 513.1 221.117C492.65 221.467 472.21 221.767 451.77 222.117C432.136 222.444 412.5 222.777 392.86 223.117C376.78 223.397 360.69 223.487 344.63 224.067C341.05 224.197 337.5 225.957 333.99 227.127C315.323 233.38 296.656 239.637 277.99 245.897C277.45 246.051 276.903 246.174 276.35 246.267C268.88 248.827 261.42 251.417 253.94 253.947C239.573 258.807 225.2 263.66 210.82 268.507C211.45 268.817 212.06 269.407 212.69 269.407C215.021 269.528 217.358 269.528 219.69 269.407C221.44 269.307 222.13 269.827 222.05 271.677C221.89 274.547 222.05 277.437 222.05 280.317L277.05 261.987C277.58 261.807 278.13 261.667 278.67 261.507C297.78 255.097 316.96 248.927 335.96 242.147C342.97 239.637 349.96 239.527 357.6 239.447V260.827H368.29V281.057H378.85V291.227H389.37V301.467L471.37 300.057V289.877H481.5V279.327H491.6V268.957H501.72V258.577H511.9V236.797H535.08V253.947H543.95C544.04 258.747 544.26 263.377 544.14 268.017C544.07 270.397 544.84 270.997 547.14 270.937C552.85 270.777 552.85 270.887 552.93 276.717C552.94 277.417 553.03 278.127 553.09 278.937L555.57 279.227H561.57V287.607H593.25C597.59 303.287 598.94 319.167 595.42 335.357C591.36 354.057 585.11 372.037 577.75 389.617C568.99 410.527 559.6 431.177 550.88 452.107C545.99 463.867 541.71 475.937 537.52 487.937C530.21 508.947 515.55 520.957 493.78 524.667C481.97 526.667 470.12 526.397 458.25 525.477L457.54 525.317L457.42 525.387L457.29 525.317C452.71 524.547 448.05 524.077 443.55 522.947C400.55 512.08 363.673 490.647 332.92 458.647C332.355 458.14 331.753 457.675 331.12 457.257C336.14 464.747 340.63 472.657 346.27 479.657C364.98 502.837 389.32 517.837 417.38 527.147C421.89 528.637 426.48 529.907 431.06 531.207C437.22 532.967 440.16 537.607 439.62 544.027C439.2 547.632 437.925 551.085 435.9 554.097C432.9 559.007 430.22 564.077 429.5 569.887C429.16 572.607 429.14 575.357 428.98 578.097C429.5 581.767 429.78 585.487 430.6 589.097C432.27 596.487 429.52 602.607 425.42 608.327C419.11 617.107 410.74 623.727 402.11 630.037C395.11 635.167 387.76 639.867 379.11 642.037C366.31 645.237 353.76 643.887 341.44 639.797C314.77 630.947 290.38 617.587 267.69 601.187C253.17 590.687 238.88 579.657 225.07 568.397C211.26 557.137 203.46 542.077 201.71 524.397C199.88 505.997 196.88 487.907 191.18 470.327C186.18 454.897 180.91 439.557 175.63 424.227C167.89 401.777 160.77 379.167 155.89 355.897C151.661 336.078 148.907 315.973 147.65 295.747C146.683 280.092 146.773 264.39 147.92 248.747C149.765 223.44 154.767 198.463 162.81 174.397C169.66 154.047 178.21 134.477 189.74 116.327C208.07 87.4668 232.43 64.8667 261.89 47.6766C288.948 31.8687 318.89 21.6218 349.96 17.5366C355.15 16.8366 360.39 16.4867 365.6 15.9767C376.57 15.8767 387.57 15.3066 398.51 15.8766C420.957 17.0669 443.106 21.5655 464.24 29.2267C513.45 46.9967 549.74 79.1368 572.74 126.227C581.044 143.026 585.578 155.112 589.5 173.438ZM589.5 173.438L588.926 170.818C588.926 170.818 591.38 181.578 589.5 173.438ZM618.87 286.957H607.67C607.9 288.407 608.02 289.657 608.31 290.867C613.21 311.017 611.67 330.867 606.08 350.687C598.88 376.157 588.49 400.387 577.85 424.537C568.39 445.997 558.71 467.387 551.52 489.767C547.05 503.687 539.96 515.847 528.19 524.887C517.87 532.807 505.97 536.807 493.25 538.717C482.981 540.153 472.585 540.458 462.25 539.627C461.555 539.499 460.838 539.61 460.215 539.942C459.592 540.275 459.1 540.809 458.82 541.457C455 548.387 451.06 555.237 447.07 562.277C449.85 564.037 452.66 565.727 455.38 567.537C464.874 573.875 473.599 581.294 481.38 589.647C482.262 590.552 483.344 591.237 484.54 591.647C523.63 604.947 562.81 617.987 601.8 631.567C619.92 637.877 637.73 645.067 655.55 652.187C660.132 653.959 664.282 656.692 667.72 660.202C671.158 663.712 673.804 667.918 675.48 672.537C675.64 673.152 675.969 673.709 676.43 674.147C682.43 678.307 685.98 684.347 689.17 690.647C700.69 713.474 712.196 736.304 723.69 759.137C724.3 760.347 724.3 761.077 723.04 761.907C719.48 764.257 716.04 766.757 712.52 769.187C711.12 766.187 709.73 763.187 708.32 760.187C701.52 745.717 694.76 731.187 687.89 716.807C684.17 709.007 680.21 701.327 676.42 693.567C674.291 688.897 673 687.5 668.5 684.438C668.152 684.275 665.5 682.245 665.24 681.962C664.981 681.679 664.631 680.799 664.5 680.438C661.5 671.938 657.59 666.407 649.51 663.257C631.85 656.367 614.15 649.557 596.33 643.077C581.77 637.787 567.03 633.007 552.33 628.077C543.33 625.027 534.25 622.077 525.21 619.077L494.21 608.327C494.332 608.674 494.486 609.008 494.67 609.327C508.34 624.487 522.17 639.507 535.67 654.857C541.499 661.538 546.903 668.579 551.85 675.937C556.78 683.237 556.92 691.187 551.75 698.087C549.57 700.997 547.2 703.747 544.91 706.567L535.91 717.517C536.52 717.877 536.91 718.057 537.22 718.297C542.28 722.167 547.29 726.117 552.42 729.897C559.22 734.897 563.05 741.387 563.06 749.997C563.06 757.417 561.06 764.367 558.15 771.047C554.416 779.614 550.486 788.1 546.36 796.507C540.65 808.187 534.7 819.757 528.85 831.367C526.02 836.987 523.16 842.587 520.32 848.197L507.71 850.197C507.969 849.449 508.266 848.715 508.6 847.997C515.78 834.527 523.18 821.167 530.11 807.567C537.29 793.467 544.203 779.23 550.85 764.857C555.65 754.427 553.58 744.387 545.73 737.687C540.33 733.087 534.65 728.807 529.05 724.437C526.66 722.577 524.15 720.857 521.53 718.957C522.43 717.957 523.15 717.217 523.83 716.437C530.09 709.247 536.2 701.927 542.63 694.917C546.05 691.187 546.22 687.297 544.43 683.077C543.438 680.518 542.091 678.111 540.43 675.927C530.97 664.367 521.66 652.667 511.7 641.547C496.7 624.827 481.25 608.547 465.99 592.077C459.106 585.233 451.264 579.425 442.71 574.837C442.88 577.98 443.376 581.096 444.19 584.137C447.35 594.967 448.09 606.137 449.37 617.277C450.94 630.957 451.87 644.717 452.83 658.457C453.4 666.657 453.59 674.897 453.83 683.117C454.08 693.057 454.32 702.987 454.31 712.927C454.31 729.737 454.12 746.547 453.95 763.357C453.85 774.257 453.64 785.167 453.47 796.067C453.32 805.757 453.13 815.447 453.01 825.137C452.92 831.527 453.01 837.917 452.86 844.307C452.8 847.817 452.5 851.307 452.31 854.677L445.67 855.507H443.73C443.583 837.327 443.43 819.147 443.27 800.967C443.07 780.967 442.846 761 442.6 741.067C442.6 738.074 442.533 735.074 442.4 732.067C442.425 731.34 442.292 730.617 442.01 729.947C436.418 719.545 430.004 709.607 422.83 700.227C422.67 701.967 422.57 703.227 422.44 704.377C421.64 711.597 420.78 718.807 420.08 726.027C419.876 727.582 420.037 729.164 420.55 730.647C426.89 746.337 432.17 762.327 434.71 779.107C436.71 792.377 437.44 805.647 432.71 818.607C429.86 826.397 425.04 832.967 419.62 839.107C415.35 843.947 410.89 848.637 406.46 853.337C405.9 853.968 405.12 854.361 404.28 854.437C399.47 854.137 394.66 853.667 389.85 853.247C393.61 850.327 397.61 847.667 401.07 844.437C420.79 826.027 429.31 803.847 423.51 776.877C420.51 762.727 415.03 749.447 409.59 736.147C408.99 734.667 407.99 734.627 406.72 734.637C396.214 734.789 385.764 736.192 375.59 738.817C371.4 739.817 367.3 741.247 363.5 742.367C366.79 750.017 370.26 757.217 373.03 764.687C377.72 777.337 377.53 789.687 369.34 801.137C365.536 806.279 360.931 810.777 355.7 814.457C344.102 822.744 333.257 832.036 323.29 842.227L310.05 838.667C310.412 838.516 310.75 838.31 311.05 838.057C317.68 830.257 325.69 823.967 333.52 817.457C341.35 810.947 349.28 804.587 356.68 797.627C361.85 792.767 365.47 786.717 365.74 779.177C366.01 771.637 362.74 765.177 358.41 759.347C341.96 737.177 325.59 714.947 308.77 693.047C297.71 678.647 286.07 664.687 274.46 650.707C261.793 635.427 248.956 620.27 235.95 605.237C221.05 588.017 205.85 571.067 190.95 553.867C188.075 550.626 185.637 547.022 183.7 543.147C182.842 541.583 182.614 539.75 183.062 538.024C183.51 536.297 184.6 534.807 186.11 533.857C188.76 532.157 188.77 530.357 188.11 527.857C187.78 526.517 187.38 526.187 186.01 526.387C174.323 527.999 162.913 531.209 152.1 535.927C142.1 540.417 133.54 546.447 129.36 557.147C127.7 561.417 125.72 565.617 126.46 570.457C128.14 581.527 129.46 592.677 131.46 603.697C134.91 622.697 138.66 641.697 142.46 660.697C145.01 673.347 147.8 685.947 150.71 698.517C152.52 706.357 156.16 712.887 164.22 716.217C189.52 726.647 214.75 737.217 240.01 747.797C243.39 749.207 246.77 750.647 250.28 752.127C249.79 752.897 249.53 753.397 249.19 753.837C239.316 766.83 229.45 779.83 219.59 792.837C217.51 795.577 215.64 798.477 213.68 801.297L203.52 796.047C203.85 795.497 204.13 794.907 204.52 794.397C212.52 783.77 220.52 773.15 228.52 762.537C229.99 760.537 231.41 758.537 233 756.417C231.95 755.907 231.33 755.557 230.67 755.297C208.12 746.537 185.52 737.897 163.03 728.987C149.69 723.697 141.36 713.917 138.5 699.727C136.5 689.88 134.573 680.014 132.72 670.127C130.92 660.647 129.13 651.127 127.46 641.667C125.46 630.257 123.46 618.847 121.73 607.407C120.34 598.347 119.32 589.237 118.14 580.147C117.78 577.397 117.45 574.647 117.14 571.777L102.14 576.687C91.5003 579.187 80.84 581.597 70.23 584.217C49.78 589.227 29.29 594.377 8.87 599.527L2 586.847L23 581.927C48.07 576.087 73.17 570.347 98.2003 564.347C103.58 563.047 108.75 560.847 113.98 558.957C114.372 558.802 114.728 558.568 115.028 558.271C115.327 557.973 115.562 557.618 115.72 557.227C121.07 540.027 133.36 529.787 149.46 523.227C160.539 518.723 172.134 515.613 183.98 513.967C184.77 513.847 185.55 513.687 186.73 513.487C185.94 508.727 185.29 504.037 184.37 499.397C180.62 480.397 174.23 462.217 167.9 443.997C159.77 420.607 151.56 397.247 145.65 373.147C136.81 337.097 132.19 300.587 133.31 263.437C134.441 220.45 144.158 178.123 161.89 138.947C182.67 92.9468 215.18 57.9467 259.09 33.3567C283.879 19.5193 310.845 10.0065 338.83 5.2267C364.031 0.851198 389.744 0.261298 415.12 3.4767C446.31 7.3567 475.81 16.4267 503.26 31.8867C533.239 48.6695 558.235 73.0988 575.7 102.687C588.729 124.396 598.265 148.017 603.96 172.687C607.39 187.537 609.53 202.537 608.67 217.847C608.67 218.247 608.67 218.647 608.74 219.047L609.16 219.417L619.83 219.227C622.83 219.227 625.77 219.227 628.73 219.147L669.73 218.437C671.16 218.347 672.02 218.787 671.73 220.437C671.68 221.073 671.68 221.711 671.73 222.347V234.227H663.73V251.937H655.3V260.617H646.84V269.327H638.46V278.097H629.87V286.947L618.87 286.957ZM629.04 235.077H621.04V243.757H612.6V252.497H604V261.417H595.7V269.867H604.29V261.227H612.59V269.647H621.29V261.227H629.97V252.517L638.18 252.137V243.827H629.56L629.5 235.547L629.04 235.077ZM475.75 258.797H480.11C480.55 258.427 481.36 258.047 481.36 257.687C481.36 254.627 481.17 251.577 481.05 248.527H491.29V238.227H481.11V248.607L470.86 248.657V238.537H460.74V248.607H450.53V259.297H440.42V269.997H430.29V279.997H440.37V269.937L450.54 269.417V279.717H461.18V269.427H471.12V258.737L475.75 258.797ZM357.39 735.517C357.67 735.517 357.76 735.597 357.82 735.567C373.117 729.839 389.269 726.726 405.6 726.357C406.89 726.357 407.6 726.027 407.9 724.547C410.32 712.257 410.72 699.857 410.14 687.407C409.994 686.472 409.497 685.627 408.75 685.047C405.285 682.163 401.648 679.491 397.86 677.047C385.37 669.567 372.15 667.437 358.2 672.617C345.76 677.237 336.67 685.987 328.88 696.357C328 697.527 328.56 698.207 329.24 699.077C333.906 705.077 338.573 711.077 343.24 717.077C347.99 723.227 352.73 729.417 357.39 735.517ZM376.12 656.987C405.65 664.137 425.18 684.287 441.62 708.827L436.71 617.157C419.5 635.617 401.35 651.867 376.12 656.987ZM258.9 612.227L258.81 612.507L320.44 687.507C332.335 675.917 345.739 665.984 360.29 657.977C353.98 656.727 347.49 655.817 341.22 654.087C334.948 652.263 328.781 650.093 322.75 647.587C301.01 638.877 280.89 627.177 261.68 613.847C260.77 613.227 259.82 612.737 258.9 612.227ZM638.38 243.327H646.56V234.997H638.23C638.23 237.747 638.23 240.307 638.23 242.867C638.258 243.026 638.309 243.181 638.38 243.327Z" stroke="#07ACFF" stroke-width="2"></path>
+            <path class="stonks-stroke2" d="M622.47 261.478H613.67C613.67 258.551 613.67 255.621 613.67 252.688H622.47C622.52 255.628 622.47 258.558 622.47 261.478Z" stroke="#07ACFF" stroke-width="2"></path>
+            <path class="stonks-stroke2" d="M622.211 243.953H630.761V252.743H622.471C622.384 249.816 622.298 246.886 622.211 243.953Z" stroke="#07ACFF" stroke-width="2"></path>
+            <path class="stonks-stroke2" d="M451.67 269.714C451.67 266.304 451.67 262.894 451.67 259.484H461.91C462.077 262.897 462.243 266.314 462.41 269.734L451.67 269.714Z" stroke="#07ACFF" stroke-width="2"></path>
+            <path class="stonks-stroke2" d="M472.11 248.805L472.35 259.035L461.85 259.555C461.85 255.975 461.85 252.385 461.85 248.805H472.11Z" stroke="#07ACFF" stroke-width="2"></path>
+          </svg></div>
+        <div class="svg-stonks-animation phone-version w-embed"><svg width="726" height="857" viewbox="0 0 726 857" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="stonks-stroke1" d="M589.5 173.438L593.03 188.397C593.67 196.907 594.37 205.407 594.88 213.957C594.882 215.916 594.755 217.874 594.5 219.817L550.43 220.437C550.214 221.538 550.057 222.649 549.96 223.767C549.81 227.767 549.84 227.767 545.96 227.767C539.74 227.777 539.74 227.777 539.74 221.697C539.74 221.287 539.74 220.887 539.74 220.487C530.86 220.697 521.98 220.957 513.1 221.117C492.65 221.467 472.21 221.767 451.77 222.117C432.136 222.444 412.5 222.777 392.86 223.117C376.78 223.397 360.69 223.487 344.63 224.067C341.05 224.197 337.5 225.957 333.99 227.127C315.323 233.38 296.656 239.637 277.99 245.897C277.45 246.051 276.903 246.174 276.35 246.267C268.88 248.827 261.42 251.417 253.94 253.947C239.573 258.807 225.2 263.66 210.82 268.507C211.45 268.817 212.06 269.407 212.69 269.407C215.021 269.528 217.358 269.528 219.69 269.407C221.44 269.307 222.13 269.827 222.05 271.677C221.89 274.547 222.05 277.437 222.05 280.317L277.05 261.987C277.58 261.807 278.13 261.667 278.67 261.507C297.78 255.097 316.96 248.927 335.96 242.147C342.97 239.637 349.96 239.527 357.6 239.447V260.827H368.29V281.057H378.85V291.227H389.37V301.467L471.37 300.057V289.877H481.5V279.327H491.6V268.957H501.72V258.577H511.9V236.797H535.08V253.947H543.95C544.04 258.747 544.26 263.377 544.14 268.017C544.07 270.397 544.84 270.997 547.14 270.937C552.85 270.777 552.85 270.887 552.93 276.717C552.94 277.417 553.03 278.127 553.09 278.937L555.57 279.227H561.57V287.607H593.25C597.59 303.287 598.94 319.167 595.42 335.357C591.36 354.057 585.11 372.037 577.75 389.617C568.99 410.527 559.6 431.177 550.88 452.107C545.99 463.867 541.71 475.937 537.52 487.937C530.21 508.947 515.55 520.957 493.78 524.667C481.97 526.667 470.12 526.397 458.25 525.477L457.54 525.317L457.42 525.387L457.29 525.317C452.71 524.547 448.05 524.077 443.55 522.947C400.55 512.08 363.673 490.647 332.92 458.647C332.355 458.14 331.753 457.675 331.12 457.257C336.14 464.747 340.63 472.657 346.27 479.657C364.98 502.837 389.32 517.837 417.38 527.147C421.89 528.637 426.48 529.907 431.06 531.207C437.22 532.967 440.16 537.607 439.62 544.027C439.2 547.632 437.925 551.085 435.9 554.097C432.9 559.007 430.22 564.077 429.5 569.887C429.16 572.607 429.14 575.357 428.98 578.097C429.5 581.767 429.78 585.487 430.6 589.097C432.27 596.487 429.52 602.607 425.42 608.327C419.11 617.107 410.74 623.727 402.11 630.037C395.11 635.167 387.76 639.867 379.11 642.037C366.31 645.237 353.76 643.887 341.44 639.797C314.77 630.947 290.38 617.587 267.69 601.187C253.17 590.687 238.88 579.657 225.07 568.397C211.26 557.137 203.46 542.077 201.71 524.397C199.88 505.997 196.88 487.907 191.18 470.327C186.18 454.897 180.91 439.557 175.63 424.227C167.89 401.777 160.77 379.167 155.89 355.897C151.661 336.078 148.907 315.973 147.65 295.747C146.683 280.092 146.773 264.39 147.92 248.747C149.765 223.44 154.767 198.463 162.81 174.397C169.66 154.047 178.21 134.477 189.74 116.327C208.07 87.4668 232.43 64.8667 261.89 47.6766C288.948 31.8687 318.89 21.6218 349.96 17.5366C355.15 16.8366 360.39 16.4867 365.6 15.9767C376.57 15.8767 387.57 15.3066 398.51 15.8766C420.957 17.0669 443.106 21.5655 464.24 29.2267C513.45 46.9967 549.74 79.1368 572.74 126.227C581.044 143.026 585.578 155.112 589.5 173.438ZM589.5 173.438L588.926 170.818C588.926 170.818 591.38 181.578 589.5 173.438ZM618.87 286.957H607.67C607.9 288.407 608.02 289.657 608.31 290.867C613.21 311.017 611.67 330.867 606.08 350.687C598.88 376.157 588.49 400.387 577.85 424.537C568.39 445.997 558.71 467.387 551.52 489.767C547.05 503.687 539.96 515.847 528.19 524.887C517.87 532.807 505.97 536.807 493.25 538.717C482.981 540.153 472.585 540.458 462.25 539.627C461.555 539.499 460.838 539.61 460.215 539.942C459.592 540.275 459.1 540.809 458.82 541.457C455 548.387 451.06 555.237 447.07 562.277C449.85 564.037 452.66 565.727 455.38 567.537C464.874 573.875 473.599 581.294 481.38 589.647C482.262 590.552 483.344 591.237 484.54 591.647C523.63 604.947 562.81 617.987 601.8 631.567C619.92 637.877 637.73 645.067 655.55 652.187C660.132 653.959 664.282 656.692 667.72 660.202C671.158 663.712 673.804 667.918 675.48 672.537C675.64 673.152 675.969 673.709 676.43 674.147C682.43 678.307 685.98 684.347 689.17 690.647C700.69 713.474 712.196 736.304 723.69 759.137C724.3 760.347 724.3 761.077 723.04 761.907C719.48 764.257 716.04 766.757 712.52 769.187C711.12 766.187 709.73 763.187 708.32 760.187C701.52 745.717 694.76 731.187 687.89 716.807C684.17 709.007 680.21 701.327 676.42 693.567C674.291 688.897 673 687.5 668.5 684.438C668.152 684.275 665.5 682.245 665.24 681.962C664.981 681.679 664.631 680.799 664.5 680.438C661.5 671.938 657.59 666.407 649.51 663.257C631.85 656.367 614.15 649.557 596.33 643.077C581.77 637.787 567.03 633.007 552.33 628.077C543.33 625.027 534.25 622.077 525.21 619.077L494.21 608.327C494.332 608.674 494.486 609.008 494.67 609.327C508.34 624.487 522.17 639.507 535.67 654.857C541.499 661.538 546.903 668.579 551.85 675.937C556.78 683.237 556.92 691.187 551.75 698.087C549.57 700.997 547.2 703.747 544.91 706.567L535.91 717.517C536.52 717.877 536.91 718.057 537.22 718.297C542.28 722.167 547.29 726.117 552.42 729.897C559.22 734.897 563.05 741.387 563.06 749.997C563.06 757.417 561.06 764.367 558.15 771.047C554.416 779.614 550.486 788.1 546.36 796.507C540.65 808.187 534.7 819.757 528.85 831.367C526.02 836.987 523.16 842.587 520.32 848.197L507.71 850.197C507.969 849.449 508.266 848.715 508.6 847.997C515.78 834.527 523.18 821.167 530.11 807.567C537.29 793.467 544.203 779.23 550.85 764.857C555.65 754.427 553.58 744.387 545.73 737.687C540.33 733.087 534.65 728.807 529.05 724.437C526.66 722.577 524.15 720.857 521.53 718.957C522.43 717.957 523.15 717.217 523.83 716.437C530.09 709.247 536.2 701.927 542.63 694.917C546.05 691.187 546.22 687.297 544.43 683.077C543.438 680.518 542.091 678.111 540.43 675.927C530.97 664.367 521.66 652.667 511.7 641.547C496.7 624.827 481.25 608.547 465.99 592.077C459.106 585.233 451.264 579.425 442.71 574.837C442.88 577.98 443.376 581.096 444.19 584.137C447.35 594.967 448.09 606.137 449.37 617.277C450.94 630.957 451.87 644.717 452.83 658.457C453.4 666.657 453.59 674.897 453.83 683.117C454.08 693.057 454.32 702.987 454.31 712.927C454.31 729.737 454.12 746.547 453.95 763.357C453.85 774.257 453.64 785.167 453.47 796.067C453.32 805.757 453.13 815.447 453.01 825.137C452.92 831.527 453.01 837.917 452.86 844.307C452.8 847.817 452.5 851.307 452.31 854.677L445.67 855.507H443.73C443.583 837.327 443.43 819.147 443.27 800.967C443.07 780.967 442.846 761 442.6 741.067C442.6 738.074 442.533 735.074 442.4 732.067C442.425 731.34 442.292 730.617 442.01 729.947C436.418 719.545 430.004 709.607 422.83 700.227C422.67 701.967 422.57 703.227 422.44 704.377C421.64 711.597 420.78 718.807 420.08 726.027C419.876 727.582 420.037 729.164 420.55 730.647C426.89 746.337 432.17 762.327 434.71 779.107C436.71 792.377 437.44 805.647 432.71 818.607C429.86 826.397 425.04 832.967 419.62 839.107C415.35 843.947 410.89 848.637 406.46 853.337C405.9 853.968 405.12 854.361 404.28 854.437C399.47 854.137 394.66 853.667 389.85 853.247C393.61 850.327 397.61 847.667 401.07 844.437C420.79 826.027 429.31 803.847 423.51 776.877C420.51 762.727 415.03 749.447 409.59 736.147C408.99 734.667 407.99 734.627 406.72 734.637C396.214 734.789 385.764 736.192 375.59 738.817C371.4 739.817 367.3 741.247 363.5 742.367C366.79 750.017 370.26 757.217 373.03 764.687C377.72 777.337 377.53 789.687 369.34 801.137C365.536 806.279 360.931 810.777 355.7 814.457C344.102 822.744 333.257 832.036 323.29 842.227L310.05 838.667C310.412 838.516 310.75 838.31 311.05 838.057C317.68 830.257 325.69 823.967 333.52 817.457C341.35 810.947 349.28 804.587 356.68 797.627C361.85 792.767 365.47 786.717 365.74 779.177C366.01 771.637 362.74 765.177 358.41 759.347C341.96 737.177 325.59 714.947 308.77 693.047C297.71 678.647 286.07 664.687 274.46 650.707C261.793 635.427 248.956 620.27 235.95 605.237C221.05 588.017 205.85 571.067 190.95 553.867C188.075 550.626 185.637 547.022 183.7 543.147C182.842 541.583 182.614 539.75 183.062 538.024C183.51 536.297 184.6 534.807 186.11 533.857C188.76 532.157 188.77 530.357 188.11 527.857C187.78 526.517 187.38 526.187 186.01 526.387C174.323 527.999 162.913 531.209 152.1 535.927C142.1 540.417 133.54 546.447 129.36 557.147C127.7 561.417 125.72 565.617 126.46 570.457C128.14 581.527 129.46 592.677 131.46 603.697C134.91 622.697 138.66 641.697 142.46 660.697C145.01 673.347 147.8 685.947 150.71 698.517C152.52 706.357 156.16 712.887 164.22 716.217C189.52 726.647 214.75 737.217 240.01 747.797C243.39 749.207 246.77 750.647 250.28 752.127C249.79 752.897 249.53 753.397 249.19 753.837C239.316 766.83 229.45 779.83 219.59 792.837C217.51 795.577 215.64 798.477 213.68 801.297L203.52 796.047C203.85 795.497 204.13 794.907 204.52 794.397C212.52 783.77 220.52 773.15 228.52 762.537C229.99 760.537 231.41 758.537 233 756.417C231.95 755.907 231.33 755.557 230.67 755.297C208.12 746.537 185.52 737.897 163.03 728.987C149.69 723.697 141.36 713.917 138.5 699.727C136.5 689.88 134.573 680.014 132.72 670.127C130.92 660.647 129.13 651.127 127.46 641.667C125.46 630.257 123.46 618.847 121.73 607.407C120.34 598.347 119.32 589.237 118.14 580.147C117.78 577.397 117.45 574.647 117.14 571.777L102.14 576.687C91.5003 579.187 80.84 581.597 70.23 584.217C49.78 589.227 29.29 594.377 8.87 599.527L2 586.847L23 581.927C48.07 576.087 73.17 570.347 98.2003 564.347C103.58 563.047 108.75 560.847 113.98 558.957C114.372 558.802 114.728 558.568 115.028 558.271C115.327 557.973 115.562 557.618 115.72 557.227C121.07 540.027 133.36 529.787 149.46 523.227C160.539 518.723 172.134 515.613 183.98 513.967C184.77 513.847 185.55 513.687 186.73 513.487C185.94 508.727 185.29 504.037 184.37 499.397C180.62 480.397 174.23 462.217 167.9 443.997C159.77 420.607 151.56 397.247 145.65 373.147C136.81 337.097 132.19 300.587 133.31 263.437C134.441 220.45 144.158 178.123 161.89 138.947C182.67 92.9468 215.18 57.9467 259.09 33.3567C283.879 19.5193 310.845 10.0065 338.83 5.2267C364.031 0.851198 389.744 0.261298 415.12 3.4767C446.31 7.3567 475.81 16.4267 503.26 31.8867C533.239 48.6695 558.235 73.0988 575.7 102.687C588.729 124.396 598.265 148.017 603.96 172.687C607.39 187.537 609.53 202.537 608.67 217.847C608.67 218.247 608.67 218.647 608.74 219.047L609.16 219.417L619.83 219.227C622.83 219.227 625.77 219.227 628.73 219.147L669.73 218.437C671.16 218.347 672.02 218.787 671.73 220.437C671.68 221.073 671.68 221.711 671.73 222.347V234.227H663.73V251.937H655.3V260.617H646.84V269.327H638.46V278.097H629.87V286.947L618.87 286.957ZM629.04 235.077H621.04V243.757H612.6V252.497H604V261.417H595.7V269.867H604.29V261.227H612.59V269.647H621.29V261.227H629.97V252.517L638.18 252.137V243.827H629.56L629.5 235.547L629.04 235.077ZM475.75 258.797H480.11C480.55 258.427 481.36 258.047 481.36 257.687C481.36 254.627 481.17 251.577 481.05 248.527H491.29V238.227H481.11V248.607L470.86 248.657V238.537H460.74V248.607H450.53V259.297H440.42V269.997H430.29V279.997H440.37V269.937L450.54 269.417V279.717H461.18V269.427H471.12V258.737L475.75 258.797ZM357.39 735.517C357.67 735.517 357.76 735.597 357.82 735.567C373.117 729.839 389.269 726.726 405.6 726.357C406.89 726.357 407.6 726.027 407.9 724.547C410.32 712.257 410.72 699.857 410.14 687.407C409.994 686.472 409.497 685.627 408.75 685.047C405.285 682.163 401.648 679.491 397.86 677.047C385.37 669.567 372.15 667.437 358.2 672.617C345.76 677.237 336.67 685.987 328.88 696.357C328 697.527 328.56 698.207 329.24 699.077C333.906 705.077 338.573 711.077 343.24 717.077C347.99 723.227 352.73 729.417 357.39 735.517ZM376.12 656.987C405.65 664.137 425.18 684.287 441.62 708.827L436.71 617.157C419.5 635.617 401.35 651.867 376.12 656.987ZM258.9 612.227L258.81 612.507L320.44 687.507C332.335 675.917 345.739 665.984 360.29 657.977C353.98 656.727 347.49 655.817 341.22 654.087C334.948 652.263 328.781 650.093 322.75 647.587C301.01 638.877 280.89 627.177 261.68 613.847C260.77 613.227 259.82 612.737 258.9 612.227ZM638.38 243.327H646.56V234.997H638.23C638.23 237.747 638.23 240.307 638.23 242.867C638.258 243.026 638.309 243.181 638.38 243.327Z" stroke="#07ACFF" stroke-width="2"></path>
+            <path class="stonks-stroke2" d="M622.47 261.478H613.67C613.67 258.551 613.67 255.621 613.67 252.688H622.47C622.52 255.628 622.47 258.558 622.47 261.478Z" stroke="#07ACFF" stroke-width="2"></path>
+            <path class="stonks-stroke2" d="M622.211 243.953H630.761V252.743H622.471C622.384 249.816 622.298 246.886 622.211 243.953Z" stroke="#07ACFF" stroke-width="2"></path>
+            <path class="stonks-stroke2" d="M451.67 269.714C451.67 266.304 451.67 262.894 451.67 259.484H461.91C462.077 262.897 462.243 266.314 462.41 269.734L451.67 269.714Z" stroke="#07ACFF" stroke-width="2"></path>
+            <path class="stonks-stroke2" d="M472.11 248.805L472.35 259.035L461.85 259.555C461.85 255.975 461.85 252.385 461.85 248.805H472.11Z" stroke="#07ACFF" stroke-width="2"></path>
+          </svg></div>
+        <a href="https://t.me/stonks_sniper_bot" class="link-btn-svg w-inline-block">
+          <div data-w-id="90f66f51-63c5-d1a1-b220-4657b79e40a6" class="start-btn-svg"></div>
         </a>
-        <a href="#" class="menu-link discord-link w-inline-block"></a>
-        <a href="#" class="menu-link twitter-link w-inline-block"></a>
-        <a href="#" class="menu-link telegram-link w-inline-block"></a>
       </div>
-      <div class="logo-frame"><img loading="lazy" src="images/stonFi.svg" alt="" class="logo-greyscale"><img loading="lazy" src="images/deDust.svg" alt="" class="logo-greyscale"><img loading="lazy" src="images/coinMarketCap.svg" alt="" class="logo-greyscale logo-grey3"><img loading="lazy" src="images/tonkeeper.svg" alt="" class="logo-greyscale"><img loading="lazy" src="images/tonWallet.svg" alt="" class="logo-greyscale logo-grey5"></div>
-    </div>
-  </section>
-  <section class="section-why-stonks">
-    <div class="black-ton"></div>
-    <div class="black-sol"></div>
-    <div class="arrows-stonks"></div>
-    <div class="head-name">
-      <div class="why-stonks-txt-stroke head-stonks-animation">why</div>
-      <div class="why-stonks-txt head-stonks-animation">stonks?</div>
-    </div>
-    <div class="all-why-stonks-card computer-version">
-      <div class="why-stonks-cards">
-        <div class="stonks-card card-3">
-          <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[3]</div>
-            <div class="txt-head-card">Referral Program</div>
-            <div class="txt-bottom-card">Refer your friends and earn 20% of their trading fees in the first month and 10% thereafter, indefinitely. Get even more thanks to our tier system.</div>
-          </div>
-        </div>
-        <div class="stonks-card margin-card card-2">
-          <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[2]</div>
-            <div class="txt-head-card">Stonks Gembot</div>
-            <div class="txt-bottom-card">A dedicated channel showcasing new launchpad deployments, helping users discover early investment opportunities.</div>
-          </div>
-        </div>
-        <div class="stonks-card">
-          <div class="bgc-card"><img src="images/tonWallet.svg" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[1]</div>
-            <div class="txt-head-card">Stonks <br>Trading Bot</div>
-            <div class="txt-bottom-card"> An advanced trading tool with anti-rug features, sniper capabilities, an advanced CA scanner, and a honeypot detector.</div>
-          </div>
-        </div>
-      </div>
-      <div class="why-stonks-cards why-stonks-cards-up">
-        <div class="stonks-card card-none">
-          <div class="bgc-card video-none"><img src="images/gbc-stonk2.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color txt-card-none"></div>
-        </div>
-        <div class="stonks-card margin-card card-6">
-          <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[4]</div>
-            <div class="txt-head-card">Unique Custom CA with Tax</div>
-            <div class="txt-bottom-card">The only launchpad on the market that allows users to create a custom CA with tax benefits.</div>
-          </div>
-        </div>
-        <div class="stonks-card card-5">
-          <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[5]</div>
-            <div class="txt-head-card">Collaboration with Stonfi and Dedust</div>
-            <div class="txt-bottom-card">Collaboration with both TON exchanges, ensuring remarkable growth potential and access to the best platforms and innovations for our users.</div>
-          </div>
-        </div>
-      </div>
-      <div class="why-stonks-cards why-stonks-cards-up">
-        <div class="stonks-card card-none">
-          <div class="bgc-card video-none"><img src="images/gbc-stonk2.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color txt-card-none"></div>
-        </div>
-        <div class="stonks-card margin-card card-6">
-          <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[6]</div>
-            <div class="txt-head-card">Continuous Development</div>
-            <div class="txt-bottom-card">Our team is constantly enhancing the project, with planned integrations like Gaspump, expansion to Solana, the introduction of a buybot, and more.</div>
-          </div>
-        </div>
-        <div class="stonks-card card-none">
-          <div class="bgc-card video-none"><img src="images/gbc-stonk2.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color txt-card-none"></div>
-        </div>
-      </div>
-    </div>
-    <div class="all-why-stonks-card tablet-version">
-      <div class="why-stonks-cards">
-        <div class="stonks-card margin-card card-2">
-          <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[2]</div>
-            <div class="txt-head-card">Stonks Gembot</div>
-            <div class="txt-bottom-card">A dedicated channel showcasing new launchpad deployments, helping users discover early investment opportunities.</div>
-          </div>
-        </div>
-        <div class="stonks-card">
-          <div class="bgc-card"><img src="images/tonWallet.svg" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[1]</div>
-            <div class="txt-head-card">Stonks <br>Trading Bot</div>
-            <div class="txt-bottom-card"> An advanced trading tool with anti-rug features, sniper capabilities, an advanced CA scanner, and a honeypot detector.</div>
-          </div>
-        </div>
-      </div>
-      <div class="why-stonks-cards">
-        <div class="stonks-card card-3">
-          <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[3]</div>
-            <div class="txt-head-card">Referral Program</div>
-            <div class="txt-bottom-card">Refer your friends and earn 20% of their trading fees in the first month and 10% thereafter, indefinitely. Get even more thanks to our tier system.</div>
-          </div>
-        </div>
-        <div class="stonks-card margin-card card-4">
-          <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[4]</div>
-            <div class="txt-head-card">Unique Custom CA with Tax</div>
-            <div class="txt-bottom-card">The only launchpad on the market that allows users to create a custom CA with tax benefits.</div>
-          </div>
-        </div>
-      </div>
-      <div class="why-stonks-cards why-stonks-cards-up">
-        <div class="stonks-card margin-card card-6">
-          <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[6]</div>
-            <div class="txt-head-card">Continuous Development</div>
-            <div class="txt-bottom-card">Our team is constantly enhancing the project, with planned integrations like Gaspump, expansion to Solana, the introduction of a buybot, and more.</div>
-          </div>
-        </div>
-        <div class="stonks-card card-5">
-          <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[5]</div>
-            <div class="txt-head-card">Collaboration with Stonfi and Dedust</div>
-            <div class="txt-bottom-card">Collaboration with both TON exchanges, ensuring remarkable growth potential and access to the best platforms and innovations for our users.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="all-why-stonks-card phone-version">
-      <div class="why-stonks-cards">
-        <div class="stonks-card card-1">
-          <div class="bgc-card"><img src="images/tonWallet.svg" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[1]</div>
-            <div class="txt-head-card">Stonks <br>Trading Bot</div>
-            <div class="txt-bottom-card"> An advanced trading tool with anti-rug features, sniper capabilities, an advanced CA scanner, and a honeypot detector.</div>
-          </div>
-        </div>
-      </div>
-      <div class="why-stonks-cards">
-        <div class="stonks-card card-1">
-          <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[2]</div>
-            <div class="txt-head-card">Stonks Gembot</div>
-            <div class="txt-bottom-card">A dedicated channel showcasing new launchpad deployments, helping users discover early investment opportunities.</div>
-          </div>
-        </div>
-      </div>
-      <div class="why-stonks-cards">
-        <div class="stonks-card card-1">
-          <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[3]</div>
-            <div class="txt-head-card">Referral Program</div>
-            <div class="txt-bottom-card">Refer your friends and earn 20% of their trading fees in the first month and 10% thereafter, indefinitely. Get even more thanks to our tier system.</div>
-          </div>
-        </div>
-      </div>
-      <div class="why-stonks-cards">
-        <div class="stonks-card card-1">
-          <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[4]</div>
-            <div class="txt-head-card">Unique Custom CA with Tax</div>
-            <div class="txt-bottom-card">The only launchpad on the market that allows users to create a custom CA with tax benefits.</div>
-          </div>
-        </div>
-      </div>
-      <div class="why-stonks-cards">
-        <div class="stonks-card card-1">
-          <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[5]</div>
-            <div class="txt-head-card">Collaboration with Stonfi and Dedust</div>
-            <div class="txt-bottom-card">Collaboration with both TON exchanges, ensuring remarkable growth potential and access to the best platforms and innovations for our users.</div>
-          </div>
-        </div>
-      </div>
-      <div class="why-stonks-cards">
-        <div class="stonks-card margin-card card-1">
-          <div class="bgc-card"><img src="images/bgc-stonks.gif" loading="lazy" alt="" class="video-card"></div>
-          <div class="txt-card-color">
-            <div class="txt-card-number">[6]</div>
-            <div class="txt-head-card">Continuous Development</div>
-            <div class="txt-bottom-card">Our team is constantly enhancing the project, with planned integrations like Gaspump, expansion to Solana, the introduction of a buybot, and more.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div class="section-wrapper">
-    <div data-w-id="a067abdb-6c1e-a682-5942-e3f94428007a" class="section-h-phase">
-      <div class="sticky-wrapper-phase">
-        <div class="sticky-element disable-overflow">
-          <div class="track-phase">
-            <div class="track-flex">
-              <div class="roadmap-name">
-                <div class="why-stonks-txt-stroke head-stonks-animation">our</div>
-                <div class="why-stonks-txt head-stonks-animation">progress</div>
+    </section>
+    <section class="footer-dark">
+      <div class="container">
+        <div class="footer-wrapper">
+          <div class="footer-content">
+            <div id="w-node-_360ff96d-e146-0150-64de-54a1181bff55-dd81ccf0" class="footer-block">
+              <div class="title-small">STONKS LABS</div><img loading="lazy" src="images/logo-webiste256.png" alt="" class="image">
+              <div class="txt-footer">The most powerful trading bot available on the TON, SOL and ETH networks</div>
+            </div>
+            <div id="w-node-_360ff96d-e146-0150-64de-54a1181bff5b-dd81ccf0" class="footer-block">
+              <div class="title-small">Tools</div>
+              <a href="https://app.ston.fi/swap?chartVisible=false&amp;ft=TON&amp;tt=sTONks" class="footer-link">Trade/Swap</a>
+              <a href="https://stonks-bot.gitbook.io/stonks-bot-manual" class="footer-link">Docs</a>
+              <div class="title-small margin-up">Support</div>
+              <a href="https://stonks-bot.gitbook.io/stonks-bot-manual/contact" class="footer-link">Contact</a>
+            </div>
+            <div id="w-node-_360ff96d-e146-0150-64de-54a1181bff68-dd81ccf0" class="footer-block">
+              <div class="title-small">Resources</div>
+              <a href="https://stonks-bot.gitbook.io/stonks-bot-manual" class="footer-link">User guide</a>
+              <a href="https://stonks-bot.gitbook.io/stonks-bot-manual/getting-started" class="footer-link">Getting Started</a>
+              <a href="https://stonks-bot.gitbook.io/stonks-bot-manual/sniper-mode" class="footer-link">Sniper mode</a>
+              <a href="https://stonks-bot.gitbook.io/stonks-bot-manual/trade-monitor" class="footer-link">Trade Monitor</a>
+              <a href="https://stonks-bot.gitbook.io/stonks-bot-manual/buying-jettons" class="footer-link">Buying Jettons</a>
+              <a href="https://stonks-bot.gitbook.io/stonks-bot-manual/referrals" class="footer-link">Referrals</a>
+            </div>
+            <div id="w-node-_360ff96d-e146-0150-64de-54a1181bff77-dd81ccf0" class="footer-block">
+              <div class="title-small">About</div>
+              <a href="#" class="footer-link">Terms &amp; Conditions</a>
+              <a href="#" class="footer-link">Privacy policy</a>
+              <div class="footer-social-block">
+                <a href="https://x.com/tonstonks" class="footer-social-link w-inline-block"><img loading="lazy" src="https://uploads-ssl.webflow.com/66a218e2f88f7900c37729bc/66a9e9d8cd463fc8103ca32f_twitterSVG.svg" alt=""></a>
+                <a href="https://t.me/stonksonton" class="footer-social-link w-inline-block"><img loading="lazy" src="https://uploads-ssl.webflow.com/66a218e2f88f7900c37729bc/66a9ed3a42a57ae74e80214f_telegramSVG.svg" alt=""></a>
+                <a href="https://discord.com/invite/z4JNrtX2ja" class="footer-social-link w-inline-block"><img loading="lazy" src="https://uploads-ssl.webflow.com/66a218e2f88f7900c37729bc/66a9ebe6e198997ec1e6ce33_discordSVG.svg" alt=""></a>
               </div>
-              <div class="panel1">
-                <div class="card-panel">
-                  <div class="date-card-panel">2024<br></div>
-                  <div class="phase-roadmap">since</div>
-                  <div class="txt-phase-point"><span class="dot-green">●</span> Establishing STONKS LABS in Dubai and launching the development of the world&#x27;s best trading bot, STONKS, utilizing blockchain technology.</div>
-                </div>
-              </div>
-              <div class="panel1">
-                <div class="card-panel">
-                  <div class="phase-roadmap">phase 1</div>
-                  <div class="txt-phase">
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Buy &amp; Sell</div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Dedust integration</div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Basic CA analysis</div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> PNL monitor</div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Wallet Management</div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Build-in TON full node</div>
-                  </div>
-                  <div class="date-card-panel">2024<br></div>
-                </div>
-              </div>
-              <div class="panel1">
-                <div class="card-panel">
-                  <div class="phase-roadmap">phase 2</div>
-                  <div class="txt-phase">
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Telegram Apps GUI </div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Build-in Telegram wallet integration</div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Limit orders</div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Anti-scam</div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> The Referal program</div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Multi-trade monitor</div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> STON.fi integration</div>
-                  </div>
-                  <div class="date-card-panel">2024<br></div>
-                </div>
-              </div>
-              <div class="panel1">
-                <div class="card-panel">
-                  <div class="phase-roadmap">phase 3</div>
-                  <div class="txt-phase">
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Stonks Launchpad</div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Custom CA with Tax powered by launchpad </div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Anti-rug</div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Honeypot detection module</div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Stonks Buy Bot</div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Stonks Gem Bot</div>
-                    <div class="txt-phase-point"><span class="dot-green">●</span> Auto-Buy Mode At LP (Snipe)</div>
-                  </div>
-                  <div class="date-card-panel">2024<br></div>
-                </div>
-              </div>
-              <div class="panel1">
-                <div class="card-panel">
-                  <div class="phase-roadmap">phase 4</div>
-                  <div class="txt-phase">
-                    <div class="txt-phase-point"><span class="dot-green-half">●</span> Advanced custom CA with Tax, Burn, Lp both on dedust and stonfi powered by launchpad</div>
-                    <div class="txt-phase-point"><span class="dot-green-half">●</span> One click gem setup in Launchpad</div>
-                    <div class="txt-phase-point"><span class="dot-green-half">●</span> New chain integration</div>
-                    <div class="txt-phase-point"><span class="dot-green-half">●</span> Gaspump integration</div>
-                    <div class="txt-phase-point"><span class="dot-green-half">●</span> Stonks Bridge</div>
-                    <div class="txt-phase-point"><span class="dot-green-half">●</span> Stonks Leagues</div>
-                  </div>
-                  <div class="date-card-panel">2024<br></div>
-                </div>
-              </div>
-              <div class="panel1"></div>
             </div>
           </div>
-          <div class="progress-show">
-            <div class="progress-line"></div>
-            <div class="title-bottom uppercase-txt sticky-down">preparation status - all acording to plan</div>
-          </div>
         </div>
+        <div class="footer-divider"></div>
+        <div class="footer-copy"><img loading="lazy" src="images/baseONSTONKS.svg" alt="" class="img-base-on">
+          <div class="footer-copy-txt">Copyright © 2024 STONKS LABS <br>License Number : 44542<br>Registration Number :  DSO-FZCO-42364 Dubai</div>
+        </div>
+        <div class="fotter-disclamier">Disclaimer: Nothing on this site is investment advice. All information is for informational purposes only. You should not construe any such information or other material as legal, tax, investment, financial, or other advice. Nothing contained on our site constitutes a solicitation, recommendation, endorsement, or offer by STONKS LABS or any third party service provider to buy or sell any assets, digital coins and tokens, securities or other financial instruments in this or in in any other jurisdiction in which such solicitation or offer would be unlawful under the securities laws of such jurisdiction. Please view <a href="#" target="_blank" class="link">Terms of use </a>for more information.</div>
       </div>
-    </div>
+    </section>
   </div>
-  <section class="section-last">
-    <div class="head-name">
-      <div class="why-stonks-txt-stroke head-stonks-animation">Trusted by</div>
-      <div class="why-stonks-txt head-stonks-animation">Thousands</div>
-    </div>
-    <div class="stonks-black-bgc">
-      <div class="svg-stonks-animation computer-version w-embed"><svg width="726" height="857" viewbox="0 0 726 857" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path class="stonks-stroke1" d="M589.5 173.438L593.03 188.397C593.67 196.907 594.37 205.407 594.88 213.957C594.882 215.916 594.755 217.874 594.5 219.817L550.43 220.437C550.214 221.538 550.057 222.649 549.96 223.767C549.81 227.767 549.84 227.767 545.96 227.767C539.74 227.777 539.74 227.777 539.74 221.697C539.74 221.287 539.74 220.887 539.74 220.487C530.86 220.697 521.98 220.957 513.1 221.117C492.65 221.467 472.21 221.767 451.77 222.117C432.136 222.444 412.5 222.777 392.86 223.117C376.78 223.397 360.69 223.487 344.63 224.067C341.05 224.197 337.5 225.957 333.99 227.127C315.323 233.38 296.656 239.637 277.99 245.897C277.45 246.051 276.903 246.174 276.35 246.267C268.88 248.827 261.42 251.417 253.94 253.947C239.573 258.807 225.2 263.66 210.82 268.507C211.45 268.817 212.06 269.407 212.69 269.407C215.021 269.528 217.358 269.528 219.69 269.407C221.44 269.307 222.13 269.827 222.05 271.677C221.89 274.547 222.05 277.437 222.05 280.317L277.05 261.987C277.58 261.807 278.13 261.667 278.67 261.507C297.78 255.097 316.96 248.927 335.96 242.147C342.97 239.637 349.96 239.527 357.6 239.447V260.827H368.29V281.057H378.85V291.227H389.37V301.467L471.37 300.057V289.877H481.5V279.327H491.6V268.957H501.72V258.577H511.9V236.797H535.08V253.947H543.95C544.04 258.747 544.26 263.377 544.14 268.017C544.07 270.397 544.84 270.997 547.14 270.937C552.85 270.777 552.85 270.887 552.93 276.717C552.94 277.417 553.03 278.127 553.09 278.937L555.57 279.227H561.57V287.607H593.25C597.59 303.287 598.94 319.167 595.42 335.357C591.36 354.057 585.11 372.037 577.75 389.617C568.99 410.527 559.6 431.177 550.88 452.107C545.99 463.867 541.71 475.937 537.52 487.937C530.21 508.947 515.55 520.957 493.78 524.667C481.97 526.667 470.12 526.397 458.25 525.477L457.54 525.317L457.42 525.387L457.29 525.317C452.71 524.547 448.05 524.077 443.55 522.947C400.55 512.08 363.673 490.647 332.92 458.647C332.355 458.14 331.753 457.675 331.12 457.257C336.14 464.747 340.63 472.657 346.27 479.657C364.98 502.837 389.32 517.837 417.38 527.147C421.89 528.637 426.48 529.907 431.06 531.207C437.22 532.967 440.16 537.607 439.62 544.027C439.2 547.632 437.925 551.085 435.9 554.097C432.9 559.007 430.22 564.077 429.5 569.887C429.16 572.607 429.14 575.357 428.98 578.097C429.5 581.767 429.78 585.487 430.6 589.097C432.27 596.487 429.52 602.607 425.42 608.327C419.11 617.107 410.74 623.727 402.11 630.037C395.11 635.167 387.76 639.867 379.11 642.037C366.31 645.237 353.76 643.887 341.44 639.797C314.77 630.947 290.38 617.587 267.69 601.187C253.17 590.687 238.88 579.657 225.07 568.397C211.26 557.137 203.46 542.077 201.71 524.397C199.88 505.997 196.88 487.907 191.18 470.327C186.18 454.897 180.91 439.557 175.63 424.227C167.89 401.777 160.77 379.167 155.89 355.897C151.661 336.078 148.907 315.973 147.65 295.747C146.683 280.092 146.773 264.39 147.92 248.747C149.765 223.44 154.767 198.463 162.81 174.397C169.66 154.047 178.21 134.477 189.74 116.327C208.07 87.4668 232.43 64.8667 261.89 47.6766C288.948 31.8687 318.89 21.6218 349.96 17.5366C355.15 16.8366 360.39 16.4867 365.6 15.9767C376.57 15.8767 387.57 15.3066 398.51 15.8766C420.957 17.0669 443.106 21.5655 464.24 29.2267C513.45 46.9967 549.74 79.1368 572.74 126.227C581.044 143.026 585.578 155.112 589.5 173.438ZM589.5 173.438L588.926 170.818C588.926 170.818 591.38 181.578 589.5 173.438ZM618.87 286.957H607.67C607.9 288.407 608.02 289.657 608.31 290.867C613.21 311.017 611.67 330.867 606.08 350.687C598.88 376.157 588.49 400.387 577.85 424.537C568.39 445.997 558.71 467.387 551.52 489.767C547.05 503.687 539.96 515.847 528.19 524.887C517.87 532.807 505.97 536.807 493.25 538.717C482.981 540.153 472.585 540.458 462.25 539.627C461.555 539.499 460.838 539.61 460.215 539.942C459.592 540.275 459.1 540.809 458.82 541.457C455 548.387 451.06 555.237 447.07 562.277C449.85 564.037 452.66 565.727 455.38 567.537C464.874 573.875 473.599 581.294 481.38 589.647C482.262 590.552 483.344 591.237 484.54 591.647C523.63 604.947 562.81 617.987 601.8 631.567C619.92 637.877 637.73 645.067 655.55 652.187C660.132 653.959 664.282 656.692 667.72 660.202C671.158 663.712 673.804 667.918 675.48 672.537C675.64 673.152 675.969 673.709 676.43 674.147C682.43 678.307 685.98 684.347 689.17 690.647C700.69 713.474 712.196 736.304 723.69 759.137C724.3 760.347 724.3 761.077 723.04 761.907C719.48 764.257 716.04 766.757 712.52 769.187C711.12 766.187 709.73 763.187 708.32 760.187C701.52 745.717 694.76 731.187 687.89 716.807C684.17 709.007 680.21 701.327 676.42 693.567C674.291 688.897 673 687.5 668.5 684.438C668.152 684.275 665.5 682.245 665.24 681.962C664.981 681.679 664.631 680.799 664.5 680.438C661.5 671.938 657.59 666.407 649.51 663.257C631.85 656.367 614.15 649.557 596.33 643.077C581.77 637.787 567.03 633.007 552.33 628.077C543.33 625.027 534.25 622.077 525.21 619.077L494.21 608.327C494.332 608.674 494.486 609.008 494.67 609.327C508.34 624.487 522.17 639.507 535.67 654.857C541.499 661.538 546.903 668.579 551.85 675.937C556.78 683.237 556.92 691.187 551.75 698.087C549.57 700.997 547.2 703.747 544.91 706.567L535.91 717.517C536.52 717.877 536.91 718.057 537.22 718.297C542.28 722.167 547.29 726.117 552.42 729.897C559.22 734.897 563.05 741.387 563.06 749.997C563.06 757.417 561.06 764.367 558.15 771.047C554.416 779.614 550.486 788.1 546.36 796.507C540.65 808.187 534.7 819.757 528.85 831.367C526.02 836.987 523.16 842.587 520.32 848.197L507.71 850.197C507.969 849.449 508.266 848.715 508.6 847.997C515.78 834.527 523.18 821.167 530.11 807.567C537.29 793.467 544.203 779.23 550.85 764.857C555.65 754.427 553.58 744.387 545.73 737.687C540.33 733.087 534.65 728.807 529.05 724.437C526.66 722.577 524.15 720.857 521.53 718.957C522.43 717.957 523.15 717.217 523.83 716.437C530.09 709.247 536.2 701.927 542.63 694.917C546.05 691.187 546.22 687.297 544.43 683.077C543.438 680.518 542.091 678.111 540.43 675.927C530.97 664.367 521.66 652.667 511.7 641.547C496.7 624.827 481.25 608.547 465.99 592.077C459.106 585.233 451.264 579.425 442.71 574.837C442.88 577.98 443.376 581.096 444.19 584.137C447.35 594.967 448.09 606.137 449.37 617.277C450.94 630.957 451.87 644.717 452.83 658.457C453.4 666.657 453.59 674.897 453.83 683.117C454.08 693.057 454.32 702.987 454.31 712.927C454.31 729.737 454.12 746.547 453.95 763.357C453.85 774.257 453.64 785.167 453.47 796.067C453.32 805.757 453.13 815.447 453.01 825.137C452.92 831.527 453.01 837.917 452.86 844.307C452.8 847.817 452.5 851.307 452.31 854.677L445.67 855.507H443.73C443.583 837.327 443.43 819.147 443.27 800.967C443.07 780.967 442.846 761 442.6 741.067C442.6 738.074 442.533 735.074 442.4 732.067C442.425 731.34 442.292 730.617 442.01 729.947C436.418 719.545 430.004 709.607 422.83 700.227C422.67 701.967 422.57 703.227 422.44 704.377C421.64 711.597 420.78 718.807 420.08 726.027C419.876 727.582 420.037 729.164 420.55 730.647C426.89 746.337 432.17 762.327 434.71 779.107C436.71 792.377 437.44 805.647 432.71 818.607C429.86 826.397 425.04 832.967 419.62 839.107C415.35 843.947 410.89 848.637 406.46 853.337C405.9 853.968 405.12 854.361 404.28 854.437C399.47 854.137 394.66 853.667 389.85 853.247C393.61 850.327 397.61 847.667 401.07 844.437C420.79 826.027 429.31 803.847 423.51 776.877C420.51 762.727 415.03 749.447 409.59 736.147C408.99 734.667 407.99 734.627 406.72 734.637C396.214 734.789 385.764 736.192 375.59 738.817C371.4 739.817 367.3 741.247 363.5 742.367C366.79 750.017 370.26 757.217 373.03 764.687C377.72 777.337 377.53 789.687 369.34 801.137C365.536 806.279 360.931 810.777 355.7 814.457C344.102 822.744 333.257 832.036 323.29 842.227L310.05 838.667C310.412 838.516 310.75 838.31 311.05 838.057C317.68 830.257 325.69 823.967 333.52 817.457C341.35 810.947 349.28 804.587 356.68 797.627C361.85 792.767 365.47 786.717 365.74 779.177C366.01 771.637 362.74 765.177 358.41 759.347C341.96 737.177 325.59 714.947 308.77 693.047C297.71 678.647 286.07 664.687 274.46 650.707C261.793 635.427 248.956 620.27 235.95 605.237C221.05 588.017 205.85 571.067 190.95 553.867C188.075 550.626 185.637 547.022 183.7 543.147C182.842 541.583 182.614 539.75 183.062 538.024C183.51 536.297 184.6 534.807 186.11 533.857C188.76 532.157 188.77 530.357 188.11 527.857C187.78 526.517 187.38 526.187 186.01 526.387C174.323 527.999 162.913 531.209 152.1 535.927C142.1 540.417 133.54 546.447 129.36 557.147C127.7 561.417 125.72 565.617 126.46 570.457C128.14 581.527 129.46 592.677 131.46 603.697C134.91 622.697 138.66 641.697 142.46 660.697C145.01 673.347 147.8 685.947 150.71 698.517C152.52 706.357 156.16 712.887 164.22 716.217C189.52 726.647 214.75 737.217 240.01 747.797C243.39 749.207 246.77 750.647 250.28 752.127C249.79 752.897 249.53 753.397 249.19 753.837C239.316 766.83 229.45 779.83 219.59 792.837C217.51 795.577 215.64 798.477 213.68 801.297L203.52 796.047C203.85 795.497 204.13 794.907 204.52 794.397C212.52 783.77 220.52 773.15 228.52 762.537C229.99 760.537 231.41 758.537 233 756.417C231.95 755.907 231.33 755.557 230.67 755.297C208.12 746.537 185.52 737.897 163.03 728.987C149.69 723.697 141.36 713.917 138.5 699.727C136.5 689.88 134.573 680.014 132.72 670.127C130.92 660.647 129.13 651.127 127.46 641.667C125.46 630.257 123.46 618.847 121.73 607.407C120.34 598.347 119.32 589.237 118.14 580.147C117.78 577.397 117.45 574.647 117.14 571.777L102.14 576.687C91.5003 579.187 80.84 581.597 70.23 584.217C49.78 589.227 29.29 594.377 8.87 599.527L2 586.847L23 581.927C48.07 576.087 73.17 570.347 98.2003 564.347C103.58 563.047 108.75 560.847 113.98 558.957C114.372 558.802 114.728 558.568 115.028 558.271C115.327 557.973 115.562 557.618 115.72 557.227C121.07 540.027 133.36 529.787 149.46 523.227C160.539 518.723 172.134 515.613 183.98 513.967C184.77 513.847 185.55 513.687 186.73 513.487C185.94 508.727 185.29 504.037 184.37 499.397C180.62 480.397 174.23 462.217 167.9 443.997C159.77 420.607 151.56 397.247 145.65 373.147C136.81 337.097 132.19 300.587 133.31 263.437C134.441 220.45 144.158 178.123 161.89 138.947C182.67 92.9468 215.18 57.9467 259.09 33.3567C283.879 19.5193 310.845 10.0065 338.83 5.2267C364.031 0.851198 389.744 0.261298 415.12 3.4767C446.31 7.3567 475.81 16.4267 503.26 31.8867C533.239 48.6695 558.235 73.0988 575.7 102.687C588.729 124.396 598.265 148.017 603.96 172.687C607.39 187.537 609.53 202.537 608.67 217.847C608.67 218.247 608.67 218.647 608.74 219.047L609.16 219.417L619.83 219.227C622.83 219.227 625.77 219.227 628.73 219.147L669.73 218.437C671.16 218.347 672.02 218.787 671.73 220.437C671.68 221.073 671.68 221.711 671.73 222.347V234.227H663.73V251.937H655.3V260.617H646.84V269.327H638.46V278.097H629.87V286.947L618.87 286.957ZM629.04 235.077H621.04V243.757H612.6V252.497H604V261.417H595.7V269.867H604.29V261.227H612.59V269.647H621.29V261.227H629.97V252.517L638.18 252.137V243.827H629.56L629.5 235.547L629.04 235.077ZM475.75 258.797H480.11C480.55 258.427 481.36 258.047 481.36 257.687C481.36 254.627 481.17 251.577 481.05 248.527H491.29V238.227H481.11V248.607L470.86 248.657V238.537H460.74V248.607H450.53V259.297H440.42V269.997H430.29V279.997H440.37V269.937L450.54 269.417V279.717H461.18V269.427H471.12V258.737L475.75 258.797ZM357.39 735.517C357.67 735.517 357.76 735.597 357.82 735.567C373.117 729.839 389.269 726.726 405.6 726.357C406.89 726.357 407.6 726.027 407.9 724.547C410.32 712.257 410.72 699.857 410.14 687.407C409.994 686.472 409.497 685.627 408.75 685.047C405.285 682.163 401.648 679.491 397.86 677.047C385.37 669.567 372.15 667.437 358.2 672.617C345.76 677.237 336.67 685.987 328.88 696.357C328 697.527 328.56 698.207 329.24 699.077C333.906 705.077 338.573 711.077 343.24 717.077C347.99 723.227 352.73 729.417 357.39 735.517ZM376.12 656.987C405.65 664.137 425.18 684.287 441.62 708.827L436.71 617.157C419.5 635.617 401.35 651.867 376.12 656.987ZM258.9 612.227L258.81 612.507L320.44 687.507C332.335 675.917 345.739 665.984 360.29 657.977C353.98 656.727 347.49 655.817 341.22 654.087C334.948 652.263 328.781 650.093 322.75 647.587C301.01 638.877 280.89 627.177 261.68 613.847C260.77 613.227 259.82 612.737 258.9 612.227ZM638.38 243.327H646.56V234.997H638.23C638.23 237.747 638.23 240.307 638.23 242.867C638.258 243.026 638.309 243.181 638.38 243.327Z" stroke="#07ACFF" stroke-width="2"></path>
-          <path class="stonks-stroke2" d="M622.47 261.478H613.67C613.67 258.551 613.67 255.621 613.67 252.688H622.47C622.52 255.628 622.47 258.558 622.47 261.478Z" stroke="#07ACFF" stroke-width="2"></path>
-          <path class="stonks-stroke2" d="M622.211 243.953H630.761V252.743H622.471C622.384 249.816 622.298 246.886 622.211 243.953Z" stroke="#07ACFF" stroke-width="2"></path>
-          <path class="stonks-stroke2" d="M451.67 269.714C451.67 266.304 451.67 262.894 451.67 259.484H461.91C462.077 262.897 462.243 266.314 462.41 269.734L451.67 269.714Z" stroke="#07ACFF" stroke-width="2"></path>
-          <path class="stonks-stroke2" d="M472.11 248.805L472.35 259.035L461.85 259.555C461.85 255.975 461.85 252.385 461.85 248.805H472.11Z" stroke="#07ACFF" stroke-width="2"></path>
-        </svg></div>
-      <div class="svg-stonks-animation phone-version w-embed"><svg width="726" height="857" viewbox="0 0 726 857" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path class="stonks-stroke1" d="M589.5 173.438L593.03 188.397C593.67 196.907 594.37 205.407 594.88 213.957C594.882 215.916 594.755 217.874 594.5 219.817L550.43 220.437C550.214 221.538 550.057 222.649 549.96 223.767C549.81 227.767 549.84 227.767 545.96 227.767C539.74 227.777 539.74 227.777 539.74 221.697C539.74 221.287 539.74 220.887 539.74 220.487C530.86 220.697 521.98 220.957 513.1 221.117C492.65 221.467 472.21 221.767 451.77 222.117C432.136 222.444 412.5 222.777 392.86 223.117C376.78 223.397 360.69 223.487 344.63 224.067C341.05 224.197 337.5 225.957 333.99 227.127C315.323 233.38 296.656 239.637 277.99 245.897C277.45 246.051 276.903 246.174 276.35 246.267C268.88 248.827 261.42 251.417 253.94 253.947C239.573 258.807 225.2 263.66 210.82 268.507C211.45 268.817 212.06 269.407 212.69 269.407C215.021 269.528 217.358 269.528 219.69 269.407C221.44 269.307 222.13 269.827 222.05 271.677C221.89 274.547 222.05 277.437 222.05 280.317L277.05 261.987C277.58 261.807 278.13 261.667 278.67 261.507C297.78 255.097 316.96 248.927 335.96 242.147C342.97 239.637 349.96 239.527 357.6 239.447V260.827H368.29V281.057H378.85V291.227H389.37V301.467L471.37 300.057V289.877H481.5V279.327H491.6V268.957H501.72V258.577H511.9V236.797H535.08V253.947H543.95C544.04 258.747 544.26 263.377 544.14 268.017C544.07 270.397 544.84 270.997 547.14 270.937C552.85 270.777 552.85 270.887 552.93 276.717C552.94 277.417 553.03 278.127 553.09 278.937L555.57 279.227H561.57V287.607H593.25C597.59 303.287 598.94 319.167 595.42 335.357C591.36 354.057 585.11 372.037 577.75 389.617C568.99 410.527 559.6 431.177 550.88 452.107C545.99 463.867 541.71 475.937 537.52 487.937C530.21 508.947 515.55 520.957 493.78 524.667C481.97 526.667 470.12 526.397 458.25 525.477L457.54 525.317L457.42 525.387L457.29 525.317C452.71 524.547 448.05 524.077 443.55 522.947C400.55 512.08 363.673 490.647 332.92 458.647C332.355 458.14 331.753 457.675 331.12 457.257C336.14 464.747 340.63 472.657 346.27 479.657C364.98 502.837 389.32 517.837 417.38 527.147C421.89 528.637 426.48 529.907 431.06 531.207C437.22 532.967 440.16 537.607 439.62 544.027C439.2 547.632 437.925 551.085 435.9 554.097C432.9 559.007 430.22 564.077 429.5 569.887C429.16 572.607 429.14 575.357 428.98 578.097C429.5 581.767 429.78 585.487 430.6 589.097C432.27 596.487 429.52 602.607 425.42 608.327C419.11 617.107 410.74 623.727 402.11 630.037C395.11 635.167 387.76 639.867 379.11 642.037C366.31 645.237 353.76 643.887 341.44 639.797C314.77 630.947 290.38 617.587 267.69 601.187C253.17 590.687 238.88 579.657 225.07 568.397C211.26 557.137 203.46 542.077 201.71 524.397C199.88 505.997 196.88 487.907 191.18 470.327C186.18 454.897 180.91 439.557 175.63 424.227C167.89 401.777 160.77 379.167 155.89 355.897C151.661 336.078 148.907 315.973 147.65 295.747C146.683 280.092 146.773 264.39 147.92 248.747C149.765 223.44 154.767 198.463 162.81 174.397C169.66 154.047 178.21 134.477 189.74 116.327C208.07 87.4668 232.43 64.8667 261.89 47.6766C288.948 31.8687 318.89 21.6218 349.96 17.5366C355.15 16.8366 360.39 16.4867 365.6 15.9767C376.57 15.8767 387.57 15.3066 398.51 15.8766C420.957 17.0669 443.106 21.5655 464.24 29.2267C513.45 46.9967 549.74 79.1368 572.74 126.227C581.044 143.026 585.578 155.112 589.5 173.438ZM589.5 173.438L588.926 170.818C588.926 170.818 591.38 181.578 589.5 173.438ZM618.87 286.957H607.67C607.9 288.407 608.02 289.657 608.31 290.867C613.21 311.017 611.67 330.867 606.08 350.687C598.88 376.157 588.49 400.387 577.85 424.537C568.39 445.997 558.71 467.387 551.52 489.767C547.05 503.687 539.96 515.847 528.19 524.887C517.87 532.807 505.97 536.807 493.25 538.717C482.981 540.153 472.585 540.458 462.25 539.627C461.555 539.499 460.838 539.61 460.215 539.942C459.592 540.275 459.1 540.809 458.82 541.457C455 548.387 451.06 555.237 447.07 562.277C449.85 564.037 452.66 565.727 455.38 567.537C464.874 573.875 473.599 581.294 481.38 589.647C482.262 590.552 483.344 591.237 484.54 591.647C523.63 604.947 562.81 617.987 601.8 631.567C619.92 637.877 637.73 645.067 655.55 652.187C660.132 653.959 664.282 656.692 667.72 660.202C671.158 663.712 673.804 667.918 675.48 672.537C675.64 673.152 675.969 673.709 676.43 674.147C682.43 678.307 685.98 684.347 689.17 690.647C700.69 713.474 712.196 736.304 723.69 759.137C724.3 760.347 724.3 761.077 723.04 761.907C719.48 764.257 716.04 766.757 712.52 769.187C711.12 766.187 709.73 763.187 708.32 760.187C701.52 745.717 694.76 731.187 687.89 716.807C684.17 709.007 680.21 701.327 676.42 693.567C674.291 688.897 673 687.5 668.5 684.438C668.152 684.275 665.5 682.245 665.24 681.962C664.981 681.679 664.631 680.799 664.5 680.438C661.5 671.938 657.59 666.407 649.51 663.257C631.85 656.367 614.15 649.557 596.33 643.077C581.77 637.787 567.03 633.007 552.33 628.077C543.33 625.027 534.25 622.077 525.21 619.077L494.21 608.327C494.332 608.674 494.486 609.008 494.67 609.327C508.34 624.487 522.17 639.507 535.67 654.857C541.499 661.538 546.903 668.579 551.85 675.937C556.78 683.237 556.92 691.187 551.75 698.087C549.57 700.997 547.2 703.747 544.91 706.567L535.91 717.517C536.52 717.877 536.91 718.057 537.22 718.297C542.28 722.167 547.29 726.117 552.42 729.897C559.22 734.897 563.05 741.387 563.06 749.997C563.06 757.417 561.06 764.367 558.15 771.047C554.416 779.614 550.486 788.1 546.36 796.507C540.65 808.187 534.7 819.757 528.85 831.367C526.02 836.987 523.16 842.587 520.32 848.197L507.71 850.197C507.969 849.449 508.266 848.715 508.6 847.997C515.78 834.527 523.18 821.167 530.11 807.567C537.29 793.467 544.203 779.23 550.85 764.857C555.65 754.427 553.58 744.387 545.73 737.687C540.33 733.087 534.65 728.807 529.05 724.437C526.66 722.577 524.15 720.857 521.53 718.957C522.43 717.957 523.15 717.217 523.83 716.437C530.09 709.247 536.2 701.927 542.63 694.917C546.05 691.187 546.22 687.297 544.43 683.077C543.438 680.518 542.091 678.111 540.43 675.927C530.97 664.367 521.66 652.667 511.7 641.547C496.7 624.827 481.25 608.547 465.99 592.077C459.106 585.233 451.264 579.425 442.71 574.837C442.88 577.98 443.376 581.096 444.19 584.137C447.35 594.967 448.09 606.137 449.37 617.277C450.94 630.957 451.87 644.717 452.83 658.457C453.4 666.657 453.59 674.897 453.83 683.117C454.08 693.057 454.32 702.987 454.31 712.927C454.31 729.737 454.12 746.547 453.95 763.357C453.85 774.257 453.64 785.167 453.47 796.067C453.32 805.757 453.13 815.447 453.01 825.137C452.92 831.527 453.01 837.917 452.86 844.307C452.8 847.817 452.5 851.307 452.31 854.677L445.67 855.507H443.73C443.583 837.327 443.43 819.147 443.27 800.967C443.07 780.967 442.846 761 442.6 741.067C442.6 738.074 442.533 735.074 442.4 732.067C442.425 731.34 442.292 730.617 442.01 729.947C436.418 719.545 430.004 709.607 422.83 700.227C422.67 701.967 422.57 703.227 422.44 704.377C421.64 711.597 420.78 718.807 420.08 726.027C419.876 727.582 420.037 729.164 420.55 730.647C426.89 746.337 432.17 762.327 434.71 779.107C436.71 792.377 437.44 805.647 432.71 818.607C429.86 826.397 425.04 832.967 419.62 839.107C415.35 843.947 410.89 848.637 406.46 853.337C405.9 853.968 405.12 854.361 404.28 854.437C399.47 854.137 394.66 853.667 389.85 853.247C393.61 850.327 397.61 847.667 401.07 844.437C420.79 826.027 429.31 803.847 423.51 776.877C420.51 762.727 415.03 749.447 409.59 736.147C408.99 734.667 407.99 734.627 406.72 734.637C396.214 734.789 385.764 736.192 375.59 738.817C371.4 739.817 367.3 741.247 363.5 742.367C366.79 750.017 370.26 757.217 373.03 764.687C377.72 777.337 377.53 789.687 369.34 801.137C365.536 806.279 360.931 810.777 355.7 814.457C344.102 822.744 333.257 832.036 323.29 842.227L310.05 838.667C310.412 838.516 310.75 838.31 311.05 838.057C317.68 830.257 325.69 823.967 333.52 817.457C341.35 810.947 349.28 804.587 356.68 797.627C361.85 792.767 365.47 786.717 365.74 779.177C366.01 771.637 362.74 765.177 358.41 759.347C341.96 737.177 325.59 714.947 308.77 693.047C297.71 678.647 286.07 664.687 274.46 650.707C261.793 635.427 248.956 620.27 235.95 605.237C221.05 588.017 205.85 571.067 190.95 553.867C188.075 550.626 185.637 547.022 183.7 543.147C182.842 541.583 182.614 539.75 183.062 538.024C183.51 536.297 184.6 534.807 186.11 533.857C188.76 532.157 188.77 530.357 188.11 527.857C187.78 526.517 187.38 526.187 186.01 526.387C174.323 527.999 162.913 531.209 152.1 535.927C142.1 540.417 133.54 546.447 129.36 557.147C127.7 561.417 125.72 565.617 126.46 570.457C128.14 581.527 129.46 592.677 131.46 603.697C134.91 622.697 138.66 641.697 142.46 660.697C145.01 673.347 147.8 685.947 150.71 698.517C152.52 706.357 156.16 712.887 164.22 716.217C189.52 726.647 214.75 737.217 240.01 747.797C243.39 749.207 246.77 750.647 250.28 752.127C249.79 752.897 249.53 753.397 249.19 753.837C239.316 766.83 229.45 779.83 219.59 792.837C217.51 795.577 215.64 798.477 213.68 801.297L203.52 796.047C203.85 795.497 204.13 794.907 204.52 794.397C212.52 783.77 220.52 773.15 228.52 762.537C229.99 760.537 231.41 758.537 233 756.417C231.95 755.907 231.33 755.557 230.67 755.297C208.12 746.537 185.52 737.897 163.03 728.987C149.69 723.697 141.36 713.917 138.5 699.727C136.5 689.88 134.573 680.014 132.72 670.127C130.92 660.647 129.13 651.127 127.46 641.667C125.46 630.257 123.46 618.847 121.73 607.407C120.34 598.347 119.32 589.237 118.14 580.147C117.78 577.397 117.45 574.647 117.14 571.777L102.14 576.687C91.5003 579.187 80.84 581.597 70.23 584.217C49.78 589.227 29.29 594.377 8.87 599.527L2 586.847L23 581.927C48.07 576.087 73.17 570.347 98.2003 564.347C103.58 563.047 108.75 560.847 113.98 558.957C114.372 558.802 114.728 558.568 115.028 558.271C115.327 557.973 115.562 557.618 115.72 557.227C121.07 540.027 133.36 529.787 149.46 523.227C160.539 518.723 172.134 515.613 183.98 513.967C184.77 513.847 185.55 513.687 186.73 513.487C185.94 508.727 185.29 504.037 184.37 499.397C180.62 480.397 174.23 462.217 167.9 443.997C159.77 420.607 151.56 397.247 145.65 373.147C136.81 337.097 132.19 300.587 133.31 263.437C134.441 220.45 144.158 178.123 161.89 138.947C182.67 92.9468 215.18 57.9467 259.09 33.3567C283.879 19.5193 310.845 10.0065 338.83 5.2267C364.031 0.851198 389.744 0.261298 415.12 3.4767C446.31 7.3567 475.81 16.4267 503.26 31.8867C533.239 48.6695 558.235 73.0988 575.7 102.687C588.729 124.396 598.265 148.017 603.96 172.687C607.39 187.537 609.53 202.537 608.67 217.847C608.67 218.247 608.67 218.647 608.74 219.047L609.16 219.417L619.83 219.227C622.83 219.227 625.77 219.227 628.73 219.147L669.73 218.437C671.16 218.347 672.02 218.787 671.73 220.437C671.68 221.073 671.68 221.711 671.73 222.347V234.227H663.73V251.937H655.3V260.617H646.84V269.327H638.46V278.097H629.87V286.947L618.87 286.957ZM629.04 235.077H621.04V243.757H612.6V252.497H604V261.417H595.7V269.867H604.29V261.227H612.59V269.647H621.29V261.227H629.97V252.517L638.18 252.137V243.827H629.56L629.5 235.547L629.04 235.077ZM475.75 258.797H480.11C480.55 258.427 481.36 258.047 481.36 257.687C481.36 254.627 481.17 251.577 481.05 248.527H491.29V238.227H481.11V248.607L470.86 248.657V238.537H460.74V248.607H450.53V259.297H440.42V269.997H430.29V279.997H440.37V269.937L450.54 269.417V279.717H461.18V269.427H471.12V258.737L475.75 258.797ZM357.39 735.517C357.67 735.517 357.76 735.597 357.82 735.567C373.117 729.839 389.269 726.726 405.6 726.357C406.89 726.357 407.6 726.027 407.9 724.547C410.32 712.257 410.72 699.857 410.14 687.407C409.994 686.472 409.497 685.627 408.75 685.047C405.285 682.163 401.648 679.491 397.86 677.047C385.37 669.567 372.15 667.437 358.2 672.617C345.76 677.237 336.67 685.987 328.88 696.357C328 697.527 328.56 698.207 329.24 699.077C333.906 705.077 338.573 711.077 343.24 717.077C347.99 723.227 352.73 729.417 357.39 735.517ZM376.12 656.987C405.65 664.137 425.18 684.287 441.62 708.827L436.71 617.157C419.5 635.617 401.35 651.867 376.12 656.987ZM258.9 612.227L258.81 612.507L320.44 687.507C332.335 675.917 345.739 665.984 360.29 657.977C353.98 656.727 347.49 655.817 341.22 654.087C334.948 652.263 328.781 650.093 322.75 647.587C301.01 638.877 280.89 627.177 261.68 613.847C260.77 613.227 259.82 612.737 258.9 612.227ZM638.38 243.327H646.56V234.997H638.23C638.23 237.747 638.23 240.307 638.23 242.867C638.258 243.026 638.309 243.181 638.38 243.327Z" stroke="#07ACFF" stroke-width="2"></path>
-          <path class="stonks-stroke2" d="M622.47 261.478H613.67C613.67 258.551 613.67 255.621 613.67 252.688H622.47C622.52 255.628 622.47 258.558 622.47 261.478Z" stroke="#07ACFF" stroke-width="2"></path>
-          <path class="stonks-stroke2" d="M622.211 243.953H630.761V252.743H622.471C622.384 249.816 622.298 246.886 622.211 243.953Z" stroke="#07ACFF" stroke-width="2"></path>
-          <path class="stonks-stroke2" d="M451.67 269.714C451.67 266.304 451.67 262.894 451.67 259.484H461.91C462.077 262.897 462.243 266.314 462.41 269.734L451.67 269.714Z" stroke="#07ACFF" stroke-width="2"></path>
-          <path class="stonks-stroke2" d="M472.11 248.805L472.35 259.035L461.85 259.555C461.85 255.975 461.85 252.385 461.85 248.805H472.11Z" stroke="#07ACFF" stroke-width="2"></path>
-        </svg></div>
-      <a href="https://t.me/stonks_sniper_bot" class="link-btn-svg w-inline-block">
-        <div data-w-id="90f66f51-63c5-d1a1-b220-4657b79e40a6" class="start-btn-svg"></div>
-      </a>
-    </div>
-  </section>
-  <section class="footer-dark">
-    <div class="container">
-      <div class="footer-wrapper">
-        <div class="footer-content">
-          <div id="w-node-_360ff96d-e146-0150-64de-54a1181bff55-dd81ccf0" class="footer-block">
-            <div class="title-small">STONKS LABS</div><img loading="lazy" src="images/small-logo-up-white.svg" alt="" class="image">
-            <div class="txt-footer">The most powerful trading bot available on the TON and SOL networks</div>
-          </div>
-          <div id="w-node-_360ff96d-e146-0150-64de-54a1181bff5b-dd81ccf0" class="footer-block">
-            <div class="title-small">Tools</div>
-            <a href="https://app.ston.fi/swap?chartVisible=false&amp;ft=TON&amp;tt=sTONks" class="footer-link">Trade/Swap</a>
-            <a href="https://stonks-bot.gitbook.io/stonks-bot-manual" class="footer-link">Docs</a>
-            <div class="title-small margin-up">Support</div>
-            <a href="https://stonks-bot.gitbook.io/stonks-bot-manual/contact" class="footer-link">Contact</a>
-          </div>
-          <div id="w-node-_360ff96d-e146-0150-64de-54a1181bff68-dd81ccf0" class="footer-block">
-            <div class="title-small">Resources</div>
-            <a href="https://stonks-bot.gitbook.io/stonks-bot-manual" class="footer-link">User guide</a>
-            <a href="https://stonks-bot.gitbook.io/stonks-bot-manual/getting-started" class="footer-link">Getting Started</a>
-            <a href="https://stonks-bot.gitbook.io/stonks-bot-manual/sniper-mode" class="footer-link">Sniper mode</a>
-            <a href="https://stonks-bot.gitbook.io/stonks-bot-manual/trade-monitor" class="footer-link">Trade Monitor</a>
-            <a href="https://stonks-bot.gitbook.io/stonks-bot-manual/buying-jettons" class="footer-link">Buying Jettons</a>
-            <a href="https://stonks-bot.gitbook.io/stonks-bot-manual/referrals" class="footer-link">Referrals</a>
-          </div>
-          <div id="w-node-_360ff96d-e146-0150-64de-54a1181bff77-dd81ccf0" class="footer-block">
-            <div class="title-small">About</div>
-            <a href="#" class="footer-link">Terms &amp; Conditions</a>
-            <a href="#" class="footer-link">Privacy policy</a>
-            <div class="footer-social-block">
-              <a href="https://x.com/tonstonks" class="footer-social-link w-inline-block"><img loading="lazy" src="https://uploads-ssl.webflow.com/66a218e2f88f7900c37729bc/66a9e9d8cd463fc8103ca32f_twitterSVG.svg" alt=""></a>
-              <a href="https://t.me/stonksonton" class="footer-social-link w-inline-block"><img loading="lazy" src="https://uploads-ssl.webflow.com/66a218e2f88f7900c37729bc/66a9ed3a42a57ae74e80214f_telegramSVG.svg" alt=""></a>
-              <a href="https://discord.com/invite/z4JNrtX2ja" class="footer-social-link w-inline-block"><img loading="lazy" src="https://uploads-ssl.webflow.com/66a218e2f88f7900c37729bc/66a9ebe6e198997ec1e6ce33_discordSVG.svg" alt=""></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-divider"></div>
-      <div class="footer-copy"><img loading="lazy" src="images/basedOnTon.svg" alt="">
-        <div class="footer-copy-txt">Copyright © 2024 STONKS LABS <br>License Number : 44542<br>Registration Number :  DSO-FZCO-42364 Dubai</div>
-      </div>
-      <div class="fotter-disclamier">Disclaimer: Nothing on this site is investment advice. All information is for informational purposes only. You should not construe any such information or other material as legal, tax, investment, financial, or other advice. Nothing contained on our site constitutes a solicitation, recommendation, endorsement, or offer by STONKS LABS or any third party service provider to buy or sell any assets, digital coins and tokens, securities or other financial instruments in this or in in any other jurisdiction in which such solicitation or offer would be unlawful under the securities laws of such jurisdiction. Please view <a href="#" target="_blank" class="link">Terms of use </a>for more information.</div>
-    </div>
-  </section>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=66d43c16c2286b9bdd81ccdc" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -542,6 +645,32 @@ a:active {
   <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.23/bundled/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+  <script>
+async function fetchUpdates() {
+  try {
+    const response = await fetch('https://app.stonks.cash/api/mass-dms');
+    if (!response.ok) {
+      throw new Error('Error connecting to the API');
+    }
+    const data = await response.json();
+    // Znalezienie elementu z id="stonks-api-news" i aktualizacja jego zawartości
+    const stonksNewsElement = document.getElementById('stonks-api-news');
+    if (stonksNewsElement) {
+      data.forEach((item) => {
+        const messageElement = stonksNewsElement.querySelector('.message-api-news');
+        const imgElement = stonksNewsElement.querySelector('.img-stonks-api');
+        // Wypełnianie elementów danymi z API
+        messageElement.innerHTML = item.msgText.replace(/\n/g, '<br>');
+        imgElement.src = item.img;
+      });
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    document.getElementById('stonks-api-news').innerHTML = '<p>Error loading messages.</p>';
+  }
+}
+fetchUpdates();
+</script>
   <script>
 function setTrackHeights() {
   $(".section-height").each(function (index) {
@@ -552,6 +681,18 @@ function setTrackHeights() {
 setTrackHeights();
 window.addEventListener("resize", function () {
   setTrackHeights();
+});
+/// MENU
+let lastScrollTop = 0;
+const navbar = document.querySelector('.navigation');
+window.addEventListener('scroll', () => {
+  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  if (currentScroll > lastScrollTop) {
+    navbar.style.top = '-80px';
+  } else {
+    navbar.style.top = '0px';
+  }
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
 });
 //cursor
 var cursor = $('.cursor'),
