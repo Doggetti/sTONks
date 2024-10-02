@@ -1130,25 +1130,6 @@
   transform: rotate(20deg);
 }
 
-.news-rev {
-  justify-content: flex-start;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  position: absolute;
-  inset: 50% 0% 0% 50%;
-  overflow: visible;
-  translate: -50% -50%;
-}
-
-.head-news {
-  width: 100%;
-  padding-left: 5%;
-  position: static;
-  inset: 0% 0% auto;
-}
-
 .body-news {
   background-color: #1a1a1a;
   font-family: Oswald, sans-serif;
@@ -1175,60 +1156,6 @@
   position: absolute;
   right: 15%;
   transform: translate(20%)rotateX(20deg)rotateY(0)rotateZ(0)skew(10deg);
-}
-
-.news-txt-bottom {
-  background-color: #07acff;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  display: flex;
-  position: absolute;
-  inset: auto auto 10%;
-  overflow: hidden;
-}
-
-.text-block {
-  color: #000;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  border: 1px #fff;
-  padding: 2px 0 2px 5px;
-  font-size: 1.5vw;
-  font-weight: 400;
-  line-height: 100%;
-  position: relative;
-}
-
-.text-block.color-blue {
-  color: #fff;
-  border-style: none;
-  border-color: #07acff #07acff #fff;
-  padding-left: 0;
-  padding-right: 0;
-  font-size: 1.5vw;
-  font-weight: 500;
-}
-
-.div-block {
-  background-image: url('../images/arrow-right-logo.svg');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 2vw;
-  height: 2vh;
-  position: relative;
-}
-
-.link-blue-news {
-  cursor: pointer;
-  border: 1px #ff3434;
-  flex-flow: row;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  text-decoration: none;
-  display: flex;
 }
 
 .line-date-news {
@@ -1947,7 +1874,7 @@
 
   .logo-greyscale {
     opacity: 1;
-    width: 15%;
+    width: 12%;
   }
 
   .txt-start {
@@ -2984,7 +2911,8 @@
   }
 
   .logo-greyscale {
-    width: 15%;
+    width: 26%;
+    margin-bottom: 10px;
   }
 
   .txt-start {
