@@ -403,7 +403,7 @@
 <!-- HERO -->
 <section class="hero" style="padding-top:60px">
   <div class="hero-left">
-    <div class="hero-eyebrow"><span class="dot"></span> Mainnet · 2,170 projects live</div>
+    <div class="hero-eyebrow"><span class="dot"></span> Mainnet · <span id="hero-count">2,170</span> projects live</div>
     <h1 class="hero-title display">
       Build,<br/>
       <span class="grad">Ship & Tokenize</span><br/>
@@ -505,7 +505,7 @@
         <div class="stat-bar"><i style="--w:90%"></i></div>
       </div>
       <div class="stat reveal">
-        <div class="stat-num"><span data-count="2170">0</span></div>
+        <div class="stat-num"><span id="stats-count" data-count="2170">0</span></div>
         <div class="stat-label">projects launched</div>
         <div class="stat-bar"><i style="--w:78%"></i></div>
       </div>
@@ -776,7 +776,7 @@
         <a href="https://stonks-bot.gitbook.io/stonks-bot-manual" target="_blank" rel="noopener" class="btn-lg btn-ghost">Read the docs</a>
       </div>
       <div class="meta">
-        <span><b>2,170</b> projects launched</span>
+        <span><b id="finale-count">2,170</b> projects launched</span>
         <span><b>12,000+</b> monthly traders</span>
         <span><b>41,300</b> TON liquidity</span>
         <span><b>160K</b> TON dividends</span>
@@ -966,10 +966,28 @@ async function fetchStonksPumpTop(){
   }
   return null;
 }
+function updateDeployCount(total){
+  if(!Number.isFinite(total) || total <= 0) return;
+  const fmt = total.toLocaleString('en-US');
+  const eb = document.getElementById('hero-count');
+  if(eb) eb.textContent = fmt;
+  const fn = document.getElementById('finale-count');
+  if(fn) fn.textContent = fmt;
+  const sc = document.getElementById('stats-count');
+  if(sc){
+    sc.dataset.count = String(total);
+    // If the scroll-triggered counter already fired, re-animate to the new target.
+    if(sc.dataset.done){
+      sc.dataset.done = '';
+      animateCount(sc, total, sc.dataset.suffix||'');
+    }
+  }
+}
 (async ()=>{
   try{
     const body = await fetchStonksPumpTop();
     if(!body){ console.warn('[ticker] no response — static fallback'); return; }
+    if(body && typeof body.totalCount === 'number') updateDeployCount(body.totalCount);
     const src = Array.isArray(body) ? body : (body.items || body.data || []);
     const items = src
       .filter(t=>t && t.symbol && t.ca && typeof t.mcap==='number' && t.mcap>0 && t.mcap<1e10)
