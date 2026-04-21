@@ -81,10 +81,6 @@
   
   /* ---------- TICKER TAPE ---------- */
   .ticker{position:relative;border-bottom:1px solid var(--line);background:rgba(7,10,20,0.6);overflow:hidden;height:38px;display:flex;align-items:center;margin-top:72px}
-  .ticker-badge{position:absolute;left:16px;top:50%;transform:translateY(-50%);display:none;align-items:center;gap:6px;padding:3px 10px 3px 8px;border-radius:100px;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.35);font-family:'JetBrains Mono';font-size:10px;letter-spacing:0.08em;color:#4ade80;z-index:3;pointer-events:none}
-  .ticker-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;animation:pulse 2s infinite}
-  .ticker.live .ticker-badge{display:inline-flex}
-  .ticker.live .ticker-track{padding-left:190px}
   .ticker-track{display:flex;gap:48px;white-space:nowrap;animation:scrollX 60s linear infinite;padding-left:48px}
   .ticker:hover .ticker-track{animation-play-state:paused}
   @keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -392,7 +388,6 @@
 </nav>
 
 <div class="ticker">
-  <span class="ticker-badge">STONKS.PUMP · TOP MC</span>
   <div class="ticker-track" id="ticker"></div>
 </div>
 
@@ -978,7 +973,6 @@ async function fetchStonksPumpTop(){
     tk.innerHTML = html + html;
     console.log('[ticker] ✓ Stonks.pump top mcap — '+items.length+' tokens:',
       items.map(t=>t.symbol+' ($'+t.mcap.toFixed(0)+')').join(', '));
-    document.querySelector('.ticker')?.classList.add('live');
   }catch(e){ console.warn('[ticker] fetch failed — static fallback:', e); }
 })();
 
