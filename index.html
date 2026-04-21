@@ -191,6 +191,9 @@
   .buy-row .arrow{color:var(--green);flex-shrink:0}
   .buy-row .side{color:var(--green);font-weight:600;letter-spacing:0.04em;flex-shrink:0}
   .buy-row .amt{color:var(--green);font-weight:700;text-shadow:0 0 10px rgba(34,211,169,0.35);flex-shrink:0}
+  .buy-row.sell .arrow{color:var(--red)}
+  .buy-row.sell .side{color:var(--red)}
+  .buy-row.sell .amt{color:var(--red);text-shadow:0 0 10px rgba(239,68,68,0.35)}
   .buy-row .px{color:var(--text-mute);font-size:11px;flex-shrink:0}
   .buy-row .who{color:var(--text-dim);font-size:11px;overflow:hidden;text-overflow:ellipsis}
   @keyframes buyIn{to{opacity:1;transform:translateY(0)}}
@@ -219,9 +222,15 @@
   .flow-step p{font-size:14px;color:var(--text-dim);line-height:1.55;position:relative;z-index:1}
   .flow-step .tag{margin-top:16px;display:inline-flex;gap:6px;flex-wrap:wrap}
   .flow-step .tag span{padding:3px 8px;font-size:10px;font-family:'JetBrains Mono';color:var(--text-mute);background:rgba(62,184,255,0.05);border:1px solid var(--line);border-radius:6px}
+  .flow-step .tag span.c-cyan{color:var(--cyan-hi);background:rgba(62,184,255,0.08);border-color:rgba(62,184,255,0.28)}
+  .flow-step .tag span.c-violet{color:var(--violet-hi);background:rgba(124,92,255,0.1);border-color:rgba(124,92,255,0.3)}
+  .flow-step .tag span.c-green{color:var(--green);background:rgba(34,211,169,0.08);border-color:rgba(34,211,169,0.28)}
+  .flow-step .tag span.c-amber{color:var(--amber);background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.28)}
+  .flow-step .tag span.c-pink{color:#F472B6;background:rgba(244,114,182,0.08);border-color:rgba(244,114,182,0.28)}
+  .flow-step .tag span.c-red{color:var(--red);background:rgba(239,68,68,0.08);border-color:rgba(239,68,68,0.28)}
+  .flow-step .tag span.any{color:var(--cyan-hi);background:linear-gradient(90deg,rgba(62,184,255,0.14),rgba(124,92,255,0.14));border-color:rgba(62,184,255,0.35);font-weight:500}
   
-  .flow-arrow{position:absolute;top:50%;right:-14px;transform:translateY(-50%);color:var(--cyan);opacity:0.5;z-index:5}
-  .flow-step:nth-child(4) .flow-arrow{display:none}
+  .flow-arrow{display:none}
   
   /* ---------- STATS ---------- */
   .stats-wrap{padding:60px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(62,184,255,0.02),transparent)}
@@ -563,7 +572,7 @@
     </p>
     <div class="hero-cta">
       <a href="https://stonkslabs.com" target="_blank" rel="noopener" class="btn-lg btn-primary">Launch app <span class="arrow">→</span></a>
-      <a href="#ecosystem" class="btn-lg btn-ghost">Explore ecosystem</a>
+      <a href="#trade" class="btn-lg btn-ghost">Explore ecosystem</a>
     </div>
     <div class="hero-meta">
       <span><b id="hero-tvl">41,300</b> TON liquidity</span>
@@ -589,7 +598,7 @@
 <section id="ecosystem">
   <div class="container">
     <div class="section-head reveal">
-      <div class="section-eyebrow">// THE LOOP</div>
+      <div class="section-eyebrow">// THE BUILDPAD</div>
       <h2 class="section-title">From idea to revenue<br/><span class="grad">fully on-chain.</span></h2>
       <p class="section-sub">Stonks closes the loop between building software and trading it. No deploys to wire up, no Telegram-mod cope, no LARP — just an honest pipeline from commit to candle.</p>
     </div>
@@ -600,9 +609,9 @@
         <div class="flow-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
-        <h3>Build with AI</h3>
-        <p>Web apps, APIs, Telegram & Discord bots, landing pages, mobile apps. Agentic pipelines write the code, you review the diffs.</p>
-        <div class="tag"><span>Opus 4.7</span><span>agents</span><span>git</span></div>
+        <h3>Build</h3>
+        <p>Agentic pipelines write the code — and when a diff needs a human touch, you can jump in and tweak it by hand. Review, edit, ship.</p>
+        <div class="tag"><span class="c-violet">Claude</span><span class="c-green">GPT</span><span class="c-cyan">Gemini</span><span class="c-pink">Grok</span><span class="any">+ any LLM you want</span><span class="c-amber">Agents</span><span class="c-red">Git</span><span class="c-cyan">Telegram Bot</span><span class="c-violet">Discord Bot</span><span class="c-pink">X Bot</span><span class="c-green">Backend</span><span class="c-amber">API</span><span class="c-violet">Landing Pages</span><span class="c-cyan">Mobile Apps</span></div>
         <div class="flow-arrow">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </div>
@@ -613,8 +622,8 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg>
         </div>
         <h3>Run on Stonks</h3>
-        <p>One-click deploy to managed infra. Encrypted secrets vault, instant logs, autoscaling. Zero ops, zero YAML.</p>
-        <div class="tag"><span>vault</span><span>autoscale</span><span>logs</span></div>
+        <p>One-click deploy to our managed infra — or bring your own. VPS, bare metal, Telegram Cloud, LLM APIs. Encrypted secrets vault, instant logs, autoscaling. Zero ops, zero YAML.</p>
+        <div class="tag"><span class="c-cyan">Managed Infra</span><span class="c-violet">VPS</span><span class="c-amber">Bare Metal</span><span class="c-cyan">Telegram Cloud</span><span class="c-pink">LLM APIs</span><span class="c-green">Vault</span><span class="c-violet">Autoscale</span><span class="c-green">Logs</span></div>
         <div class="flow-arrow">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </div>
@@ -624,9 +633,9 @@
         <div class="flow-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M8 10h6a2 2 0 1 1 0 4H8M8 14h7"/></svg>
         </div>
-        <h3>Launch a token</h3>
-        <p>Fairlaunch, presale, bonding curve or a fully custom tokenomic. Or skip tokens entirely and accept payments.</p>
-        <div class="tag"><span>fairlaunch</span><span>bonding</span><span>presale</span></div>
+        <h3>Launch</h3>
+        <p>Fairlaunch, presale, bonding curve or a fully custom tokenomic. Or skip tokens entirely and accept crypto payments.</p>
+        <div class="tag"><span class="c-cyan">Bonding Curves</span><span class="c-violet">Raise</span><span class="c-green">Fairlaunch</span><span class="c-amber">Revshare</span><span class="c-red">Anti-Sniper</span><span class="c-pink">Burn Mechanic</span><span class="c-cyan">Crypto Payment API</span></div>
         <div class="flow-arrow">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </div>
@@ -636,9 +645,9 @@
         <div class="flow-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3>DAO + Oracle AI</h3>
+        <h3>Roundtable</h3>
         <p>Holders steer the roadmap on-chain. The Oracle AI watches every vote and enforces execution against the repo.</p>
-        <div class="tag"><span>DAO</span><span>oracle</span><span>onchain</span></div>
+        <div class="tag"><span class="c-violet">DAO</span><span class="c-cyan">Oracle</span><span class="c-green">On-chain Voting</span></div>
       </div>
     </div>
   </div>
@@ -1376,24 +1385,29 @@ function startBuyFeed(){
 
   let price = 0.0021;
   let clock = new Date();
+  let tradeNum = 0;
   const MAX_ROWS = 24;
+  const BUY_ONLY_UNTIL = 10;
 
   function tick(){
+    tradeNum++;
     // walk forward 1–4s
     clock = new Date(clock.getTime() + 800 + Math.random()*3000);
     // slight upward drift with noise
     price *= 1 + (Math.random()*0.022 - 0.006);
     const useTon = Math.random() < 0.55;
     const amtVal = useTon ? (50 + Math.random()*2800) : (150 + Math.random()*9000);
-    const amt = '+' + fmtNum(amtVal) + (useTon ? ' TON' : ' USDT');
+    const isSell = tradeNum > BUY_ONLY_UNTIL && Math.random() < 0.22; // first 10 = buys only, then ~22% sells
+    const sign = isSell ? '-' : '+';
+    const amt = sign + fmtNum(amtVal) + (useTon ? ' TON' : ' USDT');
     const who = (Math.random()<0.5?'EQ':'UQ') + rand(4) + '…' + rand(4);
 
     const row = document.createElement('div');
-    row.className = 'buy-row';
+    row.className = 'buy-row' + (isSell ? ' sell' : '');
     row.innerHTML =
       `<span class="ts">${fmtTs(clock)}</span>`+
-      `<span class="arrow">›</span>`+
-      `<span class="side">BUY</span>`+
+      `<span class="arrow">${isSell?'‹':'›'}</span>`+
+      `<span class="side">${isSell?'SELL':'BUY'}</span>`+
       `<span class="amt">${amt}</span>`+
       `<span class="px">@ ${price.toFixed(4)}</span>`+
       `<span class="who">${who}</span>`;
