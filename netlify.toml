@@ -3,3 +3,12 @@
   to = "https://ts-data.stonks.cash/api/:splat"
   status = 200
   force = true
+
+# Edge cache for the proxied API — 1 call to origin per minute, regardless of traffic.
+# Cache-Control is what the browser / any downstream CDN sees;
+# Netlify-CDN-Cache-Control is what Netlify's own edge uses (can differ from public cache).
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "public, max-age=60"
+    Netlify-CDN-Cache-Control = "public, s-maxage=60, stale-while-revalidate=30"
