@@ -417,8 +417,8 @@
       <a href="#ecosystem" class="btn-lg btn-ghost">Explore ecosystem</a>
     </div>
     <div class="hero-meta">
-      <span><b>41,300</b> TON liquidity</span>
-      <span><b>160K</b> TON dividends paid</span>
+      <span><b id="hero-tvl">41,300</b> TON liquidity</span>
+      <span><b id="hero-rewards">160K</b> TON dividends paid</span>
       <span><b>12K</b> MAU</span>
     </div>
   </div>
@@ -510,12 +510,12 @@
         <div class="stat-bar"><i style="--w:78%"></i></div>
       </div>
       <div class="stat reveal">
-        <div class="stat-num"><span data-count="41300">0</span><span class="suffix"> TON</span></div>
+        <div class="stat-num"><span id="stats-tvl" data-count="41300">0</span><span class="suffix"> TON</span></div>
         <div class="stat-label">ecosystem liquidity</div>
         <div class="stat-bar"><i style="--w:65%"></i></div>
       </div>
       <div class="stat reveal">
-        <div class="stat-num"><span data-count="160000">0</span><span class="suffix"> TON</span></div>
+        <div class="stat-num"><span id="stats-rewards" data-count="160000">0</span><span class="suffix"> TON</span></div>
         <div class="stat-label">dividends paid out</div>
         <div class="stat-bar"><i style="--w:82%"></i></div>
       </div>
@@ -778,8 +778,8 @@
       <div class="meta">
         <span><b id="finale-count">2,170</b> projects launched</span>
         <span><b>12,000+</b> monthly traders</span>
-        <span><b>41,300</b> TON liquidity</span>
-        <span><b>160K</b> TON dividends</span>
+        <span><b id="finale-tvl">41,300</b> TON liquidity</span>
+        <span><b id="finale-rewards">160K</b> TON dividends</span>
       </div>
     </div>
   </div>
@@ -983,6 +983,63 @@ function updateDeployCount(total){
     }
   }
 }
+
+/* ---------- ECOSYSTEM STATS (tvl + distributed rewards) ---------- */
+const ECO_CACHE_KEY = 'stonks_eco_stats_v1';
+const ECO_CACHE_TTL = 60 * 1000;
+function readEcoCache(){
+  try{
+    const raw = localStorage.getItem(ECO_CACHE_KEY);
+    if(!raw) return null;
+    const { t, body } = JSON.parse(raw);
+    if(!t || !body || Date.now() - t > ECO_CACHE_TTL) return null;
+    return body;
+  }catch(_){ return null; }
+}
+function writeEcoCache(body){
+  try{ localStorage.setItem(ECO_CACHE_KEY, JSON.stringify({ t: Date.now(), body })); }catch(_){}
+}
+async function fetchEcoStats(){
+  const cached = readEcoCache();
+  if(cached) return cached;
+  const path = '/api/ton/rewardsdistributed';
+  const urls = [path, 'https://ts-data.stonks.cash' + path];
+  for (const u of urls){
+    try{
+      const r = await fetch(u);
+      if(r.ok){
+        const body = await r.json();
+        writeEcoCache(body);
+        return body;
+      }
+    }catch(_){}
+  }
+  return null;
+}
+function setEcoValue(ids, value){
+  if(!Number.isFinite(value) || value <= 0) return;
+  const fmt = value.toLocaleString('en-US');
+  const el = id => document.getElementById(id);
+  if(el(ids.hero)) el(ids.hero).textContent = fmt;
+  if(el(ids.finale)) el(ids.finale).textContent = fmt;
+  const sc = el(ids.stats);
+  if(sc){
+    sc.dataset.count = String(value);
+    if(sc.dataset.done){
+      sc.dataset.done = '';
+      animateCount(sc, value, sc.dataset.suffix||'');
+    }
+  }
+}
+(async ()=>{
+  const body = await fetchEcoStats();
+  if(!body){ console.warn('[eco-stats] no response — hardcoded fallback'); return; }
+  const tvl = Math.round(Number(body.tvl));
+  const rewards = Math.round(Number(body.totalDistributedRewards));
+  setEcoValue({hero:'hero-tvl', finale:'finale-tvl', stats:'stats-tvl'}, tvl);
+  setEcoValue({hero:'hero-rewards', finale:'finale-rewards', stats:'stats-rewards'}, rewards);
+  console.log('[eco-stats] ✓ tvl='+tvl+' TON · rewards='+rewards+' TON');
+})();
 (async ()=>{
   try{
     const body = await fetchStonksPumpTop();
