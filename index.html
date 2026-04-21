@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Stonks — Build. Launch. Tokenize.</title>
-<link rel="icon" type="image/svg+xml" href="stonks-txt-logo.svg" />
+<link rel="icon" type="image/png" href="stonkslog-tab.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -246,6 +246,9 @@
   .bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(200px,auto);gap:18px}
   .bento-card{position:relative;background:linear-gradient(180deg,rgba(17,26,46,0.8),rgba(14,21,39,0.8));border:1px solid var(--line);border-radius:18px;padding:28px;overflow:hidden;transition:all .3s}
   .bento-card:hover{border-color:var(--line-hi);transform:translateY(-3px)}
+  .bento-open{position:absolute;top:20px;right:20px;z-index:6;display:inline-flex;align-items:center;justify-content:center;gap:6px;width:34px;height:34px;border-radius:10px;background:rgba(62,184,255,0.08);border:1px solid rgba(62,184,255,0.28);color:var(--cyan-hi);transition:all .2s ease;font-size:13px}
+  .bento-open:hover{background:rgba(62,184,255,0.16);border-color:rgba(62,184,255,0.5);color:#fff;transform:translate(2px,-2px)}
+  .bento-open svg{width:14px;height:14px}
   .bento-card .label{font-family:'JetBrains Mono';font-size:11px;color:var(--cyan);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px}
   .bento-card h3{font-family:'Space Grotesk';font-size:24px;font-weight:600;margin-bottom:10px;letter-spacing:-0.01em}
   .bento-card p{font-size:14px;color:var(--text-dim);line-height:1.55;max-width:420px}
@@ -256,9 +259,9 @@
   .b-tokenomics{grid-column:span 2}
   .b-ai{grid-column:span 2}
   .b-dao{grid-column:span 2}
-  .b-tracking{grid-column:span 2}
-  .b-instant{grid-column:span 2}
-  .b-infra{grid-column:span 2}
+  .b-tracking{grid-column:span 3;grid-row:span 2;min-height:440px;display:flex;flex-direction:column}
+  .b-instant{grid-column:span 3}
+  .b-infra{grid-column:span 3}
   
   /* Trading Terminal screenshot frame */
   .tt-shot{display:block;margin-top:24px;border-radius:14px;overflow:hidden;background:linear-gradient(180deg,rgba(11,15,27,0.9),rgba(7,10,20,0.9));border:1px solid var(--line);box-shadow:0 30px 80px -30px rgba(62,184,255,0.35),0 10px 30px -15px rgba(0,0,0,0.7),inset 0 1px 0 rgba(255,255,255,0.05);position:relative;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s ease,box-shadow .35s ease}
@@ -272,8 +275,25 @@
   .tt-shot-url .tt-shot-url-tail{color:var(--cyan-hi)}
   .tt-shot-live{margin-left:auto;display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.22);color:var(--green);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em}
   .tt-shot-frame{position:relative;overflow:hidden;aspect-ratio:16/8.3;background:#070a14}
-  .tt-shot-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
-  .tt-shot:hover .tt-shot-frame img{transform:scale(1.03)}
+  .tt-shot-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 1.2s cubic-bezier(.2,.8,.2,1),opacity .35s ease}
+  .tt-shot-frame img.tt-img{position:absolute;inset:0;opacity:0;pointer-events:none}
+  .tt-shot-frame img.tt-img.active{opacity:1;pointer-events:auto;position:relative}
+  .tt-shot:hover .tt-shot-frame img.active{transform:scale(1.03)}
+  /* browser-bar tabs inside the screenshot */
+  .tt-tabs{display:inline-flex;gap:4px;margin-left:8px;padding:2px;border-radius:8px;background:rgba(7,10,20,0.5);border:1px solid var(--line)}
+  .tt-tab{padding:4px 10px;font-size:10.5px;font-family:'JetBrains Mono';color:var(--text-mute);border-radius:6px;background:transparent;border:0;cursor:pointer;letter-spacing:0.04em;text-transform:uppercase;transition:all .2s}
+  .tt-tab:hover{color:var(--text)}
+  .tt-tab.active{background:rgba(62,184,255,0.1);color:var(--cyan-hi);box-shadow:inset 0 0 0 1px rgba(62,184,255,0.25)}
+  /* feature pill row under the screenshot */
+  .tt-features{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
+  .tt-features span{padding:4px 10px;font-size:11px;font-family:'JetBrains Mono';color:var(--text-mute);background:rgba(62,184,255,0.04);border:1px solid var(--line);border-radius:100px;letter-spacing:0.01em;transition:transform .2s,background .2s}
+  .tt-features span:hover{transform:translateY(-1px)}
+  .tt-features span.c-cyan{color:var(--cyan-hi);background:rgba(62,184,255,0.08);border-color:rgba(62,184,255,0.28)}
+  .tt-features span.c-violet{color:var(--violet-hi);background:rgba(124,92,255,0.1);border-color:rgba(124,92,255,0.3)}
+  .tt-features span.c-green{color:var(--green);background:rgba(34,211,169,0.08);border-color:rgba(34,211,169,0.28)}
+  .tt-features span.c-amber{color:var(--amber);background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.28)}
+  .tt-features span.c-pink{color:#F472B6;background:rgba(244,114,182,0.08);border-color:rgba(244,114,182,0.28)}
+  .tt-features span.c-red{color:var(--red);background:rgba(239,68,68,0.08);border-color:rgba(239,68,68,0.28)}
   .tt-shot-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 110%,rgba(62,184,255,0.18),transparent 55%),linear-gradient(180deg,transparent 70%,rgba(7,10,20,0.55))}
   @media (max-width: 900px){
     .tt-shot-frame{aspect-ratio:16/10}
@@ -299,6 +319,18 @@
   .tg-cta svg{width:16px;height:16px}
   .tg-handle{display:block;color:var(--text-mute);font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.03em;margin-top:-10px;position:relative;z-index:1}
   .tg-handle span{color:var(--cyan-hi)}
+
+  /* Gembot card — reuses tg-phone frame with different aspect ratio + two CTA buttons */
+  .gem-phone{aspect-ratio:667/1200;max-width:320px}
+  .gem-phone .tg-phone-screen img{object-position:center}
+  .gem-wrap::before{background:radial-gradient(ellipse at center,rgba(124,92,255,0.3),transparent 65%) !important}
+  .gem-ctas{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .gem-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:100px;font-weight:600;font-size:13px;letter-spacing:0.01em;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+  .gem-btn svg{width:15px;height:15px}
+  .gem-btn.primary{background:linear-gradient(135deg,#7C5CFF,#5B3FE8);color:#fff;box-shadow:0 10px 28px -6px rgba(124,92,255,0.55),inset 0 1px 0 rgba(255,255,255,0.25)}
+  .gem-btn.primary:hover{transform:translateY(-1px);box-shadow:0 14px 34px -6px rgba(124,92,255,0.75),inset 0 1px 0 rgba(255,255,255,0.3)}
+  .gem-btn.secondary{background:rgba(62,184,255,0.08);color:var(--cyan-hi);border:1px solid rgba(62,184,255,0.3)}
+  .gem-btn.secondary:hover{transform:translateY(-1px);background:rgba(62,184,255,0.14);border-color:var(--cyan)}
   @media (max-width: 1100px){
     .tg-phone{max-width:240px}
   }
@@ -421,6 +453,7 @@
   .infra .b svg{width:20px;height:20px}
   .infra .b .lbl{font-size:10px;font-family:'JetBrains Mono';color:var(--text-mute);text-align:center;letter-spacing:0.02em;line-height:1.2}
   .infra .b.live::after{content:"";position:absolute;top:6px;right:6px;width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 1.5s infinite}
+  .infra .b.soon::after{content:"";position:absolute;top:6px;right:6px;width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 6px var(--amber);animation:pulse 1.5s infinite}
   .infra .b.c-cyan{border-color:rgba(62,184,255,0.28);background:rgba(62,184,255,0.05)}
   .infra .b.c-cyan svg{color:var(--cyan-hi)}
   .infra .b.c-cyan .lbl{color:var(--cyan-hi)}
@@ -554,7 +587,7 @@
       <a href="https://stonks-bot.gitbook.io/stonks-bot-manual" target="_blank" rel="noopener">Docs</a>
     </div>
     <div class="nav-cta">
-      <a href="https://t.me/stonkstrade" target="_blank" rel="noopener" class="pill pill-ghost">Telegram</a>
+      <a href="https://t.me/stonks_sniper_bot" target="_blank" rel="noopener" class="pill pill-ghost">Telegram Trading</a>
       <a href="https://stonkslabs.com" target="_blank" rel="noopener" class="pill pill-primary">Launch app →</a>
     </div>
   </div>
@@ -710,23 +743,43 @@
     <div class="bento">
       <!-- Trading Terminal -->
       <div class="bento-card b-trading reveal">
+        <a class="bento-open" href="https://stonkslabs.com/trade/ton" target="_blank" rel="noopener" aria-label="Open Trading Terminal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
         <div class="label">Trading Terminal</div>
         <h3>One terminal for everything you trade.</h3>
         <p>Multi-wallets, sniper bot, charts, limit orders, wallet tracking. Sub-100ms execution, TradingView charts, on-chain fills.</p>
         <div class="visual">
-          <a class="tt-shot" href="https://stonkslabs.com/trade/ton" target="_blank" rel="noopener">
+          <div class="tt-shot" id="ttShot">
             <div class="tt-shot-bar">
               <span class="tt-dot r"></span>
               <span class="tt-dot y"></span>
               <span class="tt-dot g"></span>
-              <span class="tt-shot-url">stonkslabs.com/trade/<span class="tt-shot-url-tail">ton</span></span>
+              <span class="tt-shot-url">stonkslabs.com/trade/<span class="tt-shot-url-tail" id="ttUrlTail">ton</span></span>
+              <div class="tt-tabs" role="tablist">
+                <button class="tt-tab active" type="button" data-tt="chart">Chart</button>
+                <button class="tt-tab" type="button" data-tt="tokens">Tokens</button>
+              </div>
               <span class="tt-shot-live"><span class="dot-live"></span>live</span>
             </div>
             <div class="tt-shot-frame">
-              <img src="chart-screen.png" alt="Stonks trading terminal — live price chart, order book, buy / sell panel" loading="lazy" />
+              <img class="tt-img active" data-img="chart" src="chart-screen.png" alt="Stonks trading terminal — live price chart, order book, buy / sell panel" loading="lazy" />
+              <img class="tt-img" data-img="tokens" src="tokens-view-screen.png" alt="Stonks token explorer — live feed of new tokens, mcap, holders, CA checks" loading="lazy" />
               <span class="tt-shot-glow"></span>
             </div>
-          </a>
+          </div>
+          <div class="tt-features">
+            <span class="c-cyan">Charts</span>
+            <span class="c-violet">Limit Orders</span>
+            <span class="c-green">Multi-Wallet</span>
+            <span class="c-amber">On-chain Analytics</span>
+            <span class="c-pink">CA Check</span>
+            <span class="c-cyan">Holders Check</span>
+            <span class="c-violet">Portfolio Manager</span>
+            <span class="c-red">Sniper Bot</span>
+            <span class="c-green">Sub-100ms Execution</span>
+            <span class="c-amber">Wallet Tracking</span>
+            <span class="c-pink">Copy Trades</span>
+            <span class="c-cyan">PnL</span>
+          </div>
         </div>
       </div>
 
@@ -754,6 +807,7 @@
 
       <!-- Tokenomics -->
       <div class="bento-card b-tokenomics reveal">
+        <a class="bento-open" href="https://stonkslabs.com/launch/ton" target="_blank" rel="noopener" aria-label="Open Launch Engine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
         <div class="label">Launch Engine</div>
         <h3>Bonding curves, presales, dividends, fairlaunches.</h3>
         <p>From meme coin to operating business — the whole spectrum.</p>
@@ -830,6 +884,7 @@
       
       <!-- AI commits -->
       <div class="bento-card b-ai reveal">
+        <a class="bento-open" href="https://stonkslabs.com/build" target="_blank" rel="noopener" aria-label="Open Build Agent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
         <div class="label">Agentic Engine</div>
         <h3>Agents wired into your repo.</h3>
         <p>An AI agent wired into your repo, with diff review, run-and-deploy, and an encrypted vault for secrets.</p>
@@ -878,6 +933,7 @@
       
       <!-- DAO -->
       <div class="bento-card b-dao reveal">
+        <a class="bento-open" href="https://stonkslabs.com/cto" target="_blank" rel="noopener" aria-label="Open CTO Projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
         <div class="label">Governance</div>
         <h3>DAO with an Oracle that won't sleep on votes.</h3>
         <p>Holders propose, holders vote, the Oracle AI enforces — checking every code change against the executed roadmap.</p>
@@ -958,13 +1014,28 @@
       
       <!-- Wallet tracking -->
       <div class="bento-card b-tracking reveal">
-        <div class="label">Wallet Tracking</div>
-        <h3>See what whales eat for breakfast.</h3>
-        <div class="wt">
-          <div class="row"><span class="l">UQA…7f3b</span><span class="r g">+ 1,240 STONKS</span></div>
-          <div class="row"><span class="l">UQB…91ee</span><span class="r r">– 820 PEPE</span></div>
-          <div class="row"><span class="l">UQC…d04a</span><span class="r g">+ 14.2 TON</span></div>
-          <div class="row"><span class="l">UQD…22aa</span><span class="r g">+ 3,100 ARN</span></div>
+        <div class="label">Telegram Alerts &amp; Analytics</div>
+        <h3>Stonks Gem Bot · Stonks New Pairs.</h3>
+        <p>No gatekeeping — every launch is fair. Alpha delivered straight to your Telegram.</p>
+        <div class="tg-wrap gem-wrap">
+          <div class="tg-phone gem-phone">
+            <span class="tg-phone-side s-vol-u"></span>
+            <span class="tg-phone-side s-vol-d"></span>
+            <span class="tg-phone-side s-power"></span>
+            <div class="tg-phone-screen">
+              <img src="stonksgembot.png" alt="Stonks Gem Bot — curated early-gem alerts inside Telegram" loading="lazy" />
+            </div>
+          </div>
+          <div class="gem-ctas">
+            <a class="gem-btn primary" href="https://t.me/stonks_gem_bot" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.05 2.6 2.4 10.16c-1.34.52-1.33 1.27-.24 1.6l5.04 1.57 11.67-7.36c.55-.34 1.05-.15.64.22l-9.45 8.54h-.01l.01.01-.35 5.2c.52 0 .75-.24 1.04-.52l2.5-2.43 5.2 3.84c.96.53 1.65.26 1.89-.89l3.42-16.13c.35-1.4-.53-2.04-1.46-1.61z"/></svg>
+              Stonks Gem Bot
+            </a>
+            <a class="gem-btn secondary" href="https://t.me/stonks_new_deploys" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.05 2.6 2.4 10.16c-1.34.52-1.33 1.27-.24 1.6l5.04 1.57 11.67-7.36c.55-.34 1.05-.15.64.22l-9.45 8.54h-.01l.01.01-.35 5.2c.52 0 .75-.24 1.04-.52l2.5-2.43 5.2 3.84c.96.53 1.65.26 1.89-.89l3.42-16.13c.35-1.4-.53-2.04-1.46-1.61z"/></svg>
+              Stonks New Pairs
+            </a>
+          </div>
         </div>
       </div>
       
@@ -988,7 +1059,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="7" rx="2"/><rect x="2" y="14" width="20" height="7" rx="2"/><line x1="6" y1="6.5" x2="6.01" y2="6.5"/><line x1="6" y1="17.5" x2="6.01" y2="17.5"/></svg>
             <span class="lbl">VPS</span>
           </div>
-          <div class="b c-amber live" title="Bare Metal">
+          <div class="b c-amber soon" title="Bare Metal">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg>
             <span class="lbl">Bare Metal</span>
           </div>
@@ -1000,11 +1071,11 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.04 15.29 8.65 19c.52 0 .75-.22 1.02-.49l2.45-2.33 5.07 3.71c.93.51 1.6.24 1.85-.86l3.35-15.7c.3-1.37-.5-1.91-1.41-1.58L1.2 8.75C-.16 9.28-.14 10.04.96 10.37l5.22 1.63 12.12-7.64c.57-.37 1.09-.17.66.2L9.04 15.29z"/></svg>
             <span class="lbl">Telegram Bots</span>
           </div>
-          <div class="b c-violet live" title="Discord Bots">
+          <div class="b c-violet soon" title="Discord Bots">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.8 19.8 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.3 18.3 0 0 0-5.487 0 12.5 12.5 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.7 19.7 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.08.08 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.08.08 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.363 1.225 1.993a.076.076 0 0 0 .084.028 19.8 19.8 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.06.06 0 0 0-.031-.03zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.42 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.955 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.086-2.157-2.42 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.419-2.157 2.419z"/></svg>
             <span class="lbl">Discord Bots</span>
           </div>
-          <div class="b c-pink live" title="X Bots">
+          <div class="b c-pink soon" title="X Bots">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             <span class="lbl">X Bots</span>
           </div>
@@ -1020,8 +1091,8 @@
     <div class="transp">
       <div class="reveal">
         <div class="section-eyebrow">// TRANSPARENCY</div>
-        <h2 class="section-title">Token bound to repo.<br/><span class="grad">No more LARPs.</span></h2>
-        <p class="section-sub">Every Stonks token is cryptographically tied to its project's repository. Holders and traders watch real progress land in real-time — not screenshots, not promises.</p>
+        <h2 class="section-title"><span class="grad">Real RWA.</span><br/>No trust required.</h2>
+        <p class="section-sub">Every Stonks token is cryptographically tied to its project's repository — no more LARPs. Holders and traders watch real progress land in real-time, without having to trust the creators on their word. Even for closed-source projects, users can follow development live — without any insight into the actual code if the dev chooses to ship closed-source — thanks to AI audits and the public on-chain link between the repo and the token.</p>
         
         <div class="check-list">
           <div class="it">
@@ -1029,8 +1100,8 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div>
-              <h4>Live commit feed</h4>
-              <p>Every push and deploy is broadcast to the token page. Devs ship in public.</p>
+              <h4>Real RWA connection</h4>
+              <p>The token and its tokenomics are programmatically bound to the project and to each other — and that binding is publicly verifiable both on-chain and in the code by anyone.</p>
             </div>
           </div>
           <div class="it">
@@ -1038,8 +1109,8 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div>
-              <h4>Verified deploys</h4>
-              <p>Build hashes match the running infra. The Oracle confirms before traders see a green check.</p>
+              <h4>Always safe tokenomics</h4>
+              <p>Supply, fees and curves are locked on-chain at launch. No hidden mints, no dev unlocks, no rug levers.</p>
             </div>
           </div>
           <div class="it">
@@ -1047,8 +1118,8 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div>
-              <h4>Roadmap on-chain</h4>
-              <p>Voted milestones are written to the contract. Skip them, lose the token's verified status.</p>
+              <h4>AI Oracle</h4>
+              <p>The Oracle audits every commit, deploy and milestone against the executed roadmap — even for closed-source projects — before the token keeps its verified status.</p>
             </div>
           </div>
         </div>
@@ -1058,7 +1129,7 @@
         <div class="repo-card">
           <div class="repo-av"></div>
           <div class="repo-info">
-            <div class="name">d17210553-a11y / <b>norugsir</b></div>
+            <div class="name">d17210553-a11y / <b>runneridea</b></div>
             <div class="meta">main · 142 commits · verified · 0xA8…7f3b</div>
           </div>
           <div class="repo-badge">● live</div>
@@ -1115,33 +1186,35 @@
       <p>The complete on-chain ecosystem to build, deploy, tokenize and trade — all from one place.</p>
     </div>
     <div class="foot-col">
-      <h5>Product</h5>
+      <h5>Trade</h5>
       <a href="https://stonkslabs.com/trade/ton" target="_blank" rel="noopener">Trading Terminal</a>
-      <a href="https://stonkslabs.com/build" target="_blank" rel="noopener">Build Agent</a>
-      <a href="https://stonkslabs.com/launch/ton" target="_blank" rel="noopener">Token Launcher</a>
-      <a href="https://stonkslabs.com/cto" target="_blank" rel="noopener">CTO Projects</a>
+      <a href="https://t.me/stonks_sniper_bot" target="_blank" rel="noopener">Trade Bot</a>
+      <a href="https://t.me/stonks_gem_bot" target="_blank" rel="noopener">Gem Bot</a>
+      <a href="https://t.me/stonks_new_deploys" target="_blank" rel="noopener">New Pairs Bot</a>
     </div>
     <div class="foot-col">
-      <h5>Develop</h5>
-      <a href="https://stonks-bot.gitbook.io/stonks-bot-manual" target="_blank" rel="noopener">Docs</a>
+      <h5>Build</h5>
+      <a href="https://stonkslabs.com/build" target="_blank" rel="noopener">Build Agent</a>
+      <a href="https://stonkslabs.com/launch/ton" target="_blank" rel="noopener">Token Launcher</a>
+      <a href="https://stonkslabs.com/cto" target="_blank" rel="noopener">Roundtable</a>
       <a href="https://stonkslabs.com/build/projects" target="_blank" rel="noopener">Projects</a>
-      <a href="https://stonkslabs.com/ticket" target="_blank" rel="noopener">Submit a ticket</a>
     </div>
     <div class="foot-col">
       <h5>Community</h5>
-      <a href="https://t.me/stonkstrade" target="_blank" rel="noopener">Telegram</a>
-      <a href="https://t.me/stonks_sniper_bot" target="_blank" rel="noopener">Sniper Bot</a>
+      <a href="https://t.me/stonksonton" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://x.com/stonksbots" target="_blank" rel="noopener">X</a>
+      <a href="https://stonks-bot.gitbook.io/stonks-bot-manual" target="_blank" rel="noopener">Docs</a>
+      <a href="https://stonkslabs.com/ticket" target="_blank" rel="noopener">Submit a ticket</a>
     </div>
     <div class="foot-col">
       <h5>Legal</h5>
-      <a href="#">Terms</a>
-      <a href="#">Privacy</a>
-      <a href="#">Risk disclosure</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/risk.html">Risk disclosure</a>
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© 2026 stonkslabs.com — built on TON</span>
-    <span>v4.7 · all systems operational</span>
+    <span>© 2026 stonkslabs.com</span>
+    <span>v1</span>
   </div>
 </footer>
 
@@ -1585,6 +1658,24 @@ buildChart();
       const key = tab.dataset.le;
       tabs.forEach(t => t.classList.toggle('active', t === tab));
       views.forEach(v => v.classList.toggle('active', v.dataset.view === key));
+    });
+  });
+})();
+
+/* ---------- TRADING TERMINAL TABS (Chart / Tokens) ---------- */
+(function ttTabs(){
+  const shot = document.getElementById('ttShot');
+  if (!shot) return;
+  const tabs = shot.querySelectorAll('.tt-tab');
+  const imgs = shot.querySelectorAll('.tt-img');
+  const tail = document.getElementById('ttUrlTail');
+  const urls = { chart: 'ton', tokens: 'tokens' };
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const key = tab.dataset.tt;
+      tabs.forEach(t => t.classList.toggle('active', t === tab));
+      imgs.forEach(i => i.classList.toggle('active', i.dataset.img === key));
+      if (tail && urls[key]) tail.textContent = urls[key];
     });
   });
 })();

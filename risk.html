@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Risk Disclosure — Stonks</title>
+<link rel="icon" type="image/png" href="stonkslog-tab.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#070a14;
+    --bg-1:#0a0f1d;
+    --line:rgba(62,184,255,0.12);
+    --line-hi:rgba(62,184,255,0.28);
+    --text:#e8eef9;
+    --text-dim:#8a98b4;
+    --text-mute:#5a6788;
+    --cyan:#3eb8ff;
+    --cyan-hi:#7dd3ff;
+    --violet:#7c5cff;
+    --amber:#f59e0b;
+    --red:#ef4444;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg-0);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.65}
+  a{color:var(--cyan-hi);text-decoration:none;border-bottom:1px solid rgba(125,211,255,0.3);transition:border-color .2s}
+  a:hover{border-color:var(--cyan-hi)}
+  .bg-noise{position:fixed;inset:0;pointer-events:none;opacity:0.025;z-index:0;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+  .orb-1{top:-180px;right:-140px;width:480px;height:480px;background:radial-gradient(circle,rgba(245,158,11,0.18),transparent 70%)}
+  .orb-2{bottom:-220px;left:-160px;width:520px;height:520px;background:radial-gradient(circle,rgba(239,68,68,0.14),transparent 70%)}
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,15,29,0.65);border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:1000px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between}
+  .logo img{height:26px;display:block}
+  .back{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-dim);letter-spacing:0.05em;text-transform:uppercase;border:none;padding:0}
+  .back:hover{color:var(--cyan-hi);border:none}
+  main{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:80px 32px 120px}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--amber);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:20px}
+  h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(42px,6vw,64px);font-weight:700;letter-spacing:-0.02em;line-height:1.02;margin-bottom:16px}
+  h1 .grad{background:linear-gradient(135deg,var(--amber),var(--red));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:18px;color:var(--text-dim);max-width:620px;margin-bottom:28px}
+  .meta{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-mute);letter-spacing:0.05em;padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:48px}
+  article h2{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;letter-spacing:-0.01em;margin:48px 0 14px;color:var(--text)}
+  article h2::before{content:'// ';color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:0.7em;letter-spacing:0.05em}
+  article p{color:var(--text-dim);margin-bottom:16px;font-size:15.5px}
+  article p strong{color:var(--text);font-weight:600}
+  article ul{list-style:none;margin:16px 0 20px;padding:0}
+  article ul li{position:relative;padding-left:24px;margin-bottom:10px;color:var(--text-dim);font-size:15.5px}
+  article ul li::before{content:'›';position:absolute;left:0;top:0;color:var(--amber);font-family:'JetBrains Mono',monospace;font-weight:700}
+  .callout{border:1px solid rgba(245,158,11,0.28);border-radius:14px;padding:22px 26px;margin:32px 0;background:linear-gradient(180deg,rgba(245,158,11,0.05),rgba(239,68,68,0.04))}
+  .callout p{margin:0;color:var(--text)}
+  .callout .tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+  .hard{border:1px solid var(--line-hi);border-radius:14px;padding:24px 26px;margin:40px 0 0;background:rgba(255,255,255,0.02)}
+  .hard h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:10px;color:var(--text)}
+  .hard p{color:var(--text-dim);font-size:14.5px;margin:0}
+  footer{text-align:center;padding:40px 32px;color:var(--text-mute);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.05em;border-top:1px solid var(--line);position:relative;z-index:1}
+  @media (max-width:600px){main{padding:60px 22px 100px} h1{font-size:38px} .lede{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="bg-noise"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><img src="stonks-txt-logo.svg" alt="Stonks" /></a>
+    <a href="/" class="back">← back to stonks</a>
+  </div>
+</nav>
+
+<main>
+  <div class="eyebrow">// LEGAL / RISK DISCLOSURE</div>
+  <h1><span class="grad">Risk Disclosure.</span></h1>
+  <p class="lede">Nothing on Stonks is financial advice. Crypto is volatile, self-custodial, and unforgiving. You are responsible for every decision you make on-chain.</p>
+  <div class="meta">Last updated: 2026-04-22 · Version 1.0</div>
+
+  <article>
+    <div class="callout">
+      <div class="tag">READ THIS FIRST</div>
+      <p>Stonks is a decentralized, non-custodial, permissionless on-chain toolset. We do not provide investment advice, portfolio management, brokerage, or fiduciary services. Any token, trade, launch, or strategy you see on this platform is information — not a recommendation. Invest only what you can afford to lose — in full.</p>
+    </div>
+
+    <h2>Not financial advice</h2>
+    <p>Nothing published on Stonks — including this site, Telegram bots, in-app notifications, AI-generated commentary, charts, stats, token pages, or launch pads — constitutes financial, investment, legal, tax, or accounting advice. We are not your broker, not your adviser, and not your fiduciary. If you need advice, consult a licensed professional in your jurisdiction.</p>
+
+    <h2>Decentralized &amp; non-custodial</h2>
+    <p>Stonks is a set of open-source tools and interfaces that interact with public blockchains. <strong>We never hold your assets.</strong> Your funds stay in your self-custody wallet at all times. That also means:</p>
+    <ul>
+      <li>We cannot freeze, seize, or reverse a transaction.</li>
+      <li>We cannot recover lost seed phrases or mistakenly sent funds.</li>
+      <li>We cannot refund a trade, a failed launch, or a rug pull.</li>
+      <li>Smart contracts execute automatically — there is no "customer service" for on-chain activity.</li>
+    </ul>
+
+    <h2>Market risk</h2>
+    <p>Crypto markets are extremely volatile. Prices can move 50%+ in a single day. Many tokens go to zero. Liquidity can disappear. Past performance is not indicative of future results. <strong>You can and may lose everything you put in.</strong></p>
+
+    <h2>Token launch risk</h2>
+    <p>Stonks lets anyone launch a token. We do not vet, audit, endorse, or guarantee the viability, intentions, or legitimacy of any project that uses the platform. Even projects with "fair launch," bonding-curve, or revenue-share mechanics can fail, be abandoned, or turn out to be malicious. Treat every token as risky by default. DYOR (do your own research).</p>
+
+    <h2>AI output</h2>
+    <p>Stonks uses AI agents for code generation, audits, and commentary. AI output can be wrong, incomplete, biased, or hallucinated. Never act on AI output as if it were verified truth. Always cross-check against source code, on-chain data, and independent review.</p>
+
+    <h2>Smart-contract risk</h2>
+    <p>Smart contracts can contain bugs, exploits, or economic design flaws — even after audits. Interacting with any contract (ours or a third party's) carries the risk of total loss of funds due to exploits, failed transactions, MEV, front-running, or mis-configured parameters.</p>
+
+    <h2>Network &amp; infrastructure risk</h2>
+    <p>Blockchains, RPC endpoints, bridges, wallets, and third-party services can fail, go offline, get hacked, or behave unexpectedly. Transactions may be delayed, dropped, or executed at unexpected prices during periods of congestion.</p>
+
+    <h2>Regulatory risk</h2>
+    <p>Crypto regulation varies by jurisdiction and is evolving quickly. It is your responsibility to determine whether your use of Stonks, the tokens you hold, the trades you make, and the launches you participate in are legal where you live. If crypto activity is restricted in your jurisdiction, do not use this platform.</p>
+
+    <h2>No guarantees</h2>
+    <ul>
+      <li>No guarantee of returns, profit, or preservation of capital.</li>
+      <li>No guarantee that any specific token will list, graduate, or retain value.</li>
+      <li>No guarantee of uptime, bug-free operation, or data accuracy.</li>
+      <li>No guarantee that features shown today will exist tomorrow.</li>
+    </ul>
+
+    <h2>Your responsibility</h2>
+    <p>By using Stonks you acknowledge that <strong>you alone are responsible for your decisions</strong> — what tokens you buy, what projects you launch, what strategies you run, what wallets you use, and what risks you accept. Everyone invests at their own risk.</p>
+
+    <div class="hard">
+      <h3>In one sentence.</h3>
+      <p>Stonks is a decentralized toolkit, not an investment service — nothing here is financial advice, crypto is volatile, and you are fully responsible for every decision you make.</p>
+    </div>
+  </article>
+</main>
+
+<footer>© 2026 stonkslabs.com</footer>
+</body>
+</html>
