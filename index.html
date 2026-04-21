@@ -441,7 +441,7 @@
   <div class="container">
     <div class="section-head reveal">
       <div class="section-eyebrow">// THE LOOP</div>
-      <h2 class="section-title">From idea to revenue<br/>— <span class="grad">fully on-chain.</span></h2>
+      <h2 class="section-title">From idea to revenue<br/><span class="grad">fully on-chain.</span></h2>
       <p class="section-sub">Stonks closes the loop between building software and trading it. No deploys to wire up, no Telegram-mod cope, no LARP — just an honest pipeline from commit to candle.</p>
     </div>
     
@@ -528,7 +528,7 @@
   <div class="container">
     <div class="section-head reveal">
       <div class="section-eyebrow">// PRODUCT</div>
-      <h2 class="section-title">Every tool a degen-grade<br/>operator <span class="grad">actually needs.</span></h2>
+      <h2 class="section-title">Every tool a trader and dev<br/><span class="grad">actually needs.</span></h2>
       <p class="section-sub">A trading terminal, a tokenomics designer, an AI build agent, an on-chain DAO. Bundled — because switching tabs is how alpha dies.</p>
     </div>
     
@@ -542,15 +542,9 @@
           <div class="tt">
             <div class="tt-head">
               <div class="l">
-                <span class="sym">STONKS/TON</span>
-                <span class="px">$0.0814 <span style="opacity:.6">+12.4%</span></span>
+                <div class="sym">STONKS/TON</div>
               </div>
-              <div style="display:flex;gap:6px">
-                <span style="padding:3px 8px;border:1px solid var(--line);border-radius:5px;color:var(--text-mute);font-size:10px">1m</span>
-                <span style="padding:3px 8px;background:rgba(62,184,255,0.1);border:1px solid var(--line-hi);border-radius:5px;color:var(--cyan);font-size:10px">5m</span>
-                <span style="padding:3px 8px;border:1px solid var(--line);border-radius:5px;color:var(--text-mute);font-size:10px">1h</span>
-                <span style="padding:3px 8px;border:1px solid var(--line);border-radius:5px;color:var(--text-mute);font-size:10px">1d</span>
-              </div>
+              <div class="px">$0.0814 ▲ 12.4%</div>
             </div>
             <div class="tt-chart">
               <svg viewBox="0 0 600 160" preserveAspectRatio="none">
@@ -563,8 +557,8 @@
                 <line class="axis" x1="0" y1="40" x2="600" y2="40"/>
                 <line class="axis" x1="0" y1="80" x2="600" y2="80"/>
                 <line class="axis" x1="0" y1="120" x2="600" y2="120"/>
-                <path id="chartPath" class="ln" d=""/>
                 <path id="chartArea" class="area" d=""/>
+                <path id="chartPath" class="ln" d=""/>
                 <circle id="chartDot" class="pt" cx="0" cy="0" r="4"/>
               </svg>
             </div>
@@ -1158,7 +1152,7 @@ function buildChart(){
   }
   path.setAttribute('d', d);
   area.setAttribute('d', d + ` L${W},${H} L0,${H} Z`);
-  
+
   // stroke draw animation
   const len = path.getTotalLength();
   path.style.strokeDasharray = len;
@@ -1166,13 +1160,13 @@ function buildChart(){
   path.getBoundingClientRect();
   path.style.transition = 'stroke-dashoffset 2.4s ease-out';
   path.style.strokeDashoffset = 0;
-  
+
   // moving dot
   let t = 0;
   const last = pts[pts.length-1];
   dot.setAttribute('cx', last[0]);
   dot.setAttribute('cy', last[1]);
-  
+
   // small live ticks
   setInterval(()=>{
     t = (t+1)%pts.length;
