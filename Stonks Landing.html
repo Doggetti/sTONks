@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Stonks — Build. Launch. Tokenize.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ---------- TWEAKS ---------- */
+  /* The script below reads/writes this object */
+  
+  :root{
+    --bg-0:#070a14;
+    --bg-1:#0a0f1d;
+    --bg-2:#0e1527;
+    --card:#111a2e;
+    --card-hi:#152038;
+    --line:rgba(62,184,255,0.12);
+    --line-hi:rgba(62,184,255,0.28);
+    --text:#e8eef9;
+    --text-dim:#8a98b4;
+    --text-mute:#5a6788;
+    --cyan:#3eb8ff;
+    --cyan-hi:#7dd3ff;
+    --cyan-deep:#1a8fd8;
+    --violet:#7c5cff;
+    --violet-hi:#a48bff;
+    --green:#22c55e;
+    --red:#ef4444;
+    --amber:#f59e0b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg-0);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  
+  .display{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.02em;line-height:1.05}
+  .mono{font-family:'JetBrains Mono',monospace}
+  
+  /* ---------- BG GRADIENTS / ORBS ---------- */
+  .bg-stage{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.5}
+  .orb-1{width:600px;height:600px;background:radial-gradient(circle,rgba(62,184,255,0.45),transparent 70%);top:-200px;left:-100px;animation:float1 18s ease-in-out infinite}
+  .orb-2{width:500px;height:500px;background:radial-gradient(circle,rgba(124,92,255,0.35),transparent 70%);top:20%;right:-150px;animation:float2 22s ease-in-out infinite}
+  .orb-3{width:700px;height:700px;background:radial-gradient(circle,rgba(62,184,255,0.18),transparent 70%);top:60%;left:30%;animation:float3 26s ease-in-out infinite}
+  @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,60px)}}
+  @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,80px)}}
+  @keyframes float3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-100px,-40px) scale(1.1)}}
+  
+  .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      linear-gradient(rgba(62,184,255,0.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(62,184,255,0.04) 1px,transparent 1px);
+    background-size:60px 60px;
+    mask-image:radial-gradient(ellipse at 50% 30%,black 30%,transparent 75%);
+  }
+  .noise{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.025;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  
+  main{position:relative;z-index:2}
+  
+  /* ---------- NAV ---------- */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,15,29,0.6);border-bottom:1px solid var(--line);transition:all .3s}
+  .nav-inner{max-width:1400px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:40px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:0.02em;font-family:'Space Grotesk'}
+  .logo-mark{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,var(--cyan),var(--cyan-deep));display:grid;place-items:center;font-weight:700;color:#001225;font-size:14px;box-shadow:0 0 24px rgba(62,184,255,0.4)}
+  .nav-links{display:flex;gap:28px;font-size:14px;color:var(--text-dim)}
+  .nav-links a{transition:color .2s;position:relative}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{margin-left:auto;display:flex;gap:10px;align-items:center}
+  .pill{padding:8px 14px;border-radius:8px;font-size:13px;font-weight:500;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+  .pill-ghost{color:var(--text-dim);border:1px solid var(--line)}
+  .pill-ghost:hover{color:var(--text);border-color:var(--line-hi)}
+  .pill-primary{background:linear-gradient(180deg,var(--cyan-hi),var(--cyan));color:#001225;font-weight:600;box-shadow:0 4px 24px rgba(62,184,255,0.35),inset 0 1px 0 rgba(255,255,255,0.4)}
+  .pill-primary:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(62,184,255,0.5),inset 0 1px 0 rgba(255,255,255,0.4)}
+  
+  /* ---------- TICKER TAPE ---------- */
+  .ticker{position:relative;border-bottom:1px solid var(--line);background:rgba(7,10,20,0.6);overflow:hidden;height:38px;display:flex;align-items:center;margin-top:60px}
+  .ticker-track{display:flex;gap:48px;white-space:nowrap;animation:scrollX 60s linear infinite;padding-left:48px}
+  .ticker:hover .ticker-track{animation-play-state:paused}
+  @keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .tk{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono';font-size:12px}
+  .tk-name{color:var(--text)}
+  .tk-tic{color:var(--text-mute);font-size:10px}
+  .tk-px{color:var(--text-dim)}
+  .tk-up{color:var(--green)}
+  .tk-dn{color:var(--red)}
+  
+  /* ---------- HERO ---------- */
+  .hero{padding:100px 32px 80px;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:center;min-height:780px}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border-radius:100px;background:rgba(62,184,255,0.08);border:1px solid rgba(62,184,255,0.2);font-size:12px;color:var(--cyan-hi);font-family:'JetBrains Mono';margin-bottom:28px;animation:fadeUp .8s .1s both}
+  .hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+  
+  h1.hero-title{font-size:clamp(48px,6.5vw,84px);font-weight:600;animation:fadeUp .9s .2s both}
+  h1.hero-title .grad{background:linear-gradient(135deg,var(--cyan-hi) 0%,var(--cyan) 40%,var(--violet-hi) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1.hero-title .strike{position:relative;display:inline-block;color:var(--text-mute)}
+  h1.hero-title .strike::after{content:"";position:absolute;left:0;right:0;top:50%;height:4px;background:var(--red);transform:scaleX(0);transform-origin:left;animation:strike 1s 1.4s forwards}
+  @keyframes strike{to{transform:scaleX(1)}}
+  
+  .hero-sub{margin-top:28px;font-size:19px;color:var(--text-dim);max-width:560px;line-height:1.55;animation:fadeUp 1s .35s both}
+  .hero-sub b{color:var(--text);font-weight:500}
+  
+  .hero-cta{margin-top:40px;display:flex;gap:14px;align-items:center;animation:fadeUp 1s .5s both}
+  .btn-lg{padding:15px 24px;border-radius:12px;font-size:15px;font-weight:600;display:inline-flex;align-items:center;gap:10px;transition:all .25s}
+  .btn-primary{background:linear-gradient(180deg,var(--cyan-hi),var(--cyan));color:#001225;box-shadow:0 8px 32px rgba(62,184,255,0.35),inset 0 1px 0 rgba(255,255,255,0.5)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(62,184,255,0.5),inset 0 1px 0 rgba(255,255,255,0.5)}
+  .btn-ghost{border:1px solid var(--line-hi);color:var(--text)}
+  .btn-ghost:hover{background:rgba(62,184,255,0.06);border-color:var(--cyan)}
+  .arrow{transition:transform .25s}
+  .btn-lg:hover .arrow{transform:translateX(3px)}
+  
+  .hero-meta{margin-top:48px;display:flex;gap:32px;color:var(--text-mute);font-size:12px;font-family:'JetBrains Mono';animation:fadeUp 1.1s .65s both}
+  .hero-meta span b{color:var(--cyan);font-weight:500}
+  
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  
+  /* ---------- HERO TERMINAL ---------- */
+  .terminal{position:relative;background:linear-gradient(180deg,rgba(17,26,46,0.9),rgba(14,21,39,0.95));border:1px solid var(--line-hi);border-radius:18px;padding:0;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(62,184,255,0.04),0 0 80px rgba(62,184,255,0.08);animation:fadeUp 1.2s .3s both}
+  .term-bar{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line);background:rgba(7,10,20,0.5)}
+  .term-dot{width:11px;height:11px;border-radius:50%}
+  .term-dot.r{background:#ff5f57}.term-dot.y{background:#febc2e}.term-dot.g{background:#28c840}
+  .term-title{margin-left:14px;font-size:11px;color:var(--text-mute);font-family:'JetBrains Mono'}
+  .term-body{padding:22px;min-height:440px;font-family:'JetBrains Mono';font-size:13px;line-height:1.7}
+  .term-line{display:flex;gap:10px;opacity:0;animation:termIn .4s forwards}
+  .term-line .pfx{color:var(--cyan);width:14px;flex-shrink:0}
+  .term-line .pfx-vi{color:var(--violet)}
+  .term-line .pfx-gn{color:var(--green)}
+  .term-line .text{color:var(--text-dim)}
+  .term-line .text b{color:var(--text);font-weight:500}
+  .term-line .text .k{color:var(--cyan-hi)}
+  .term-line .text .v{color:var(--violet-hi)}
+  @keyframes termIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
+  
+  .term-card{margin:14px 0;padding:14px;background:rgba(62,184,255,0.04);border:1px solid var(--line);border-radius:10px;opacity:0;animation:termIn .5s forwards}
+  .term-card .cap{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:11px;color:var(--text-mute);text-transform:uppercase;letter-spacing:0.08em}
+  .term-card .cap .led{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.4s infinite;box-shadow:0 0 8px var(--green)}
+  .term-card .row{display:flex;justify-content:space-between;font-size:12px;padding:3px 0}
+  .term-card .row .l{color:var(--text-dim)}
+  .term-card .row .r{color:var(--text)}
+  .term-card .row .r.up{color:var(--green)}
+  
+  .progress{height:4px;background:rgba(62,184,255,0.1);border-radius:2px;margin-top:10px;overflow:hidden}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--cyan),var(--violet));border-radius:2px;width:0;animation:fill 3s .8s forwards ease-out}
+  @keyframes fill{to{width:78%}}
+  
+  .caret{display:inline-block;width:8px;height:14px;background:var(--cyan);margin-left:4px;animation:blink 1s steps(2) infinite;vertical-align:middle}
+  @keyframes blink{50%{opacity:0}}
+  
+  /* ---------- SECTION HEAD ---------- */
+  section{position:relative;padding:120px 32px}
+  .container{max-width:1400px;margin:0 auto}
+  .section-head{margin-bottom:72px;max-width:780px}
+  .section-eyebrow{display:inline-block;padding:5px 12px;font-size:11px;font-family:'JetBrains Mono';color:var(--cyan);background:rgba(62,184,255,0.08);border:1px solid rgba(62,184,255,0.18);border-radius:100px;margin-bottom:18px;text-transform:uppercase;letter-spacing:0.1em}
+  .section-title{font-size:clamp(34px,4.5vw,56px);font-weight:600;font-family:'Space Grotesk';letter-spacing:-0.02em;line-height:1.05}
+  .section-title .grad{background:linear-gradient(135deg,var(--cyan-hi),var(--violet-hi));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .section-sub{margin-top:20px;font-size:18px;color:var(--text-dim);line-height:1.55;max-width:640px}
+  
+  /* ---------- FLOW (4 STEPS) ---------- */
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative}
+  .flow-step{position:relative;padding:28px 24px;background:linear-gradient(180deg,rgba(17,26,46,0.7),rgba(14,21,39,0.7));border:1px solid var(--line);border-radius:16px;transition:all .35s;overflow:hidden}
+  .flow-step:hover{transform:translateY(-4px);border-color:var(--line-hi);box-shadow:0 20px 60px rgba(62,184,255,0.1)}
+  .flow-step::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(62,184,255,0.12),transparent 60%);opacity:0;transition:opacity .3s}
+  .flow-step:hover::before{opacity:1}
+  .flow-num{font-family:'JetBrains Mono';font-size:11px;color:var(--cyan);margin-bottom:18px}
+  .flow-icon{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,rgba(62,184,255,0.2),rgba(124,92,255,0.15));border:1px solid var(--line-hi);display:grid;place-items:center;margin-bottom:18px;color:var(--cyan-hi)}
+  .flow-step h3{font-family:'Space Grotesk';font-size:20px;font-weight:600;margin-bottom:10px}
+  .flow-step p{font-size:14px;color:var(--text-dim);line-height:1.55;position:relative;z-index:1}
+  .flow-step .tag{margin-top:16px;display:inline-flex;gap:6px;flex-wrap:wrap}
+  .flow-step .tag span{padding:3px 8px;font-size:10px;font-family:'JetBrains Mono';color:var(--text-mute);background:rgba(62,184,255,0.05);border:1px solid var(--line);border-radius:6px}
+  
+  .flow-arrow{position:absolute;top:50%;right:-14px;transform:translateY(-50%);color:var(--cyan);opacity:0.5;z-index:5}
+  .flow-step:nth-child(4) .flow-arrow{display:none}
+  
+  /* ---------- STATS ---------- */
+  .stats-wrap{padding:60px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(62,184,255,0.02),transparent)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+  .stat{text-align:left}
+  .stat-num{font-family:'Space Grotesk';font-size:clamp(40px,5vw,64px);font-weight:600;letter-spacing:-0.03em;background:linear-gradient(180deg,#fff,#7dd3ff);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+  .stat-num .suffix{font-size:0.5em;color:var(--cyan);-webkit-text-fill-color:var(--cyan)}
+  .stat-label{margin-top:10px;font-size:13px;color:var(--text-dim);font-family:'JetBrains Mono'}
+  .stat-bar{margin-top:14px;height:2px;background:rgba(62,184,255,0.08);border-radius:1px;overflow:hidden}
+  .stat-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--violet));width:0;transition:width 1.6s ease-out}
+  
+  /* ---------- FEATURES BENTO ---------- */
+  .bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(200px,auto);gap:18px}
+  .bento-card{position:relative;background:linear-gradient(180deg,rgba(17,26,46,0.8),rgba(14,21,39,0.8));border:1px solid var(--line);border-radius:18px;padding:28px;overflow:hidden;transition:all .3s}
+  .bento-card:hover{border-color:var(--line-hi);transform:translateY(-3px)}
+  .bento-card .label{font-family:'JetBrains Mono';font-size:11px;color:var(--cyan);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px}
+  .bento-card h3{font-family:'Space Grotesk';font-size:24px;font-weight:600;margin-bottom:10px;letter-spacing:-0.01em}
+  .bento-card p{font-size:14px;color:var(--text-dim);line-height:1.55;max-width:420px}
+  .bento-card .visual{margin-top:20px;position:relative}
+  
+  .b-trading{grid-column:span 4;grid-row:span 2;min-height:440px}
+  .b-tokenomics{grid-column:span 2;grid-row:span 2}
+  .b-ai{grid-column:span 3}
+  .b-dao{grid-column:span 3}
+  .b-tracking{grid-column:span 2}
+  .b-instant{grid-column:span 2}
+  .b-infra{grid-column:span 2}
+  
+  /* Trading Terminal mock */
+  .tt{margin-top:24px;background:rgba(7,10,20,0.7);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .tt-head{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);font-family:'JetBrains Mono';font-size:12px}
+  .tt-head .l{display:flex;align-items:center;gap:10px}
+  .tt-head .sym{color:var(--text);font-weight:600}
+  .tt-head .px{color:var(--green)}
+  .tt-chart{height:160px;position:relative;padding:14px}
+  .tt-chart svg{width:100%;height:100%;overflow:visible}
+  .tt-chart .axis{stroke:rgba(62,184,255,0.08);stroke-width:1}
+  .tt-chart .ln{fill:none;stroke:var(--cyan);stroke-width:2;filter:drop-shadow(0 0 6px rgba(62,184,255,0.6))}
+  .tt-chart .area{fill:url(#chgrad)}
+  .tt-chart .pt{fill:var(--cyan);filter:drop-shadow(0 0 4px var(--cyan))}
+  .tt-foot{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+  .tt-foot .col{padding:12px 16px;font-family:'JetBrains Mono';font-size:11px;border-right:1px solid var(--line)}
+  .tt-foot .col:last-child{border-right:none}
+  .tt-foot .col .k{color:var(--text-mute);display:block;margin-bottom:4px;text-transform:uppercase;font-size:10px;letter-spacing:0.06em}
+  .tt-foot .col .v{color:var(--text);font-size:13px}
+  
+  /* Tokenomics curve */
+  .curve{margin-top:20px;height:200px;position:relative;background:rgba(7,10,20,0.5);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .curve svg{width:100%;height:100%}
+  .curve .marker{position:absolute;font-family:'JetBrains Mono';font-size:10px;color:var(--text-mute)}
+  .tk-list{margin-top:18px;display:flex;flex-direction:column;gap:8px}
+  .tk-list .it{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:rgba(62,184,255,0.04);border:1px solid var(--line);border-radius:8px;font-family:'JetBrains Mono';font-size:11px}
+  .tk-list .it .l{color:var(--text-dim)}
+  .tk-list .it .r{color:var(--cyan)}
+  
+  /* AI commit feed */
+  .commits{margin-top:20px;display:flex;flex-direction:column;gap:10px}
+  .commit{display:flex;align-items:flex-start;gap:12px;padding:12px;background:rgba(7,10,20,0.5);border:1px solid var(--line);border-radius:10px;font-family:'JetBrains Mono';font-size:12px}
+  .commit .av{width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,var(--cyan),var(--violet));display:grid;place-items:center;font-size:10px;color:#001225;font-weight:700;flex-shrink:0}
+  .commit .body{flex:1;min-width:0}
+  .commit .hash{color:var(--cyan);font-size:11px;margin-bottom:2px}
+  .commit .msg{color:var(--text);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .commit .when{color:var(--text-mute);font-size:10px;margin-top:3px}
+  
+  /* DAO orb */
+  .dao-vis{margin-top:20px;height:180px;position:relative;display:grid;place-items:center}
+  .dao-core{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--violet-hi),var(--violet) 50%,#3a1d99 100%);box-shadow:0 0 60px rgba(124,92,255,0.5),inset 0 0 20px rgba(255,255,255,0.2);position:relative;animation:rotate 20s linear infinite}
+  .dao-orbit{position:absolute;border:1px dashed rgba(124,92,255,0.3);border-radius:50%}
+  .dao-orbit-1{width:160px;height:160px;animation:spin 20s linear infinite}
+  .dao-orbit-2{width:220px;height:220px;animation:spin 30s linear infinite reverse}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes rotate{to{transform:rotate(360deg)}}
+  .dao-node{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+  .dao-orbit-1 .dao-node{top:-7px;left:50%;margin-left:-7px}
+  .dao-orbit-2 .dao-node{top:-7px;left:50%;margin-left:-7px;background:var(--violet-hi);box-shadow:0 0 12px var(--violet-hi)}
+  .dao-orbit-2 .dao-node:nth-child(2){top:auto;bottom:-7px}
+  
+  /* Wallet/tracking */
+  .wt{margin-top:18px;display:flex;flex-direction:column;gap:6px;font-family:'JetBrains Mono';font-size:11px}
+  .wt .row{display:flex;justify-content:space-between;padding:7px 10px;background:rgba(7,10,20,0.4);border:1px solid var(--line);border-radius:6px}
+  .wt .row .l{color:var(--text-dim)}
+  .wt .row .r.g{color:var(--green)}
+  .wt .row .r.r{color:var(--red)}
+  
+  /* Instant validation big number */
+  .iv{margin-top:14px}
+  .iv .big{font-family:'Space Grotesk';font-size:64px;font-weight:600;background:linear-gradient(180deg,#fff,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+  .iv .lbl{font-family:'JetBrains Mono';font-size:11px;color:var(--text-mute);margin-top:6px;text-transform:uppercase;letter-spacing:0.08em}
+  
+  /* Infra mini */
+  .infra{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .infra .b{aspect-ratio:1;border:1px solid var(--line);border-radius:8px;display:grid;place-items:center;background:rgba(7,10,20,0.4);position:relative;overflow:hidden}
+  .infra .b svg{width:20px;height:20px;color:var(--cyan)}
+  .infra .b.live::after{content:"";position:absolute;top:6px;right:6px;width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 1.5s infinite}
+  
+  /* ---------- TRANSPARENCY SECTION ---------- */
+  .transp{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .transp-vis{position:relative;background:linear-gradient(180deg,rgba(17,26,46,0.7),rgba(14,21,39,0.7));border:1px solid var(--line);border-radius:18px;padding:28px;overflow:hidden}
+  .repo-card{display:flex;align-items:center;gap:14px;padding:14px;background:rgba(7,10,20,0.5);border:1px solid var(--line);border-radius:12px;margin-bottom:14px}
+  .repo-av{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--cyan),var(--violet));flex-shrink:0}
+  .repo-info{flex:1}
+  .repo-info .name{font-family:'JetBrains Mono';font-size:13px;color:var(--text)}
+  .repo-info .name b{color:var(--cyan)}
+  .repo-info .meta{font-family:'JetBrains Mono';font-size:10px;color:var(--text-mute);margin-top:3px}
+  .repo-badge{padding:4px 10px;background:rgba(34,197,94,0.1);color:var(--green);border:1px solid rgba(34,197,94,0.2);border-radius:100px;font-family:'JetBrains Mono';font-size:10px}
+  
+  .repo-tree{font-family:'JetBrains Mono';font-size:12px;background:rgba(7,10,20,0.5);border:1px solid var(--line);border-radius:10px;padding:14px;line-height:1.9}
+  .repo-tree .ln{display:flex;gap:10px;color:var(--text-dim)}
+  .repo-tree .ln .ic{color:var(--cyan);width:14px}
+  .repo-tree .ln .nm{color:var(--text)}
+  .repo-tree .ln .add{color:var(--green);margin-left:auto;font-size:10px}
+  .repo-tree .ln .mod{color:var(--amber);margin-left:auto;font-size:10px}
+  
+  .check-list{margin-top:32px;display:flex;flex-direction:column;gap:14px}
+  .check-list .it{display:flex;gap:14px;align-items:flex-start}
+  .check-list .ic{width:24px;height:24px;border-radius:7px;background:rgba(62,184,255,0.12);border:1px solid var(--line-hi);display:grid;place-items:center;color:var(--cyan);flex-shrink:0;margin-top:2px}
+  .check-list .it h4{font-family:'Space Grotesk';font-size:17px;font-weight:600;margin-bottom:4px}
+  .check-list .it p{font-size:14px;color:var(--text-dim);line-height:1.5}
+  
+  /* ---------- CTA FINALE ---------- */
+  .finale{position:relative;padding:140px 32px;text-align:center;overflow:hidden}
+  .finale::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(62,184,255,0.15),transparent 60%)}
+  .finale-inner{position:relative;max-width:900px;margin:0 auto}
+  .finale h2{font-family:'Space Grotesk';font-size:clamp(42px,6vw,72px);font-weight:600;letter-spacing:-0.02em;line-height:1.05}
+  .finale h2 .grad{background:linear-gradient(135deg,var(--cyan-hi),var(--violet-hi));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .finale p{margin-top:24px;font-size:19px;color:var(--text-dim);max-width:560px;margin-left:auto;margin-right:auto}
+  .finale .ctas{margin-top:40px;display:flex;gap:14px;justify-content:center}
+  .finale .meta{margin-top:48px;display:flex;justify-content:center;gap:32px;flex-wrap:wrap;color:var(--text-mute);font-family:'JetBrains Mono';font-size:12px}
+  .finale .meta span b{color:var(--cyan)}
+  
+  /* ---------- FOOTER ---------- */
+  footer{padding:60px 32px 40px;border-top:1px solid var(--line);background:rgba(7,10,20,0.6)}
+  .foot{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:48px}
+  .foot-col h5{font-family:'Space Grotesk';font-size:13px;font-weight:600;color:var(--text);margin-bottom:16px;text-transform:uppercase;letter-spacing:0.08em}
+  .foot-col a{display:block;font-size:14px;color:var(--text-dim);padding:5px 0;transition:color .2s}
+  .foot-col a:hover{color:var(--cyan)}
+  .foot-brand p{font-size:13px;color:var(--text-mute);margin-top:14px;max-width:320px;line-height:1.6}
+  .foot-bottom{max-width:1400px;margin:40px auto 0;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-family:'JetBrains Mono';font-size:11px;color:var(--text-mute)}
+  
+  /* ---------- TWEAKS PANEL ---------- */
+  .tweaks{position:fixed;bottom:24px;right:24px;z-index:100;background:rgba(14,21,39,0.95);backdrop-filter:blur(14px);border:1px solid var(--line-hi);border-radius:14px;padding:18px;width:280px;box-shadow:0 20px 60px rgba(0,0,0,0.6);display:none}
+  .tweaks.on{display:block}
+  .tweaks h4{font-family:'Space Grotesk';font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--cyan);margin-bottom:14px}
+  .tweak{margin-bottom:14px}
+  .tweak label{display:block;font-size:11px;color:var(--text-dim);font-family:'JetBrains Mono';margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em}
+  .tweak .opts{display:flex;gap:6px;flex-wrap:wrap}
+  .tweak .opt{padding:6px 10px;background:rgba(62,184,255,0.05);border:1px solid var(--line);border-radius:7px;font-size:11px;color:var(--text-dim);cursor:pointer;font-family:'JetBrains Mono'}
+  .tweak .opt.active{background:var(--cyan);color:#001225;border-color:var(--cyan);font-weight:600}
+  .tweak .swatches{display:flex;gap:8px}
+  .tweak .sw{width:28px;height:28px;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:all .2s}
+  .tweak .sw.active{border-color:#fff;transform:scale(1.1)}
+  
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  
+  /* Responsive */
+  @media (max-width:1100px){
+    .hero{grid-template-columns:1fr;gap:40px;padding-top:80px}
+    .flow{grid-template-columns:repeat(2,1fr)}
+    .flow-arrow{display:none !important}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .bento{grid-template-columns:repeat(2,1fr)}
+    .b-trading,.b-tokenomics,.b-ai,.b-dao,.b-tracking,.b-instant,.b-infra{grid-column:span 2;grid-row:auto;min-height:auto}
+    .transp{grid-template-columns:1fr;gap:40px}
+    .foot{grid-template-columns:1fr 1fr;gap:32px}
+    .nav-links{display:none}
+  }
+  @media (max-width:600px){
+    section{padding:80px 20px}
+    .hero{padding:80px 20px 40px}
+    .stats{grid-template-columns:1fr 1fr;gap:24px}
+    .bento{grid-template-columns:1fr}
+    .b-trading,.b-tokenomics,.b-ai,.b-dao,.b-tracking,.b-instant,.b-infra{grid-column:span 1}
+    .foot{grid-template-columns:1fr}
+    .finale .ctas{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-stage">
+  <div class="grid-bg"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+<div class="noise"></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">S</span>
+      STONKS
+    </a>
+    <div class="nav-links">
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#build">Build</a>
+      <a href="#trade">Trade</a>
+      <a href="#tokenize">Tokenize</a>
+      <a href="#docs">Docs</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="pill pill-ghost">Sign in</a>
+      <a href="#" class="pill pill-primary">Launch app →</a>
+    </div>
+  </div>
+</nav>
+
+<div class="ticker">
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:60px">
+  <div class="hero-left">
+    <div class="hero-eyebrow"><span class="dot"></span> Mainnet · 2,170 projects live</div>
+    <h1 class="hero-title display">
+      <span class="strike">Build,</span><br/>
+      <span class="grad">Ship & Tokenize</span><br/>
+      in one place.
+    </h1>
+    <p class="hero-sub">
+      The complete on-chain ecosystem. <b>Build</b> any software with AI agents, <b>deploy</b> on managed infrastructure, <b>tokenize</b> with bonding curves or fairlaunch — and reach <b>12,000+ active traders</b> from day one.
+    </p>
+    <div class="hero-cta">
+      <a href="#" class="btn-lg btn-primary">Launch app <span class="arrow">→</span></a>
+      <a href="#ecosystem" class="btn-lg btn-ghost">Explore ecosystem</a>
+    </div>
+    <div class="hero-meta">
+      <span><b>41,300</b> TON liquidity</span>
+      <span><b>160K</b> TON dividends paid</span>
+      <span><b>0</b> infra setup</span>
+    </div>
+  </div>
+  
+  <div class="hero-right">
+    <div class="terminal">
+      <div class="term-bar">
+        <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+        <span class="term-title">~/projects/rug — claude opus 4.7</span>
+      </div>
+      <div class="term-body" id="terminalBody">
+        <!-- filled by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM FLOW -->
+<section id="ecosystem">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">// THE LOOP</div>
+      <h2 class="section-title">From idea to liquid token<br/><span class="grad">in four moves.</span></h2>
+      <p class="section-sub">Stonks closes the loop between building software and trading it. No deploys to wire up, no Telegram-mod cope, no LARP — just an honest pipeline from commit to candle.</p>
+    </div>
+    
+    <div class="flow">
+      <div class="flow-step reveal">
+        <div class="flow-num">01 / BUILD</div>
+        <div class="flow-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Build with AI</h3>
+        <p>Web apps, APIs, Telegram & Discord bots, landing pages, mobile apps. Agentic pipelines write the code, you review the diffs.</p>
+        <div class="tag"><span>Opus 4.7</span><span>agents</span><span>git</span></div>
+        <div class="flow-arrow">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </div>
+      <div class="flow-step reveal">
+        <div class="flow-num">02 / DEPLOY</div>
+        <div class="flow-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg>
+        </div>
+        <h3>Run on Stonks</h3>
+        <p>One-click deploy to managed infra. Encrypted secrets vault, instant logs, autoscaling. Zero ops, zero YAML.</p>
+        <div class="tag"><span>vault</span><span>autoscale</span><span>logs</span></div>
+        <div class="flow-arrow">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </div>
+      <div class="flow-step reveal">
+        <div class="flow-num">03 / TOKENIZE</div>
+        <div class="flow-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M8 10h6a2 2 0 1 1 0 4H8M8 14h7"/></svg>
+        </div>
+        <h3>Launch a token</h3>
+        <p>Fairlaunch, presale, bonding curve or a fully custom tokenomic. Or skip tokens entirely and accept payments.</p>
+        <div class="tag"><span>fairlaunch</span><span>bonding</span><span>presale</span></div>
+        <div class="flow-arrow">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </div>
+      <div class="flow-step reveal">
+        <div class="flow-num">04 / GOVERN</div>
+        <div class="flow-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>DAO + Oracle AI</h3>
+        <p>Holders steer the roadmap on-chain. The Oracle AI watches every vote and enforces execution against the repo.</p>
+        <div class="tag"><span>DAO</span><span>oracle</span><span>onchain</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-wrap" style="padding:80px 32px">
+  <div class="container">
+    <div class="stats">
+      <div class="stat reveal">
+        <div class="stat-num"><span data-count="12000" data-suffix="+">0</span></div>
+        <div class="stat-label">monthly active users</div>
+        <div class="stat-bar"><i style="--w:90%"></i></div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num"><span data-count="2170">0</span></div>
+        <div class="stat-label">projects launched</div>
+        <div class="stat-bar"><i style="--w:78%"></i></div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num"><span data-count="41300">0</span><span class="suffix"> TON</span></div>
+        <div class="stat-label">ecosystem liquidity</div>
+        <div class="stat-bar"><i style="--w:65%"></i></div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num"><span data-count="160000">0</span><span class="suffix"> TON</span></div>
+        <div class="stat-label">dividends paid out</div>
+        <div class="stat-bar"><i style="--w:82%"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENTO FEATURES -->
+<section id="trade">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">// PRODUCT</div>
+      <h2 class="section-title">Every tool a degen-grade<br/>operator <span class="grad">actually needs.</span></h2>
+      <p class="section-sub">A trading terminal, a tokenomics designer, an AI build agent, an on-chain DAO. Bundled — because switching tabs is how alpha dies.</p>
+    </div>
+    
+    <div class="bento">
+      <!-- Trading Terminal -->
+      <div class="bento-card b-trading reveal">
+        <div class="label">Trading Terminal · Telegram bot</div>
+        <h3>One terminal for everything you trade.</h3>
+        <p>Multi-wallets, sniper bot, charts, limit orders, wallet tracking. Sub-100ms execution from web or Telegram — same engine, same fills.</p>
+        <div class="visual">
+          <div class="tt">
+            <div class="tt-head">
+              <div class="l">
+                <span class="sym">STONKS/TON</span>
+                <span class="px">$0.0814 <span style="opacity:.6">+12.4%</span></span>
+              </div>
+              <div style="display:flex;gap:6px">
+                <span style="padding:3px 8px;border:1px solid var(--line);border-radius:5px;color:var(--text-mute);font-size:10px">1m</span>
+                <span style="padding:3px 8px;background:rgba(62,184,255,0.1);border:1px solid var(--line-hi);border-radius:5px;color:var(--cyan);font-size:10px">5m</span>
+                <span style="padding:3px 8px;border:1px solid var(--line);border-radius:5px;color:var(--text-mute);font-size:10px">1h</span>
+                <span style="padding:3px 8px;border:1px solid var(--line);border-radius:5px;color:var(--text-mute);font-size:10px">1d</span>
+              </div>
+            </div>
+            <div class="tt-chart">
+              <svg viewBox="0 0 600 160" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="chgrad" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#3eb8ff" stop-opacity="0.4"/>
+                    <stop offset="100%" stop-color="#3eb8ff" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <line class="axis" x1="0" y1="40" x2="600" y2="40"/>
+                <line class="axis" x1="0" y1="80" x2="600" y2="80"/>
+                <line class="axis" x1="0" y1="120" x2="600" y2="120"/>
+                <path id="chartPath" class="ln" d=""/>
+                <path id="chartArea" class="area" d=""/>
+                <circle id="chartDot" class="pt" cx="0" cy="0" r="4"/>
+              </svg>
+            </div>
+            <div class="tt-foot">
+              <div class="col"><span class="k">Liq</span><span class="v">$2.41M</span></div>
+              <div class="col"><span class="k">24h Vol</span><span class="v">$847K</span></div>
+              <div class="col"><span class="k">Holders</span><span class="v">3,124</span></div>
+              <div class="col"><span class="k">MCap</span><span class="v">$8.14M</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tokenomics -->
+      <div class="bento-card b-tokenomics reveal">
+        <div class="label">Tokenomics Designer</div>
+        <h3>Bonding curves, fairlaunch, antisniper.</h3>
+        <p>Design your launch the way the project demands — meme coin or operating business.</p>
+        <div class="curve">
+          <svg viewBox="0 0 280 160" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="curvegrad" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%" stop-color="#3eb8ff"/>
+                <stop offset="100%" stop-color="#7c5cff"/>
+              </linearGradient>
+              <linearGradient id="curvefill" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#3eb8ff" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#7c5cff" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,150 Q70,140 130,100 T280,10 L280,160 L0,160 Z" fill="url(#curvefill)"/>
+            <path d="M0,150 Q70,140 130,100 T280,10" fill="none" stroke="url(#curvegrad)" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="130" cy="100" r="4" fill="#3eb8ff"/>
+            <circle cx="220" cy="40" r="4" fill="#7c5cff"/>
+          </svg>
+        </div>
+        <div class="tk-list">
+          <div class="it"><span class="l">Seed LP</span><span class="r">12 TON</span></div>
+          <div class="it"><span class="l">Tax / Rewards</span><span class="r">3% / 2%</span></div>
+          <div class="it"><span class="l">Antisniper</span><span class="r">enabled</span></div>
+        </div>
+      </div>
+      
+      <!-- AI commits -->
+      <div class="bento-card b-ai reveal">
+        <div class="label">AI Build Agent</div>
+        <h3>Ship features while you sleep.</h3>
+        <p>Claude Opus 4.7 wired into your repo, with diff review, run-and-deploy, and an encrypted vault for secrets.</p>
+        <div class="commits">
+          <div class="commit">
+            <div class="av">AI</div>
+            <div class="body">
+              <div class="hash">a8f2c91 · main</div>
+              <div class="msg">feat(api): add /v1/snipe rate-limit middleware</div>
+              <div class="when">writing… just now</div>
+            </div>
+          </div>
+          <div class="commit">
+            <div class="av">AI</div>
+            <div class="body">
+              <div class="hash">d1e7b03 · main</div>
+              <div class="msg">fix(bot): handle TON rpc 429 with exp backoff</div>
+              <div class="when">2m ago · deployed</div>
+            </div>
+          </div>
+          <div class="commit">
+            <div class="av">AI</div>
+            <div class="body">
+              <div class="hash">f4c901e · main</div>
+              <div class="msg">refactor(landing): hero copy + cta variant test</div>
+              <div class="when">14m ago · deployed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- DAO -->
+      <div class="bento-card b-dao reveal">
+        <div class="label">Governance</div>
+        <h3>DAO with an Oracle that won't sleep on votes.</h3>
+        <p>Holders propose, holders vote, the Oracle AI enforces — checking every code change against the executed roadmap.</p>
+        <div class="dao-vis">
+          <div class="dao-orbit dao-orbit-2"><div class="dao-node"></div><div class="dao-node"></div></div>
+          <div class="dao-orbit dao-orbit-1"><div class="dao-node"></div></div>
+          <div class="dao-core"></div>
+        </div>
+      </div>
+      
+      <!-- Wallet tracking -->
+      <div class="bento-card b-tracking reveal">
+        <div class="label">Wallet Tracking</div>
+        <h3>See what whales eat for breakfast.</h3>
+        <div class="wt">
+          <div class="row"><span class="l">UQA…7f3b</span><span class="r g">+ 1,240 STONKS</span></div>
+          <div class="row"><span class="l">UQB…91ee</span><span class="r r">– 820 PEPE</span></div>
+          <div class="row"><span class="l">UQC…d04a</span><span class="r g">+ 14.2 TON</span></div>
+          <div class="row"><span class="l">UQD…22aa</span><span class="r g">+ 3,100 ARN</span></div>
+        </div>
+      </div>
+      
+      <!-- Instant validation -->
+      <div class="bento-card b-instant reveal">
+        <div class="label">Distribution</div>
+        <h3>Instant audience.</h3>
+        <p>Every project ships into a marketplace already trafficked by traders.</p>
+        <div class="iv">
+          <div class="big" data-count="12000" data-suffix="+">0+</div>
+          <div class="lbl">monthly active traders</div>
+        </div>
+      </div>
+      
+      <!-- Infra -->
+      <div class="bento-card b-infra reveal">
+        <div class="label">Infrastructure</div>
+        <h3>Boring infra, on purpose.</h3>
+        <div class="infra">
+          <div class="b live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+          <div class="b live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+          <div class="b live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="b live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="b live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div>
+          <div class="b live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPARENCY -->
+<section id="tokenize">
+  <div class="container">
+    <div class="transp">
+      <div class="reveal">
+        <div class="section-eyebrow">// TRANSPARENCY</div>
+        <h2 class="section-title">Token bound to repo.<br/><span class="grad">No more LARPs.</span></h2>
+        <p class="section-sub">Every Stonks token is cryptographically tied to its project's repository. Holders and traders watch real progress land in real-time — not screenshots, not promises.</p>
+        
+        <div class="check-list">
+          <div class="it">
+            <div class="ic">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>Live commit feed</h4>
+              <p>Every push and deploy is broadcast to the token page. Devs ship in public.</p>
+            </div>
+          </div>
+          <div class="it">
+            <div class="ic">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>Verified deploys</h4>
+              <p>Build hashes match the running infra. The Oracle confirms before traders see a green check.</p>
+            </div>
+          </div>
+          <div class="it">
+            <div class="ic">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>Roadmap on-chain</h4>
+              <p>Voted milestones are written to the contract. Skip them, lose the token's verified status.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="transp-vis reveal">
+        <div class="repo-card">
+          <div class="repo-av"></div>
+          <div class="repo-info">
+            <div class="name">d17210553-a11y / <b>rug</b></div>
+            <div class="meta">main · 142 commits · verified · 0xA8…7f3b</div>
+          </div>
+          <div class="repo-badge">● live</div>
+        </div>
+        
+        <div class="repo-tree">
+          <div class="ln"><span class="ic">▸</span><span class="nm">contracts/</span></div>
+          <div class="ln" style="padding-left:20px"><span class="ic">▸</span><span class="nm">Token.fc</span><span class="add">+ verified</span></div>
+          <div class="ln" style="padding-left:20px"><span class="ic">▸</span><span class="nm">DAO.fc</span><span class="add">+ verified</span></div>
+          <div class="ln"><span class="ic">▸</span><span class="nm">app/</span></div>
+          <div class="ln" style="padding-left:20px"><span class="ic">▸</span><span class="nm">api.ts</span><span class="mod">~ deploying</span></div>
+          <div class="ln" style="padding-left:20px"><span class="ic">▸</span><span class="nm">bot.ts</span><span class="add">+ live</span></div>
+          <div class="ln"><span class="ic">▸</span><span class="nm">README.md</span></div>
+        </div>
+        
+        <div style="margin-top:14px;padding:14px;background:rgba(124,92,255,0.06);border:1px solid rgba(124,92,255,0.2);border-radius:10px;font-family:'JetBrains Mono';font-size:12px;color:var(--text-dim)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;color:var(--violet-hi)">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--violet);box-shadow:0 0 8px var(--violet);animation:pulse 1.5s infinite"></span>
+            <b style="color:var(--violet-hi)">Oracle AI</b> · auditing
+          </div>
+          checking commit a8f2c91 against milestone <span style="color:var(--cyan)">M3 — sniper bot v2</span>… ✓ matched
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINALE -->
+<section class="finale">
+  <div class="finale-inner">
+    <div class="reveal">
+      <h2>Everything an on-chain<br/>operator needs. <span class="grad">In one place.</span></h2>
+      <p>Build, deploy, tokenize, govern, trade. The full loop on a single platform that already has the audience.</p>
+      <div class="ctas">
+        <a href="#" class="btn-lg btn-primary">Launch app <span class="arrow">→</span></a>
+        <a href="#" class="btn-lg btn-ghost">Read the docs</a>
+      </div>
+      <div class="meta">
+        <span><b>2,170</b> projects launched</span>
+        <span><b>12,000+</b> monthly traders</span>
+        <span><b>41,300</b> TON liquidity</span>
+        <span><b>160K</b> TON dividends</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div class="foot-col foot-brand">
+      <div class="logo">
+        <span class="logo-mark">S</span>
+        STONKS
+      </div>
+      <p>The complete on-chain ecosystem to build, deploy, tokenize and trade — all from one place.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Product</h5>
+      <a href="#">Trading Terminal</a>
+      <a href="#">Build Agent</a>
+      <a href="#">Token Launcher</a>
+      <a href="#">DAO + Oracle</a>
+    </div>
+    <div class="foot-col">
+      <h5>Develop</h5>
+      <a href="#">Docs</a>
+      <a href="#">API reference</a>
+      <a href="#">SDK</a>
+      <a href="#">Submit a ticket</a>
+    </div>
+    <div class="foot-col">
+      <h5>Community</h5>
+      <a href="#">Telegram</a>
+      <a href="#">Discord</a>
+      <a href="#">X / Twitter</a>
+      <a href="#">GitHub</a>
+    </div>
+    <div class="foot-col">
+      <h5>Legal</h5>
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+      <a href="#">Risk disclosure</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 stonkslabs.com — built on TON</span>
+    <span>v4.7 · all systems operational</span>
+  </div>
+</footer>
+
+</main>
+
+<!-- TWEAKS -->
+<div class="tweaks" id="tweaks">
+  <h4>Tweaks</h4>
+  <div class="tweak">
+    <label>Accent color</label>
+    <div class="swatches" id="swAccent">
+      <div class="sw active" data-c="cyan" style="background:#3eb8ff"></div>
+      <div class="sw" data-c="violet" style="background:#7c5cff"></div>
+      <div class="sw" data-c="green" style="background:#22c55e"></div>
+      <div class="sw" data-c="amber" style="background:#f59e0b"></div>
+    </div>
+  </div>
+  <div class="tweak">
+    <label>Hero headline</label>
+    <div class="opts" id="optHero">
+      <div class="opt active" data-h="default">Build, ship & tokenize</div>
+      <div class="opt" data-h="onchain">Onchain, end-to-end</div>
+      <div class="opt" data-h="ship">Ship code. Ship tokens.</div>
+    </div>
+  </div>
+  <div class="tweak">
+    <label>Background motion</label>
+    <div class="opts" id="optMotion">
+      <div class="opt active" data-m="on">on</div>
+      <div class="opt" data-m="slow">slow</div>
+      <div class="opt" data-m="off">off</div>
+    </div>
+  </div>
+  <div class="tweak">
+    <label>Density</label>
+    <div class="opts" id="optDensity">
+      <div class="opt" data-d="comfy">comfy</div>
+      <div class="opt active" data-d="default">default</div>
+      <div class="opt" data-d="dense">dense</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------- TWEAK DEFAULTS ---------- */
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "cyan",
+  "hero": "default",
+  "motion": "on",
+  "density": "default"
+}/*EDITMODE-END*/;
+let tweaks = {...TWEAK_DEFAULTS};
+
+/* ---------- TICKER TAPE ---------- */
+const TOKENS = [
+  ['STONKS','Stonks Labs',0.0814,12.4],
+  ['FEY','Fyenta',67290,8.2],
+  ['OG','OG TON',19.22,-3.1],
+  ['ARN','Arcane',6100,24.6],
+  ['TFC','TON Fight',712,-1.4],
+  ['ALP','Alpha Compute',807.9,5.7],
+  ['DRFT','Drift Coin',10510,-0.8],
+  ['CWC','Crypto World',381.62,2.3],
+  ['LAMBO','Lamborghini',17720000,15.2],
+  ['KAFFE','Cadexx',13690,-2.1],
+  ['CATSTR','CatsBaby',322.12,7.4],
+  ['TFR','TON Republic',646,3.9],
+  ['GS','Grav4',62.59,-0.4],
+  ['TURQ','TonTurq',2.79,11.8],
+  ['APPLETON','Appleton',688.73,-1.9],
+];
+function fmt(n){
+  if (n>=1e6) return '$'+(n/1e6).toFixed(2)+'M';
+  if (n>=1e3) return '$'+(n/1e3).toFixed(2)+'K';
+  if (n>=1) return '$'+n.toFixed(2);
+  return '$'+n.toFixed(4);
+}
+const tk = document.getElementById('ticker');
+const tkHTML = TOKENS.map(([s,n,p,c])=>`
+  <div class="tk">
+    <span class="tk-name">${s}</span>
+    <span class="tk-tic">${n}</span>
+    <span class="tk-px">${fmt(p)}</span>
+    <span class="${c>=0?'tk-up':'tk-dn'}">${c>=0?'▲':'▼'} ${Math.abs(c).toFixed(1)}%</span>
+  </div>
+`).join('');
+tk.innerHTML = tkHTML + tkHTML;
+
+/* ---------- TERMINAL TYPEWRITER ---------- */
+const TERM_LINES = [
+  {pfx:'$',cls:'',html:'stonks init <b>rug</b>'},
+  {pfx:'›',cls:'pfx-vi',html:'<span class="k">project</span> created · <span class="v">d17210553-a11y/rug</span>'},
+  {pfx:'$',cls:'',html:'stonks build <span class="k">--agent</span>=opus-4.7'},
+  {pfx:'›',cls:'pfx-gn',html:'AI is preparing a new commit…'},
+  {type:'card', html:`
+    <div class="cap"><span class="led"></span> running build · main</div>
+    <div class="row"><span class="l">agent</span><span class="r">claude opus 4.7</span></div>
+    <div class="row"><span class="l">files touched</span><span class="r">14</span></div>
+    <div class="row"><span class="l">tests</span><span class="r up">42 / 42 passing</span></div>
+    <div class="progress"><div class="progress-fill"></div></div>
+  `},
+  {pfx:'$',cls:'',html:'stonks deploy <span class="k">--prod</span>'},
+  {pfx:'›',cls:'pfx-gn',html:'deployed to <span class="v">rug.stonks.app</span> in 3.2s'},
+  {pfx:'$',cls:'',html:'stonks token launch <span class="k">--curve</span>=bonding'},
+  {pfx:'›',cls:'pfx-vi',html:'token <span class="v">RUG</span> live · seed lp <span class="k">12 TON</span> · holders <span class="k">+1</span><span class="caret"></span>'},
+];
+
+const body = document.getElementById('terminalBody');
+function typeTerminal(){
+  body.innerHTML = '';
+  TERM_LINES.forEach((l,i)=>{
+    setTimeout(()=>{
+      if(l.type==='card'){
+        const d = document.createElement('div');
+        d.className = 'term-card';
+        d.innerHTML = l.html;
+        body.appendChild(d);
+      } else {
+        const d = document.createElement('div');
+        d.className = 'term-line';
+        d.innerHTML = `<span class="pfx ${l.cls}">${l.pfx}</span><span class="text">${l.html}</span>`;
+        body.appendChild(d);
+      }
+    }, 600 + i*450);
+  });
+}
+typeTerminal();
+// loop
+setInterval(typeTerminal, 600 + TERM_LINES.length*450 + 4000);
+
+/* ---------- COUNTER ---------- */
+function animateCount(el, target, suffix='', dur=1800){
+  const start = performance.now();
+  const from = 0;
+  function tick(t){
+    const p = Math.min((t-start)/dur, 1);
+    const eased = 1 - Math.pow(1-p, 3);
+    const val = Math.floor(from + (target-from)*eased);
+    el.textContent = val.toLocaleString('en-US') + suffix;
+    if(p<1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+/* ---------- REVEAL ON SCROLL ---------- */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      // Counter
+      const cnt = e.target.querySelector('[data-count]');
+      if(cnt && !cnt.dataset.done){
+        cnt.dataset.done = '1';
+        animateCount(cnt, +cnt.dataset.count, cnt.dataset.suffix||'');
+      }
+      // Stat bar
+      const bar = e.target.querySelector('.stat-bar i');
+      if(bar) bar.style.width = bar.style.getPropertyValue('--w');
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- ANIMATED CHART ---------- */
+function buildChart(){
+  const path = document.getElementById('chartPath');
+  const area = document.getElementById('chartArea');
+  const dot = document.getElementById('chartDot');
+  if(!path) return;
+  const W=600, H=160, N=60;
+  let pts=[];
+  let y = 110;
+  for(let i=0;i<N;i++){
+    y += (Math.random()-0.48)*15;
+    if (i>40) y -= 1.5; // uptrend at the end
+    y = Math.max(20, Math.min(140, y));
+    pts.push([i/(N-1)*W, y]);
+  }
+  // smooth path
+  let d = `M${pts[0][0]},${pts[0][1]}`;
+  for (let i=1;i<pts.length;i++){
+    const [x1,y1]=pts[i-1], [x2,y2]=pts[i];
+    const cx=(x1+x2)/2;
+    d += ` Q${cx},${y1} ${cx},${(y1+y2)/2} T${x2},${y2}`;
+  }
+  path.setAttribute('d', d);
+  area.setAttribute('d', d + ` L${W},${H} L0,${H} Z`);
+  
+  // stroke draw animation
+  const len = path.getTotalLength();
+  path.style.strokeDasharray = len;
+  path.style.strokeDashoffset = len;
+  path.getBoundingClientRect();
+  path.style.transition = 'stroke-dashoffset 2.4s ease-out';
+  path.style.strokeDashoffset = 0;
+  
+  // moving dot
+  let t = 0;
+  const last = pts[pts.length-1];
+  dot.setAttribute('cx', last[0]);
+  dot.setAttribute('cy', last[1]);
+  
+  // small live ticks
+  setInterval(()=>{
+    t = (t+1)%pts.length;
+    const [x,y] = pts[pts.length-1];
+    const ny = y + (Math.random()-0.5)*4;
+    dot.setAttribute('cy', ny);
+  }, 1200);
+}
+buildChart();
+
+/* ---------- NAV SCROLL ---------- */
+window.addEventListener('scroll', ()=>{
+  const n = document.getElementById('nav');
+  if(window.scrollY > 50) n.style.background='rgba(7,10,20,0.85)';
+  else n.style.background='rgba(10,15,29,0.6)';
+});
+
+/* ---------- TWEAKS ---------- */
+const tweaksEl = document.getElementById('tweaks');
+window.addEventListener('message', (e)=>{
+  if(e.data?.type === '__activate_edit_mode') tweaksEl.classList.add('on');
+  if(e.data?.type === '__deactivate_edit_mode') tweaksEl.classList.remove('on');
+});
+window.parent.postMessage({type:'__edit_mode_available'}, '*');
+
+function persist(){
+  window.parent.postMessage({type:'__edit_mode_set_keys', edits: tweaks}, '*');
+}
+
+const ACCENTS = {
+  cyan:   {a:'#3eb8ff', b:'#7dd3ff', c:'#1a8fd8'},
+  violet: {a:'#7c5cff', b:'#a48bff', c:'#5b3fd9'},
+  green:  {a:'#22c55e', b:'#4ade80', c:'#16a34a'},
+  amber:  {a:'#f59e0b', b:'#fbbf24', c:'#d97706'},
+};
+function applyAccent(name){
+  const A = ACCENTS[name] || ACCENTS.cyan;
+  document.documentElement.style.setProperty('--cyan', A.a);
+  document.documentElement.style.setProperty('--cyan-hi', A.b);
+  document.documentElement.style.setProperty('--cyan-deep', A.c);
+}
+document.querySelectorAll('#swAccent .sw').forEach(s=>{
+  s.onclick = ()=>{
+    document.querySelectorAll('#swAccent .sw').forEach(x=>x.classList.remove('active'));
+    s.classList.add('active');
+    tweaks.accent = s.dataset.c;
+    applyAccent(s.dataset.c);
+    persist();
+  };
+});
+
+const HEROS = {
+  default: '<span class="strike">Build,</span><br/><span class="grad">Ship & Tokenize</span><br/>in one place.',
+  onchain: '<span class="grad">Onchain,</span><br/>end-to-end<br/><span class="strike">complexity.</span>',
+  ship:    '<span class="grad">Ship code.</span><br/><span class="grad">Ship tokens.</span><br/>Same platform.',
+};
+const heroH1 = document.querySelector('h1.hero-title');
+document.querySelectorAll('#optHero .opt').forEach(o=>{
+  o.onclick=()=>{
+    document.querySelectorAll('#optHero .opt').forEach(x=>x.classList.remove('active'));
+    o.classList.add('active');
+    tweaks.hero=o.dataset.h;
+    heroH1.innerHTML = HEROS[o.dataset.h];
+    persist();
+  };
+});
+
+document.querySelectorAll('#optMotion .opt').forEach(o=>{
+  o.onclick=()=>{
+    document.querySelectorAll('#optMotion .opt').forEach(x=>x.classList.remove('active'));
+    o.classList.add('active');
+    tweaks.motion=o.dataset.m;
+    const orbs = document.querySelectorAll('.orb');
+    if(o.dataset.m==='off'){orbs.forEach(x=>x.style.animationPlayState='paused')}
+    else if(o.dataset.m==='slow'){orbs.forEach(x=>x.style.animationDuration='60s')}
+    else {orbs.forEach(x=>{x.style.animationPlayState='running';x.style.animationDuration=''})}
+    persist();
+  };
+});
+
+document.querySelectorAll('#optDensity .opt').forEach(o=>{
+  o.onclick=()=>{
+    document.querySelectorAll('#optDensity .opt').forEach(x=>x.classList.remove('active'));
+    o.classList.add('active');
+    tweaks.density=o.dataset.d;
+    const root = document.documentElement;
+    if(o.dataset.d==='comfy'){root.style.fontSize='17px'}
+    else if(o.dataset.d==='dense'){root.style.fontSize='14px'}
+    else {root.style.fontSize=''}
+    persist();
+  };
+});
+
+// Apply persisted tweaks on load
+applyAccent(tweaks.accent);
+</script>
+
+</body>
+</html>
