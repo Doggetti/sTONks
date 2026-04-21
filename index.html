@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Stonks — Build. Launch. Tokenize.</title>
+<link rel="icon" type="image/svg+xml" href="stonks-txt-logo.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -65,7 +66,9 @@
   nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,15,29,0.6);border-bottom:1px solid var(--line);transition:all .3s}
   .nav-inner{max-width:1400px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:40px}
   .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:0.02em;font-family:'Space Grotesk'}
-  .logo-mark{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,var(--cyan),var(--cyan-deep));display:grid;place-items:center;font-weight:700;color:#001225;font-size:14px;box-shadow:0 0 24px rgba(62,184,255,0.4)}
+  .logo-mark{width:30px;height:30px;display:grid;place-items:center;filter:drop-shadow(0 0 14px rgba(62,184,255,0.55))}
+  .logo-mark img{width:100%;height:100%;display:block}
+  .logo-word{height:42px;width:auto;display:block}
   .nav-links{display:flex;gap:28px;font-size:14px;color:var(--text-dim)}
   .nav-links a{transition:color .2s;position:relative}
   .nav-links a:hover{color:var(--text)}
@@ -77,7 +80,7 @@
   .pill-primary:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(62,184,255,0.5),inset 0 1px 0 rgba(255,255,255,0.4)}
   
   /* ---------- TICKER TAPE ---------- */
-  .ticker{position:relative;border-bottom:1px solid var(--line);background:rgba(7,10,20,0.6);overflow:hidden;height:38px;display:flex;align-items:center;margin-top:60px}
+  .ticker{position:relative;border-bottom:1px solid var(--line);background:rgba(7,10,20,0.6);overflow:hidden;height:38px;display:flex;align-items:center;margin-top:72px}
   .ticker-track{display:flex;gap:48px;white-space:nowrap;animation:scrollX 60s linear infinite;padding-left:48px}
   .ticker:hover .ticker-track{animation-play-state:paused}
   @keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -364,20 +367,19 @@
 
 <nav id="nav">
   <div class="nav-inner">
-    <a href="#" class="logo">
-      <span class="logo-mark">S</span>
-      STONKS
+    <a href="https://stonkslabs.com" class="logo" aria-label="Stonks">
+      <img src="stonks-txt-logo.svg" alt="Stonks" class="logo-word" />
     </a>
     <div class="nav-links">
       <a href="#ecosystem">Ecosystem</a>
       <a href="#build">Build</a>
       <a href="#trade">Trade</a>
       <a href="#tokenize">Tokenize</a>
-      <a href="#docs">Docs</a>
+      <a href="https://stonks-bot.gitbook.io/stonks-bot-manual" target="_blank" rel="noopener">Docs</a>
     </div>
     <div class="nav-cta">
-      <a href="#" class="pill pill-ghost">Sign in</a>
-      <a href="#" class="pill pill-primary">Launch app →</a>
+      <a href="https://t.me/stonkstrade" target="_blank" rel="noopener" class="pill pill-ghost">Telegram</a>
+      <a href="https://stonkslabs.com" target="_blank" rel="noopener" class="pill pill-primary">Launch app →</a>
     </div>
   </div>
 </nav>
@@ -401,7 +403,7 @@
       The complete on-chain ecosystem. <b>Build</b> any software with AI agents, <b>deploy</b> on managed infrastructure, <b>tokenize</b> with bonding curves or fairlaunch — and reach <b>12,000+ active traders</b> from day one.
     </p>
     <div class="hero-cta">
-      <a href="#" class="btn-lg btn-primary">Launch app <span class="arrow">→</span></a>
+      <a href="https://stonkslabs.com" target="_blank" rel="noopener" class="btn-lg btn-primary">Launch app <span class="arrow">→</span></a>
       <a href="#ecosystem" class="btn-lg btn-ghost">Explore ecosystem</a>
     </div>
     <div class="hero-meta">
@@ -760,8 +762,8 @@
       <h2>Everything an on-chain<br/>operator needs. <span class="grad">In one place.</span></h2>
       <p>Build, deploy, tokenize, govern, trade. The full loop on a single platform that already has the audience.</p>
       <div class="ctas">
-        <a href="#" class="btn-lg btn-primary">Launch app <span class="arrow">→</span></a>
-        <a href="#" class="btn-lg btn-ghost">Read the docs</a>
+        <a href="https://stonkslabs.com" target="_blank" rel="noopener" class="btn-lg btn-primary">Launch app <span class="arrow">→</span></a>
+        <a href="https://stonks-bot.gitbook.io/stonks-bot-manual" target="_blank" rel="noopener" class="btn-lg btn-ghost">Read the docs</a>
       </div>
       <div class="meta">
         <span><b>2,170</b> projects launched</span>
@@ -776,32 +778,28 @@
 <footer>
   <div class="foot">
     <div class="foot-col foot-brand">
-      <div class="logo">
-        <span class="logo-mark">S</span>
-        STONKS
+      <div class="logo" aria-label="Stonks">
+        <img src="stonks-txt-logo.svg" alt="Stonks" class="logo-word" />
       </div>
       <p>The complete on-chain ecosystem to build, deploy, tokenize and trade — all from one place.</p>
     </div>
     <div class="foot-col">
       <h5>Product</h5>
-      <a href="#">Trading Terminal</a>
-      <a href="#">Build Agent</a>
-      <a href="#">Token Launcher</a>
-      <a href="#">DAO + Oracle</a>
+      <a href="https://stonkslabs.com/trade/ton" target="_blank" rel="noopener">Trading Terminal</a>
+      <a href="https://stonkslabs.com/build" target="_blank" rel="noopener">Build Agent</a>
+      <a href="https://stonkslabs.com/launch/ton" target="_blank" rel="noopener">Token Launcher</a>
+      <a href="https://stonkslabs.com/cto" target="_blank" rel="noopener">CTO Projects</a>
     </div>
     <div class="foot-col">
       <h5>Develop</h5>
-      <a href="#">Docs</a>
-      <a href="#">API reference</a>
-      <a href="#">SDK</a>
-      <a href="#">Submit a ticket</a>
+      <a href="https://stonks-bot.gitbook.io/stonks-bot-manual" target="_blank" rel="noopener">Docs</a>
+      <a href="https://stonkslabs.com/build/projects" target="_blank" rel="noopener">Projects</a>
+      <a href="https://stonkslabs.com/ticket" target="_blank" rel="noopener">Submit a ticket</a>
     </div>
     <div class="foot-col">
       <h5>Community</h5>
-      <a href="#">Telegram</a>
-      <a href="#">Discord</a>
-      <a href="#">X / Twitter</a>
-      <a href="#">GitHub</a>
+      <a href="https://t.me/stonkstrade" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://t.me/stonks_sniper_bot" target="_blank" rel="noopener">Sniper Bot</a>
     </div>
     <div class="foot-col">
       <h5>Legal</h5>
@@ -885,21 +883,56 @@ const TOKENS = [
   ['APPLETON','Appleton',688.73,-1.9],
 ];
 function fmt(n){
+  if (n>=1e9) return '$'+(n/1e9).toFixed(2)+'B';
   if (n>=1e6) return '$'+(n/1e6).toFixed(2)+'M';
   if (n>=1e3) return '$'+(n/1e3).toFixed(2)+'K';
   if (n>=1) return '$'+n.toFixed(2);
   return '$'+n.toFixed(4);
 }
+function fmtCount(n){
+  if (n>=1e6) return (n/1e6).toFixed(1)+'M';
+  if (n>=1e3) return (n/1e3).toFixed(1)+'K';
+  return String(n);
+}
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 const tk = document.getElementById('ticker');
-const tkHTML = TOKENS.map(([s,n,p,c])=>`
-  <div class="tk">
-    <span class="tk-name">${s}</span>
-    <span class="tk-tic">${n}</span>
-    <span class="tk-px">${fmt(p)}</span>
-    <span class="${c>=0?'tk-up':'tk-dn'}">${c>=0?'▲':'▼'} ${Math.abs(c).toFixed(1)}%</span>
-  </div>
-`).join('');
-tk.innerHTML = tkHTML + tkHTML;
+function renderStatic(tokens){
+  return tokens.map(([s,n,p,c])=>`
+    <div class="tk">
+      <span class="tk-name">${esc(s)}</span>
+      <span class="tk-tic">${esc(n)}</span>
+      <span class="tk-px">${fmt(p)}</span>
+      <span class="${c>=0?'tk-up':'tk-dn'}">${c>=0?'▲':'▼'} ${Math.abs(c).toFixed(1)}%</span>
+    </div>`).join('');
+}
+function renderLive(tokens){
+  return tokens.map(t=>`
+    <div class="tk">
+      <span class="tk-name">${esc(t.symbol)}</span>
+      <span class="tk-tic">${esc(t.name)}</span>
+      <span class="tk-px">${fmt(t.mcap)}</span>
+      <span class="tk-up">▲ ${fmtCount(t.holders)} holders</span>
+    </div>`).join('');
+}
+// immediate render from static fallback, then try live data
+{
+  const html = renderStatic(TOKENS);
+  tk.innerHTML = html + html;
+}
+(async ()=>{
+  try{
+    const res = await fetch('https://ts-data.stonks.cash/api/ton/trending?sortBy=score&sortDir=-1', {cache:'no-store'});
+    if(!res.ok) return;
+    const body = await res.json();
+    const items = (body && body.data ? body.data : [])
+      .filter(t=>t && t.symbol && typeof t.mcap==='number' && t.mcap>0 && t.mcap<1e10)
+      .slice(0,20)
+      .map(t=>({symbol:t.symbol, name:t.name||t.symbol, mcap:t.mcap, holders:t.holders||0}));
+    if(!items.length) return;
+    const html = renderLive(items);
+    tk.innerHTML = html + html;
+  }catch(e){ /* keep static fallback */ }
+})();
 
 /* ---------- TERMINAL TYPEWRITER ---------- */
 const TERM_LINES = [
