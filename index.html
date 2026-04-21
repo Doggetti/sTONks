@@ -393,7 +393,7 @@
   <div class="hero-left">
     <div class="hero-eyebrow"><span class="dot"></span> Mainnet · 2,170 projects live</div>
     <h1 class="hero-title display">
-      <span class="strike">Build,</span><br/>
+      Build,<br/>
       <span class="grad">Ship & Tokenize</span><br/>
       in one place.
     </h1>
@@ -407,7 +407,7 @@
     <div class="hero-meta">
       <span><b>41,300</b> TON liquidity</span>
       <span><b>160K</b> TON dividends paid</span>
-      <span><b>0</b> infra setup</span>
+      <span><b>12K</b> MAU</span>
     </div>
   </div>
   
@@ -415,7 +415,7 @@
     <div class="terminal">
       <div class="term-bar">
         <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
-        <span class="term-title">~/projects/rug — claude opus 4.7</span>
+        <span class="term-title">~/projects/norugsir — claude opus 4.7</span>
       </div>
       <div class="term-body" id="terminalBody">
         <!-- filled by JS -->
@@ -725,7 +725,7 @@
         <div class="repo-card">
           <div class="repo-av"></div>
           <div class="repo-info">
-            <div class="name">d17210553-a11y / <b>rug</b></div>
+            <div class="name">d17210553-a11y / <b>norugsir</b></div>
             <div class="meta">main · 142 commits · verified · 0xA8…7f3b</div>
           </div>
           <div class="repo-badge">● live</div>
@@ -903,8 +903,8 @@ tk.innerHTML = tkHTML + tkHTML;
 
 /* ---------- TERMINAL TYPEWRITER ---------- */
 const TERM_LINES = [
-  {pfx:'$',cls:'',html:'stonks init <b>rug</b>'},
-  {pfx:'›',cls:'pfx-vi',html:'<span class="k">project</span> created · <span class="v">d17210553-a11y/rug</span>'},
+  {pfx:'$',cls:'',html:'stonks init <b>norugsir</b>'},
+  {pfx:'›',cls:'pfx-vi',html:'<span class="k">project</span> created · <span class="v">d17210553-a11y/norugsir</span>'},
   {pfx:'$',cls:'',html:'stonks build <span class="k">--agent</span>=opus-4.7'},
   {pfx:'›',cls:'pfx-gn',html:'AI is preparing a new commit…'},
   {type:'card', html:`
@@ -915,9 +915,9 @@ const TERM_LINES = [
     <div class="progress"><div class="progress-fill"></div></div>
   `},
   {pfx:'$',cls:'',html:'stonks deploy <span class="k">--prod</span>'},
-  {pfx:'›',cls:'pfx-gn',html:'deployed to <span class="v">rug.stonks.app</span> in 3.2s'},
+  {pfx:'›',cls:'pfx-gn',html:'deployed to <span class="v">norugsir.stonks.app</span> in 3.2s'},
   {pfx:'$',cls:'',html:'stonks token launch <span class="k">--curve</span>=bonding'},
-  {pfx:'›',cls:'pfx-vi',html:'token <span class="v">RUG</span> live · seed lp <span class="k">12 TON</span> · holders <span class="k">+1</span><span class="caret"></span>'},
+  {pfx:'›',cls:'pfx-vi',html:'token <span class="v">NORUGSIR</span> live · seed lp <span class="k">12 TON</span> · holders <span class="k">+1</span><span class="caret"></span>'},
 ];
 
 const body = document.getElementById('terminalBody');
@@ -1068,7 +1068,7 @@ document.querySelectorAll('#swAccent .sw').forEach(s=>{
 });
 
 const HEROS = {
-  default: '<span class="strike">Build,</span><br/><span class="grad">Ship & Tokenize</span><br/>in one place.',
+  default: 'Build,<br/><span class="grad">Ship & Tokenize</span><br/>in one place.',
   onchain: '<span class="grad">Onchain,</span><br/>end-to-end<br/><span class="strike">complexity.</span>',
   ship:    '<span class="grad">Ship code.</span><br/><span class="grad">Ship tokens.</span><br/>Same platform.',
 };
