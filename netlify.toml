@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/api/*"
+  to = "https://ts-data.stonks.cash/api/:splat"
+  status = 200
+  force = true

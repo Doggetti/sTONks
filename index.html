@@ -919,11 +919,22 @@ function renderLive(tokens){
   const html = renderStatic(TOKENS);
   tk.innerHTML = html + html;
 }
+async function fetchTrending(){
+  // Prefer same-origin proxy (see netlify.toml). Fall back to direct — may fail on CORS.
+  const urls = ['/api/ton/trending?sortBy=score&sortDir=-1',
+                'https://ts-data.stonks.cash/api/ton/trending?sortBy=score&sortDir=-1'];
+  for (const u of urls){
+    try{
+      const r = await fetch(u, {cache:'no-store'});
+      if(r.ok) return await r.json();
+    }catch(_){}
+  }
+  return null;
+}
 (async ()=>{
   try{
-    const res = await fetch('https://ts-data.stonks.cash/api/ton/trending?sortBy=score&sortDir=-1', {cache:'no-store'});
-    if(!res.ok) return;
-    const body = await res.json();
+    const body = await fetchTrending();
+    if(!body) return;
     const items = (body && body.data ? body.data : [])
       .filter(t=>t && t.symbol && typeof t.mcap==='number' && t.mcap>0 && t.mcap<1e10)
       .slice(0,20)
