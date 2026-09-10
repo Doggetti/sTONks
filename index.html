@@ -562,6 +562,21 @@
     .rot-word{min-width:140px}
     .rot-star{width:28px;height:28px;font-size:18px}
   }
+  /* CHAPTER I */
+  #chapter{padding-top:40px}
+  .chapter{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:64px;align-items:start}
+  .chapter .section-head{margin-bottom:0;position:sticky;top:120px}
+  .chapter-num{font-family:'JetBrains Mono';font-size:11px;color:var(--cyan);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:18px}
+  .chapter-body p{font-size:18px;color:var(--text-dim);line-height:1.7;max-width:720px}
+  .chapter-body p + p{margin-top:24px}
+  .chapter-body b{color:var(--text);font-weight:500}
+  .chapter-body p.lead{font-size:22px;color:var(--text);font-family:'Space Grotesk';letter-spacing:-0.01em;line-height:1.4}
+  @media (max-width:900px){
+    .chapter{grid-template-columns:1fr;gap:36px}
+    .chapter .section-head{position:static}
+    .chapter-body p{font-size:16px}
+    .chapter-body p.lead{font-size:19px}
+  }
 </style>
 </head>
 <body>
@@ -638,6 +653,26 @@
       </div>
       <div class="term-body" id="terminalBody">
         <!-- filled by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER I -->
+<section id="chapter">
+  <div class="container">
+    <div class="chapter">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">// MANIFESTO</div>
+        <h2 class="section-title">Chapter <span class="grad">I</span></h2>
+        <p class="section-sub">Why blockchain finally gets something worth tokenizing.</p>
+      </div>
+      <div class="chapter-body reveal">
+        <p class="lead">Thanks to the ability to create decentralized programs, blockchain technology enables far more than just trading tokens.</p>
+        <p>Mechanisms such as <b>staking, DAOs, AMMs and lending</b> make it possible to create mini-organizations independent of governments, with their own goals, profits and members. Until now, however, this system has lacked value: something that would actually be worth tokenizing, and something for these organizations to actually do.</p>
+        <p>In the near future, thanks to advances in artificial intelligence, <b>all work done on a computer</b> (and, as robotics develops, work in the physical world too) can be automated. As a result, anyone with nothing but an idea, and no specialist knowledge, will be able to create a startup, a company or a sophisticated organization. Such a company, even at the idea stage, will need people: perhaps not employees, but certainly <b>customers or investors</b>, if only to cover the initial demand for computing power, which is not free.</p>
+        <p>In an economy where knowledge and time spent on repetitive tasks stop mattering, <b>ownership</b> becomes even more important: immutable and independent of outside influence, which are precisely the key properties of blockchain technology. A marketplace where any idea can be <b>built, tokenized, traded and governed by its users</b>, including anonymous ones.</p>
+        <p>At the same time, the system must be brutally simple, and literally everything except trading and coming up with ideas must be automated. Because those, we believe, are what <b>remain human</b>.</p>
       </div>
     </div>
   </div>
